@@ -1,0 +1,3 @@
+# Extended Linear Models {#sec-part-C .unnumbered}
+
+This section contains notes for Part C of the syllabus: Extended Linear Models.

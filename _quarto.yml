@@ -1,0 +1,35 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "MAS I"
+  author: "Colton Gearhart"
+  date: "3/29/24"
+  cover-image: mas1.png
+  chapters:
+    - index.qmd
+
+    - part: partA-prob.qmd
+      chapters:
+        - placeholder.qmd
+
+    - part: partB-stats.qmd
+      chapters:
+        - placeholder.qmd
+
+    - part: partC-glm.qmd
+      chapters:
+        - placeholder.qmd
+
+        
+format:
+  html:
+    theme: flatly
+    code-link: true
+    #code-fold: show
+    code-tools: true
+    code-block-border-left: "#2C3E50"
+    highlight-style: github
+    
+title-block-banner: true

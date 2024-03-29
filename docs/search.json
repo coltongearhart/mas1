@@ -1,0 +1,53 @@
+[
+  {
+    "objectID": "partA-prob.html",
+    "href": "partA-prob.html",
+    "title": "Probability Models",
+    "section": "",
+    "text": "This section contains notes for Part A of the syllabus: Probability Models.",
+    "crumbs": [
+      "Probability Models"
+    ]
+  },
+  {
+    "objectID": "placeholder.html",
+    "href": "placeholder.html",
+    "title": "1  Placeholder",
+    "section": "",
+    "text": "1.1 Placeholder\nContent",
+    "crumbs": [
+      "Probability Models",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Placeholder</span>"
+    ]
+  },
+  {
+    "objectID": "partB-stats.html",
+    "href": "partB-stats.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "This section contains notes for Part B of the syllabus: Statistics.",
+    "crumbs": [
+      "Statistics"
+    ]
+  },
+  {
+    "objectID": "partC-glm.html",
+    "href": "partC-glm.html",
+    "title": "Extended Linear Models",
+    "section": "",
+    "text": "This section contains notes for Part C of the syllabus: Extended Linear Models.",
+    "crumbs": [
+      "Extended Linear Models"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MAS I",
+    "section": "",
+    "text": "Overview\nThese notes are to prepare for Exam MAS I (modern actuarial statistics I), which covers three topics: probability models, statistics, and extended linear models.\n\n\n\n\n\n\n\n\nQuarto blog publish details\n\n\n\nThis book was created using Quarto and published with Github Pages.\n\n\n\n\n\n\n\n\nGithub repository for code\n\n\n\nYou can find the code to reproduce this project at coltongearhart/mas1.",
+    "crumbs": [
+      "Overview"
+    ]
+  }
+]
