@@ -20,7 +20,9 @@ book:
 
     - part: partC-glm.qmd
       chapters:
-        - placeholder.qmd
+        - islr-2.qmd
+        - islr-3.qmd
+
 
         
 format:
@@ -29,6 +31,8 @@ format:
     code-link: true
     #code-fold: show
     code-tools: true
+    number-depth: 3
+    toc-depth: 4
     code-block-border-left: "#2C3E50"
     highlight-style: github
     

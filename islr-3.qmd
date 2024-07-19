@@ -1,0 +1,629 @@
+# Linear regression
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+### Simple linear regression
+
+[https://coltongearhart.github.io/regression/notes-slr.html](https://coltongearhart.github.io/regression/notes-slr.html)
+
+### Multiple linear regression
+
+[https://coltongearhart.github.io/regression/notes-multiple-regression-1.html](https://coltongearhart.github.io/regression/notes-multiple-regression-1.html) and [https://coltongearhart.github.io/regression/notes-multiple-regression-2.html](https://coltongearhart.github.io/regression/notes-multiple-regression-2.html)
+
+### Other considerations in the regression model
+
+[https://coltongearhart.github.io/regression/notes-reg-models-quan-and-qual.html](https://coltongearhart.github.io/regression/notes-reg-models-quan-and-qual.html)
+
+Things to study more from other text
+
+- Leverage
+
+- VIF
+
+### Comparison of linear regression with $K$-nearest neighbors
+
+As discussed earlier, *non-parametric* methods do not explicitly assume a parametric form for $f(X)$, and thereby provide an alternative and more flexible approach for performing regression. Here we consider one of the simplest and best-known non-parametric methods,*$K$-nearest neighbors regression * (KNN regression). The KNN regression method is closely related to the KNN classifier discussed in the previous chapter. **Given a value for $K$ and a prediction point $x_0$, KNN regression first identifies the $K$ training observations that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates $f(x_0)$ using the average of all the training responses in $\cal{N}_0$**. In other words,
+
+$$
+\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i
+$$
+
+![](files/images/3-knn-regression.png){width="50%"}
+
+We see that when $K = 1$, the KNN fit perfectly interpolates the training observations, and consequently takes the form of a step function. When $K = 9$, the KNN fit still is a step function, but averaging over nine observations results in much smaller regions of constant prediction, and consequently a smoother fit. **In general, the optimal value for K will depend on the bias-variance tradeoff**.
+
+A small value for $K$ provides the most flexible fit, which will have low bias but high variance. This variance is due to the fact that the prediction in a given region is entirely dependent on just one observation. In contrast, larger values of $K$ provide a smoother and less variable fit; the prediction in a region is an average of several points, and so changing one observation has a smaller effect. However, the smoothing may cause bias by masking some of the structure in $f(X)$.
+
+In what setting will a parametric approach such as least squares linear regression outperform a non-parametric approach such as KNN regression? The answer is simple: **the parametric approach will outperform the non- parametric approach if the parametric form that has been selected is close to the true form of $f$.**
+
+![](files/images/3-knn-comparison.png){width="50%"}
+
+Figure 3.17 provides an example with data generated from a one-dimensional linear regression model. The black solid lines represent $f(X)$, while the blue curves correspond to the KNN fits using $K = 1$ and $K = 9$. In this case, the $K = 1$ predictions are far too variable, while the smoother $K = 9$ fit is much closer to $f(X)$. **However, since the true relationship is linear, it is hard for a non-parametric approach to compete with linear regression: a non-parametric approach incurs a cost in variance that is not offset by a reduction in bias.*
+
+![](files/images/3-knn-comparison-3.png){width="50%"}
+
+Figure 3.19 examines the relative performances of least squares regression and KNN under increasing levels of non-linearity in the relationship between $X$ and $Y$. In more non-linear situation, KNN substantially outperforms linear regression for all values of $K$. **Note that as the extent of non-linearity increases, there is little change in the test set MSE for the non-parametric KNN method, but there is a large increase in the test set MSE of linear regression.**
+
+In a real life situation in which the true relationship is unknown, one might suspect that KNN should be favored over linear regression because it will at worst be slightly inferior to linear regression if the true relationship is linear, and may give substantially better results if the true relationship is non-linear. But in reality, even when the true relationship is highly non-linear, KNN may still provide inferior results to linear regression. **But in higher dimensions, KNN often performs worse than linear regression.**
+
+![](files/images/3-knn-comparison-4.png){width="50%"}
+
+Figure 3.20 considers the same strongly non-linear situation as in the
+second row of Figure 3.19, except that we have added additional *noise*
+predictors that are not associated with the response. But for $p = 3$ the results are mixed, and for $p \ge 4$ linear regression is superior to KNN. In fact, the increase in dimension has only caused a small deterioration in the linear regression test set MSE, but it has caused more than a ten-fold increase in the MSE for KNN. **This decrease in performance as the dimension increases is a common problem for KNN, and results from the fact that in higher dimensions there is effectively a reduction in sample size**. In this data set there are 50 training observations; when $p = 1$, this provides enough information to accurately estimate $f(X)$. However, spreading 50 observations over $p = 20$ dimensions results in a phenomenon in which a given observation has *no nearby neighbors* -- this is the so-called *curse of dimensionality*.
+
+**As a general rule, parametric methods will tend to outperform non-parametric approaches when there is a small number of observations per predictor. Even when the dimension is small, we might prefer linear regression to KNN from an interpretability standpoint. If the test MSE of KNN is only slightly lower than that of linear regression, we might be willing to forego a little bit of prediction accuracy for the sake of a simple model that can be described in terms of just a few coefficients, and for which p-values are available.**
+
+## Lab
+
+< just basic regression commands >
+
+Some key points
+
+- `hatvalues(< mod >)`: Computes the hat values for each observation.
+
+    - Then can run `hatvalues(< mod >) %>% which.max` to get the largest one.
+    
+- `car::vif()`: Computes the VIF for each predictor.
+
+- In the formula, `poly()` by default orthogonalizes the predictors, so they are not simply a sequence of higher powers of the argument.
+
+    -  However, a linear model applied to the output of the `poly()` function will have the same fitted values as a linear model applied to the raw polynomials (`raw = TRUE`; although the coefficient estimates, standard errors, and p-values will differ).
+    
+- `contrasts(< factor >)`: Returns the coding that R uses for the dummy variables.
+
+## Exercises
+
+### Conceptual
+
+#### Question 1
+
+> Describe the null hypotheses to which the p-values shown below correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of the predictors, rather than in terms of the coefficients of the linear model.
+
+```{r}
+#| echo: false
+
+lm(Sepal.Width ~ Petal.Width + Petal.Length + Sepal.Length, data = iris) %>% 
+  broom::tidy()
+
+```
+
+For `Petal.Length`:
+
+$$
+\begin{align*}
+H_0&: \beta_{\text{Petal.Length}} = 0 \\
+H_A&: \beta_{\text{Petal.Length}} \ne 0
+\end{align*}
+$$
+
+```{r}
+
+# fit model
+mod_iris <- lm(Sepal.Width ~ Petal.Width + Petal.Length + Sepal.Length, data = iris, x = TRUE)
+
+# verify p-value
+beta_hat <- coef(mod_iris)["Petal.Length"]
+X <- mod_iris$x
+se_beta_hats <- summary(mod_iris)$sigma^2 * solve(t(X) %*% (X))
+se_beta_hat <- sqrt(se_beta_hats[3,3])
+pt(q = beta_hat / se_beta_hat, df = nobs(mod_iris) - length(coef(mod_iris)), lower.tail = TRUE) * 2 %>% as.numeric
+
+```
+
+#### Question 2
+
+> Carefully explain the differences between the KNN classifier and KNN regression methods.
+
+Simply stated, The KNN classifier is categorical and assigns a value based on the most frequent observed category among $K$ nearest neighbors, whereas KNN regression assigns a continuous variable, the average of the response variables for the $K$ nearest neighbors. This represents two different summary functions, which are: for classification
+
+$$
+\hat{f}(x_0) = \text{max}_j\bigg\{\frac{1}{K}\sum_{x_i \in \cal{N}_0} I(y_i = j)\bigg\}
+$$
+
+and for regression
+
+$$
+\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i
+$$
+
+#### Question 3
+
+> Suppose we have a data set with five predictors, $X_1$ = GPA, $X_2$ = IQ, $X_3$ = Level (1 for College and 0 for High School), $X_4$ = Interaction between GPA and IQ, and $X_5$ = Interaction between GPA and Level. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get $\hat\beta_0 = 50$, $\hat\beta_1 = 20$, $\hat\beta_2 = 0.07$, $\hat\beta_3 = 35$, $\hat\beta_4 = 0.01$, $\hat\beta_5 = -10$.
+
+> a. Which answer is correct, and why?
+>      i. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates.
+>     ii. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates.
+>     iii. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates provided that the GPA is high enough.
+>     iv. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates provided that the GPA is high enough.
+
+i. False: $\hat{\beta}_3 > 0$
+
+ii. False: Have to take into account the interactions
+
+iii. True: $\hat{\beta}_5 = -10$, which means the slope for GPA decreases by 10 for college students. So for large enough GPAs, high school plane surpasses that of college
+
+iv. False: above reason
+
+```{r}
+
+# fitted response curve
+model <- function(gpa, iq, level) {
+  50 +
+  gpa * 20 +
+  iq * 0.07 +
+  level * 35 +
+  gpa * iq * 0.01 +
+  gpa * level * -10
+}
+
+# set predictors
+x <- seq(1, 5, length = 10)
+y <- seq(1, 200, length = 20)
+
+# calculate response
+college <- outer(x, y, FUN = model, level = 1) %>% t
+high_school <- outer(x, y, FUN = model, level = 0) %>% t
+
+# plot surfaces
+plot_ly(x = x, y = y) %>% 
+  add_surface(
+    z = ~college,
+    colorscale = list(c(0, 1), c("rgb(107,184,214)", "rgb(0,90,124)")),
+    colorbar = list(title = "College")) %>% 
+  add_surface(
+    z = ~high_school,
+    colorscale = list(c(0, 1), c("rgb(255,112,184)", "rgb(128,0,64)")),
+    colorbar = list(title = "High school")) %>% 
+  layout(scene = list(
+    xaxis = list(title = "GPA"),
+    yaxis = list(title = "IQ"),
+    zaxis = list(title = "Salary")))
+
+```
+
+> b. Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.
+
+```{r}
+
+model(gpa = 4, iq = 110, level = 1)
+
+```
+
+> c. True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.
+
+False. Scale is based on units, need information about the significance.
+
+#### Question 4
+
+> I collect a set of data ($n = 100$ observations) containing a single predictor and a quantitative response. I then fit a linear regression model to the data, as well as a separate cubic regression, i.e. $Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3 + \epsilon$.
+
+> a. Suppose that the true relationship between $X$ and $Y$ is linear, i.e. $Y = \beta_0 + \beta_1X + \epsilon$. Consider the training residual sum of squares (RSS) for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.
+
+The more complex model will have a smaller *training* RSS because of the lower bias.
+
+> (b) Answer (a) using test rather than training RSS.
+
+Given that the true model is actually linear, the more complex model will have a larger *testing* RSS because of the larger variance (overfitting).
+
+> (c) Suppose that the true relationship between $X$ and $Y$ is not linear, but we don’t know how far it is from linear. Consider the training RSS for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.
+
+The further from linear the true model gets, the larger the *training* RSS will become for the linear model because of low flexibility and high bias.
+
+> (d) Answer (c) using test rather than training RSS.
+
+Same as (c).
+
+#### Question 5 
+
+> Consider the fitted values that result from performing linear regression without an intercept. In this setting, the $i$th fitted value takes the form 
+$$
+\hat{y}_i = x_i\hat\beta
+$$
+where
+$$
+\hat{\beta} = \left(\sum_{i=1}^nx_iy_i\right) / \left(\sum_{i' = 1}^n x^2_{i'}\right).
+$$
+Show that we can write
+$$
+\hat{y}_i = \sum_{i' = 1}^na_{i'}y_{i'}
+$$
+What is $a_{i'}$?
+> *Note: We interpret this result by saying that the fitted values from linear regression are linear combinations of the response values.*
+
+$$
+\begin{align}
+\hat{y}_i 
+  & = x_i \frac{\sum_{i=1}^nx_iy_i}{\sum_{i' = 1}^n x^2_{i'}} \\
+  & = x_i \frac{\sum_{i'=1}^nx_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} \\
+  & = \frac{\sum_{i'=1}^n x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} \\
+  & = \sum_{i'=1}^n \frac{ x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} \\
+  & = \sum_{i'=1}^n \frac{ x_i x_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} y_{i'}
+\end{align}
+$$
+
+#### Question 6
+
+> Using (3.4), argue that in the case of simple linear regression, the least squares line always passes through the point $(\bar{x}, \bar{y})$.
+
+$$
+\begin{align}
+\hat{y} &= \hat\beta_0 + \hat\beta_1\bar{x} \\
+  &= (\bar{y} - \hat\beta_1\bar{x}) + \hat\beta_1\bar{x} \\
+  &= \bar{y}
+\end{align}
+$$
+
+#### Question 7
+
+> It is claimed in the text that in the case of simple linear regression of $Y$ onto $X$, the $R^2$ statistic (3.17) is equal to the square of the correlation between $X$ and $Y$ (3.18). Prove that this is the case. For simplicity, you may assume that $\bar{x} = \bar{y} = 0$.
+
+< just algebra after making simplifying assumptions >
+
+### Applied
+
+#### Question 8
+
+```{r}
+
+# read in data
+data_car <- ISLR2::Auto
+plot(mpg ~ horsepower, data_car)
+
+# fit model
+mod_car <- lm(mpg ~ horsepower, data_car)
+plot(mpg ~ horsepower, data_car)
+abline(mod_car, col = "red")
+
+glimpse(mod_car)
+
+# get strength
+mod_car %>% broom::glance() %>% pull(r.squared)
+
+# get coef
+broom::tidy(mod_car)
+
+# inference
+# -> prediction of new obs
+predict(mod_car, newdata = data.frame(horsepower = c(98)), interval = "pred")
+predict(mod_car, newdata = data.frame(horsepower = c(98)), interval = "conf")
+
+# diagnostic plots
+plot(mod_car, which = 1:2)
+
+# -> nonlinearity and unequal variance
+
+```
+
+#### Question 9
+
+```{r}
+
+# scatterplot matrix
+pairs(data_car)
+
+# correlation matrix
+cor(data_car[, 1:8])
+
+# fit model
+mod_car_mlr <- lm(mpg ~ . - name, data = data_car, x = TRUE)
+summary(mod_car_mlr)
+
+# is a relationship between Y and the set of Xs
+# -> displacement, weight, year and origin appear to be significant predictors
+# -> hat(beta)_year >  0 ==> newer cars get better gas mileage
+
+# diagnostic plots
+plot(mod_car_mlr, which = 1:2)
+
+# -> unequal variance
+
+# search for higher order effects
+
+# get residuals
+e <- residuals(mod_car_mlr) 
+
+# plot against each X
+nms_x <- colnames(mod_car_mlr$x[, -1])
+map2(data.frame(mod_car_mlr$x)[, -1], nms_x, function(x, nm) {
+  plot(x = x, y = e, main = nm)
+  lines(lowess(x = x, y = e), col = "red")
+  abline(h = 0, col = "grey")
+})
+
+# if there is relationship of any kind, that indicates there is something more going on because we have controlled for the linear main effects
+# -> something with displacement, horsepower, weight, and, year
+# -> combined with the hereditary principle, these seem like good variables
+
+# try interaction effects
+mod_car_int <- update(mod_car_mlr, . ~ . + displacement:weight + displacement:year + displacement:origin + weight:year + weight:origin + year:origin, x = TRUE)
+summary(mod_car_int)
+
+# only a couple of the interactions are significant
+
+plot(mod_car_int, which = 1:2)
+
+# get residuals
+e <- residuals(mod_car_int) 
+
+# plot against each X
+nms_x <- colnames(mod_car_int$x[, -1])
+map2(data.frame(mod_car_int$x)[, -1], nms_x, function(x, nm) {
+  plot(x = x, y = e, main = nm)
+  lines(lowess(x = x, y = e), col = "red")
+  abline(h = 0, col = "grey")
+})
+
+# now only unequal variance is left after controlling for interactions as well
+# -> except for maybe year
+# -> every function of year is significant
+mod_car_int2 <- update(mod_car_int, . ~ . + sqrt(year), data = data_car)
+
+# see if significant
+anova(mod_car_int2, mod_car_int)
+
+```
+
+#### Question 10
+
+```{r}
+
+# read in data
+# -> price = quan, urban and us = qual
+data_seats <- ISLR2::Carseats
+
+# fit mlr model
+mod_seats <- lm(Sales ~ Price + Urban + US, data = data_seats, x = TRUE)
+mod_seats %>% broom::tidy()
+
+```
+
+Coefficient interpretations
+
+$\hat{\beta}_0$ = `r mod_seats %>% broom::tidy() %>% filter(term == "(Intercept)") %>% pull(estimate) %>% round(3)`: For a non-urban store located outside of the US, we expect there to be 13,043 car seat sales on average.
+
+$\hat{\beta}_{\text{Price}}$ = `r mod_seats %>% broom::tidy() %>% filter(term == "Price") %>% pull(estimate) %>% round(3)`: For each dollar increase in the price of the carseat, we expect the unit sales to decrease by approximately 54 units, on average. 
+
+$\hat{\beta}_{\text{UrbanYes}}$ = `r mod_seats %>% broom::tidy() %>% filter(term == "UrbanYes") %>% pull(estimate) %>% round(3)`: Stores located in urban areas have approximately 22 less sales on average than non-urban stores.
+
+$\hat{\beta}_{\text{USYes}}$ = `r mod_seats %>% broom::tidy() %>% filter(term == "USYes") %>% pull(estimate) %>% round(3)`: US stores have approximately 1201 more sales on average than non-US stores.
+
+Written-out model
+
+$$
+\text{Sales} = \Bigg(\hat{\beta}_0 + \begin{cases}
+   \hat{\beta}_{\text{UrbanYes}},     & \text{if $\text{Urban}$ = Yes, $\text{US}$ = No} \\
+    \hat{\beta}_{\text{USYes}},    & \text{if $\text{Urban}$ = No, $\text{US}$ = Yes} \\
+    \hat{\beta}_{\text{UrbanYes}} + \hat{\beta}_{\text{USYes}},    & \text{if $\text{Urban}$ = $\text{US}$ = Yes} \\
+    0,       & \text{Otherwise}
+\end{cases}\Bigg)
++ \hat{\beta}_{\text{Price}} \times \text{Price}
+$$
+
+which come out to be
+
+$$
+\text{Sales} = \Bigg(13 + \begin{cases}
+   -0.022,   & \text{if $\text{Urban}$ is Yes, $\text{US}$ is No} \\
+    1.20,    & \text{if $\text{Urban}$ is No, $\text{US}$ is Yes} \\
+    1.18,    & \text{if $\text{Urban}$ and $\text{US}$ is Yes} \\
+    0,       & \text{Otherwise}
+\end{cases}
+\Bigg)
+ - 0.054 \times \textit{Price}
+$$
+
+```{r}
+
+# reject null for Price and US (not for Urban)
+
+# fit smaller model and test
+mod_seats2 <- update(mod_seats, . ~ . - Urban)
+anova(mod_seats, mod_seats2)
+
+# -> fail to reject --> reduced model is better
+
+mod_seats %>% broom::glance() %>% pull(r.squared)
+mod_seats2 %>% broom::glance() %>% pull(r.squared)
+
+# -> just about the same fit
+
+# 95% confidence intervals for coefficients on reduced model
+confint(mod_seats2)
+
+# inspect for outliers / high leverage observations
+plot(mod_seats2)
+
+# -> there are a few high leverage points, but they are not influential
+
+```
+
+#### Question 11
+
+```{r}
+
+# generate data
+set.seed(1)
+x <- rnorm(100)
+y <- 2 * x + rnorm(100)
+
+# fit models without intercept
+mod_yx <- lm(y ~ x + 0)
+summary(mod_yx)
+mod_xy <- lm(x ~ y + 0)
+summary(mod_xy)
+
+# results
+# -> different estimates, same test-statistics
+# -> this can be shown mathematically using the derived formulas for regression without an intercept
+
+# now with an intercept, show test statistics are the same for y ~ x and x ~ y
+mod_yx <- lm(y ~ x)
+mod_yx %>% broom::glance()
+mod_xy <- lm(x ~ y)
+mod_xy %>% broom::glance()
+
+```
+
+#### Question 12
+
+Can show that estimates will be the same if swap $X$ and $Y$ variables under a certain condition.
+
+$$
+Y \sim X: \hat\beta = \sum_i x_iy_i / \sum_{i'} x_{i'}^2
+$$
+
+The coefficient for the regression of X onto Y swaps the $x$ and $y$ variables:
+
+$$
+X \sim Y: \hat\beta = \sum_i x_iy_i / \sum_{i'} y_{i'}^2
+$$
+
+So they are the same when $\sum_{i} x_{i}^2 = \sum_{i} y_{i}^2$
+
+#### Question 13
+
+```{r}
+
+# investigate coefficient confidence intervals based on the amount of noise
+set.seed(1)
+x <- rnorm(100)
+beta0 <- -1
+beta1 <- 0.5
+
+# generate three response vecotrs with difference error variances
+y <- c(0.5, 0.1, 1) %>% map(\(epsilon) beta0 + beta1 * x + rnorm(100, 0, epsilon))
+names(y) <- c("original epsilon", "smaller epsilon", "larger epsilon")
+
+# fit models based on same x
+mods <- y %>% map(\(y) lm(y ~ x))
+
+# calculate coefficient confidence intervals
+mods %>% map(\(mod) coef(mod)[2])
+mods %>% map(\(mod) confint(mod))
+
+# wider confidence intervals with more noise as expected, and more biased fits
+
+```
+
+#### Question 14
+
+```{r}
+
+# generate data
+set.seed(1)
+x1 <- runif(100)
+x2 <- 0.5 * x1 + rnorm(100) / 10
+y <- 2 + 2 * x1 + 0.3 * x2 + rnorm(100)
+
+```
+
+The model is of the form:
+
+$$
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon
+$$
+
+The coefficients are $\beta_0 = 2$, $\beta_1 = 2$, $\beta_3 = 0.3$.
+
+```{r}
+
+# investigate relationship between x1 and x2
+cor(x1, x2)
+plot(x1, x2)
+
+# fit model
+mod <- lm(y ~ x1 + x2)
+
+# compare fitted coefficients to population values, then test
+coef(mod)
+mod %>% broom::tidy()
+
+# fail to reject for x2
+
+# now fit models with the predictors individually
+mod1 <- lm(y ~ x1)
+mod2 <- lm(y ~ x2)
+mod1 %>% broom::tidy()
+mod2 %>% broom::tidy()
+
+# both reject
+# -> this contradicts the mlr model where x2 was not significant
+
+# obtain new observations
+x1 <- c(x1, 0.1)
+x2 <- c(x2, 0.8)
+y <- c(y, 6)
+
+# refit models and see effect
+mod_new <- lm(y ~ x1 + x2)
+mod1_new <- lm(y ~ x1)
+mod2_new <- lm(y ~ x2)
+mod_new %>% broom::tidy()
+mod1_new %>% broom::tidy()
+mod2_new %>% broom::tidy()
+
+# seems similar results in the individual predictor models, however in the mlr model now both are significant -> investigate why
+plot(mod_new) # high leverage with respect to x1 and x2
+plot(y ~ x1)
+points(0.1, 6, col = "red") # outlier in y
+plot(y ~ x2)
+points(0.8, 6, col = "red") # high leverage (i.e. outlier in x)
+
+# useful to consider plot of the xs
+plot(x1, x2)
+points(0.1, 0.8, col = "red")
+
+```
+
+#### Question 15
+
+```{r}
+
+# read in data
+data_boston <- ISLR2::Boston
+
+# fit many SLR models
+mods <- data_boston %>% 
+  select(-crim) %>% 
+  map(\(x) lm(data_boston$crim ~ x))
+mods %>% map(\(mod) broom::glance(mod)[1,4:5])
+# -> all significant except chas
+
+# fit mlr model
+mod_mlr <- lm( crim ~ ., data = data_boston)
+summary(mod_mlr)
+# -> can now only reject for zn, nox, dis, rad, lstat and medv
+
+# extract two sets of coefficients and plot against each other
+betas_slr <- mods %>% map_dbl(\(mod) broom::tidy(mod)[2,2] %>% as.numeric)
+betas_mlr <- coef(mod_mlr)[-1]
+plot(betas_mlr ~ betas_slr)
+
+```
+
+The estimated coefficients differ (in particular the estimated coefficient for
+`nox` is dramatically different) between the two modelling strategies.
+
+```{r}
+
+# fit many cubic models models
+mods_cubic <- data_boston %>% 
+  select(-c(crim, chas)) %>% 
+  map(\(x) lm(data_boston$crim ~ poly(x, 3)))
+mods_cubic %>% map(\(mod) broom::tidy(mod))
+
+```
+
+Several models have a significant cubic term, if not then the quadratic term is significant for the rest.
+
