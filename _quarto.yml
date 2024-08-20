@@ -22,8 +22,7 @@ book:
       chapters:
         - islr-2.qmd
         - islr-3.qmd
-
-
+        - islr-4.qmd
         
 format:
   html:

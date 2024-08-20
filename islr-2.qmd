@@ -206,8 +206,7 @@ Here, the notation $E\big(y_o - \hat{f}(x_0)\big)^2$ defines the *expected test 
 
 This equation tells us that in order to minimize the expected test error, we need to select a statistical learning method that simultaneously achieves *low variance* and *low bias*. Note that variance is inherently a nonnegative quantity, and squared bias is also nonnegative. Hence, we see that the expected test MSE can never lie below $\text{Var}(\epsilon)$, the irreducible error.
 
-What do we mean by the *variance* and *bias* of a statistical learning method? *Variance* refers to the amount by which $\hat{f}$ would change if we estimated it using a different training data set. Since the training data are used to fit the statistical learning method, different training data sets will result in a different $\hat{f}$. But ideally the estimate for f should not vary
-too much between training sets. However, if a method has high variance then small changes in the training data can result in large changes in $\hat{f}$. **In general, more flexible statistical methods have higher variance**.
+What do we mean by the *variance* and *bias* of a statistical learning method? *Variance* refers to the amount by which $\hat{f}$ would change if we estimated it using a different training data set. Since the training data are used to fit the statistical learning method, different training data sets will result in a different $\hat{f}$. But ideally the estimate for f should not vary too much between training sets. However, if a method has high variance then small changes in the training data can result in large changes in $\hat{f}$. **In general, more flexible statistical methods have higher variance**.
 
 On the other hand, *bias* refers to the error that is introduced by approximating a real-life problem, which may be extremely complicated, by a much simpler model. **Generally, more flexible methods result in less bias.**
 
@@ -243,10 +242,10 @@ A good classifier is one for which the test error is smallest.
 It is possible to show (though the proof is outside of the scope of this book) that the test error rate given in is minimized, on average, by a very simple classifier that *assigns each observation to the most likely class, given its predictor values*. In other words, we should simply assign a test observation with predictor vector $x_0$ to the class $j$ for which
 
 $$
-\text{Pr}(Y = j \mid X = x_0)
+P(Y = j \mid X = x_0)
 $$
 
-is the largest. Note that the above formula is a *conditional probability*: it is the probability that $Y = j$, given the observed predictor vector $x_0$. This very simple classifier is called the *Bayes classifier*. In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if $\text{Pr}(Y = j \mid X = x_0) > 0.5$, and class two otherwise.
+is the largest. Note that the above formula is a *conditional probability*: it is the probability that $Y = j$, given the observed predictor vector $x_0$. This very simple classifier is called the *Bayes classifier*. In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if $P(Y = j \mid X = x_0) > 0.5$, and class two otherwise.
 
 Here is an example:
 
@@ -254,10 +253,10 @@ Here is an example:
 
 For each value of $X_1$ and $X_2$, there is a different probability of the response being orange or blue. Since this is simulated data, we know how the data were generated and we can calculate the conditional probabilities for each value of $X_1$ and $X_2$. The purple dashed line represents the points where the probability is exactly 50%. This is called the *Bayes decision boundary*.
 
-The Bayes classifier produces the lowest possible test error rate, called the *Bayes error rate*. Since the Bayes classifier will always choose the class for which the above formula is largest, the error rate will be $1 − \text{max}_j \, \text{Pr}(Y = j \mid X = x_0)$ at $X = x_0$. In general, the overall Bayes error rate is given by
+The Bayes classifier produces the lowest possible test error rate, called the *Bayes error rate*. Since the Bayes classifier will always choose the class for which the above formula is largest, the error rate will be $1 − \text{max}_j \, P(Y = j \mid X = x_0)$ at $X = x_0$. In general, the overall Bayes error rate is given by
 
 $$
-1 - E\big(\underset{j}{\text{max}} \, \text{Pr}(Y = j \mid X)\big)
+1 - E\big(\underset{j}{\text{max}} \, P(Y = j \mid X)\big)
 $$
 
 where the expectation averages the probability over all possible values of $X$. **The Bayes error rate is analogous to the irreducible error, discussed earlier.**
@@ -268,12 +267,10 @@ where the expectation averages the probability over all possible values of $X$. 
 
 In theory we would always like to predict qualitative responses using the Bayes classifier. But for real data, we do not know the conditional distribution of $Y$ given $X$, and so computing the Bayes classifier is impossible. Therefore, the Bayes classifier serves as an unattainable gold standard against which to compare other methods.
 
-<!-- ??? why impossible -->
-
 Many approaches attempt to estimate the conditional distribution of $Y$ given $X$, and then classify a given observation to the class with highest *estimated* probability. One such method is the *K-nearest neighbors* (KNN) classifier. Given a positive integer $K$ and a test observation $x_0$, the KNN classifier first identifies the $K$ points in the training data that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates the conditional probability for class $j$ as the fraction of points in $\cal{N}_0$ whose response values equal $j$:
 
 $$
-\text{Pr}(Y = j \mid X = x_0) = \frac{1}{K}\sum_{i \in \cal{N}_0} I(y_i = j)
+P(Y = j \mid X = x_0) = \frac{1}{K}\sum_{i \in \cal{N}_0} I(y_i = j)
 $$
 
 Finally, KNN classifies the test observation $x_0$ to the class with the largest probability from the equation above.
@@ -350,9 +347,7 @@ Regression; prediction; $n = 52, p = 3$.
 >
 > a. Provide a sketch of typical (squared) bias, variance, training error, test error, and Bayes (or irreducible) error curves, on a single plot, as we go from less flexible statistical learning methods towards more flexible approaches. The x-axis should represent the amount of flexibility in the method, and the y-axis should represent the values for each curve. There should be five curves. Make sure to label each one.
 
-< !!! get from ipad >
-
-![](files/images/2-ex-3-sol.png){width="50%"}
+![](files/images/2-q3.png)
 
 > b. Explain why each of the five curves has the shape displayed in part (a).
 
