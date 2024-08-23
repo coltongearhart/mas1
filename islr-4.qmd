@@ -20,8 +20,6 @@ source("_common.R")
 
 ## Notes
 
-FIND ??? and !!! to address
-
 ### An overview of classification
 
 The linear regression model discussed in earlier assumes that the response variable $Y$ is *quantitative*. But in many situations, the response variable is instead *qualitative*. In this chapter, we study approaches for predicting qualitative responses, a process that is known as *classification*.

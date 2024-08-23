@@ -28,6 +28,10 @@ Things to study more from other text
 
 - Leverage
 
+$$
+h_i = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_{i'=1}^n (x_{i'} - \bar{x})^2}
+$${#eq-leverage}
+
 - VIF
 
 ### Comparison of linear regression with $K$-nearest neighbors

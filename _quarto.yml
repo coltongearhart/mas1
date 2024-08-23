@@ -23,7 +23,8 @@ book:
         - islr-2.qmd
         - islr-3.qmd
         - islr-4.qmd
-        
+        - islr-5.qmd
+
 format:
   html:
     theme: flatly
