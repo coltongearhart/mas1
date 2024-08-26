@@ -24,6 +24,9 @@ book:
         - islr-3.qmd
         - islr-4.qmd
         - islr-5.qmd
+        - glm-1.qmd
+        - glm-2.qmd
+
 
 format:
   html:

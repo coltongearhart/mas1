@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>4&nbsp; Linear regression – MAS I</title>
+<title>4&nbsp; ISLR – Linear regression – MAS I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,9 +138,9 @@ window.Quarto = {
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></a></li></ol></nav>
       <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span>
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
@@ -220,19 +220,31 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./islr-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -301,8 +313,13 @@ window.Quarto = {
 <p><a href="https://coltongearhart.github.io/regression/notes-reg-models-quan-and-qual.html">https://coltongearhart.github.io/regression/notes-reg-models-quan-and-qual.html</a></p>
 <p>Things to study more from other text</p>
 <ul>
-<li><p>Leverage</p></li>
-<li><p>VIF</p></li>
+<li>Leverage</li>
+</ul>
+<p><span id="eq-leverage"><span class="math display">\[
+h_i = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_{i'=1}^n (x_{i'} - \bar{x})^2}
+\tag{4.1}\]</span></span></p>
+<ul>
+<li>VIF</li>
 </ul></section><section id="comparison-of-linear-regression-with-k-nearest-neighbors" class="level3" data-number="4.1.4"><h3 data-number="4.1.4" class="anchored" data-anchor-id="comparison-of-linear-regression-with-k-nearest-neighbors">
 <span class="header-section-number">4.1.4</span> Comparison of linear regression with <span class="math inline">\(K\)</span>-nearest neighbors</h3>
 <p>As discussed earlier, <em>non-parametric</em> methods do not explicitly assume a parametric form for <span class="math inline">\(f(X)\)</span>, and thereby provide an alternative and more flexible approach for performing regression. Here we consider one of the simplest and best-known non-parametric methods,<em><span class="math inline">\(K\)</span>-nearest neighbors regression </em> (KNN regression). The KNN regression method is closely related to the KNN classifier discussed in the previous chapter. <strong>Given a value for <span class="math inline">\(K\)</span> and a prediction point <span class="math inline">\(x_0\)</span>, KNN regression first identifies the <span class="math inline">\(K\)</span> training observations that are closest to <span class="math inline">\(x_0\)</span>, represented by <span class="math inline">\(\cal{N}_0\)</span>. It then estimates <span class="math inline">\(f(x_0)\)</span> using the average of all the training responses in <span class="math inline">\(\cal{N}_0\)</span></strong>. In other words,</p>
@@ -2123,17 +2140,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./islr-2.html" class="pagination-link" aria-label="Statistical learning">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></span>
+      <a href="./islr-2.html" class="pagination-link" aria-label="ISLR -- Statistical learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./islr-4.html" class="pagination-link" aria-label="Classification">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./islr-4.html" class="pagination-link" aria-label="ISLR -- Classification">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb90" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Linear regression</span></span>
+<div class="sourceCode" id="cb90" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ISLR -- Linear regression</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-prereqs</span></span>
@@ -2163,591 +2180,595 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb90-30"><a href="#cb90-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-31"><a href="#cb90-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Leverage</span>
 <span id="cb90-32"><a href="#cb90-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-33"><a href="#cb90-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>VIF</span>
-<span id="cb90-34"><a href="#cb90-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-35"><a href="#cb90-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison of linear regression with $K$-nearest neighbors</span></span>
+<span id="cb90-33"><a href="#cb90-33" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-34"><a href="#cb90-34" aria-hidden="true" tabindex="-1"></a>h_i = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_{i'=1}^n (x_{i'} - \bar{x})^2}</span>
+<span id="cb90-35"><a href="#cb90-35" aria-hidden="true" tabindex="-1"></a>$${#eq-leverage}</span>
 <span id="cb90-36"><a href="#cb90-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-37"><a href="#cb90-37" aria-hidden="true" tabindex="-1"></a>As discussed earlier, *non-parametric* methods do not explicitly assume a parametric form for $f(X)$, and thereby provide an alternative and more flexible approach for performing regression. Here we consider one of the simplest and best-known non-parametric methods,*$K$-nearest neighbors regression * (KNN regression). The KNN regression method is closely related to the KNN classifier discussed in the previous chapter. **Given a value for $K$ and a prediction point $x_0$, KNN regression first identifies the $K$ training observations that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates $f(x_0)$ using the average of all the training responses in $\cal{N}_0$**. In other words,</span>
+<span id="cb90-37"><a href="#cb90-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>VIF</span>
 <span id="cb90-38"><a href="#cb90-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-39"><a href="#cb90-39" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-40"><a href="#cb90-40" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i</span>
-<span id="cb90-41"><a href="#cb90-41" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-39"><a href="#cb90-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparison of linear regression with $K$-nearest neighbors</span></span>
+<span id="cb90-40"><a href="#cb90-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-41"><a href="#cb90-41" aria-hidden="true" tabindex="-1"></a>As discussed earlier, *non-parametric* methods do not explicitly assume a parametric form for $f(X)$, and thereby provide an alternative and more flexible approach for performing regression. Here we consider one of the simplest and best-known non-parametric methods,*$K$-nearest neighbors regression * (KNN regression). The KNN regression method is closely related to the KNN classifier discussed in the previous chapter. **Given a value for $K$ and a prediction point $x_0$, KNN regression first identifies the $K$ training observations that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates $f(x_0)$ using the average of all the training responses in $\cal{N}_0$**. In other words,</span>
 <span id="cb90-42"><a href="#cb90-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-43"><a href="#cb90-43" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-regression.png)</span>{width="50%"}</span>
-<span id="cb90-44"><a href="#cb90-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-45"><a href="#cb90-45" aria-hidden="true" tabindex="-1"></a>We see that when $K = 1$, the KNN fit perfectly interpolates the training observations, and consequently takes the form of a step function. When $K = 9$, the KNN fit still is a step function, but averaging over nine observations results in much smaller regions of constant prediction, and consequently a smoother fit. **In general, the optimal value for K will depend on the bias-variance tradeoff**.</span>
+<span id="cb90-43"><a href="#cb90-43" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-44"><a href="#cb90-44" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i</span>
+<span id="cb90-45"><a href="#cb90-45" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb90-46"><a href="#cb90-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-47"><a href="#cb90-47" aria-hidden="true" tabindex="-1"></a>A small value for $K$ provides the most flexible fit, which will have low bias but high variance. This variance is due to the fact that the prediction in a given region is entirely dependent on just one observation. In contrast, larger values of $K$ provide a smoother and less variable fit; the prediction in a region is an average of several points, and so changing one observation has a smaller effect. However, the smoothing may cause bias by masking some of the structure in $f(X)$.</span>
+<span id="cb90-47"><a href="#cb90-47" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-regression.png)</span>{width="50%"}</span>
 <span id="cb90-48"><a href="#cb90-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-49"><a href="#cb90-49" aria-hidden="true" tabindex="-1"></a>In what setting will a parametric approach such as least squares linear regression outperform a non-parametric approach such as KNN regression? The answer is simple: **the parametric approach will outperform the non- parametric approach if the parametric form that has been selected is close to the true form of $f$.**</span>
+<span id="cb90-49"><a href="#cb90-49" aria-hidden="true" tabindex="-1"></a>We see that when $K = 1$, the KNN fit perfectly interpolates the training observations, and consequently takes the form of a step function. When $K = 9$, the KNN fit still is a step function, but averaging over nine observations results in much smaller regions of constant prediction, and consequently a smoother fit. **In general, the optimal value for K will depend on the bias-variance tradeoff**.</span>
 <span id="cb90-50"><a href="#cb90-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-51"><a href="#cb90-51" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison.png)</span>{width="50%"}</span>
+<span id="cb90-51"><a href="#cb90-51" aria-hidden="true" tabindex="-1"></a>A small value for $K$ provides the most flexible fit, which will have low bias but high variance. This variance is due to the fact that the prediction in a given region is entirely dependent on just one observation. In contrast, larger values of $K$ provide a smoother and less variable fit; the prediction in a region is an average of several points, and so changing one observation has a smaller effect. However, the smoothing may cause bias by masking some of the structure in $f(X)$.</span>
 <span id="cb90-52"><a href="#cb90-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-53"><a href="#cb90-53" aria-hidden="true" tabindex="-1"></a>Figure 3.17 provides an example with data generated from a one-dimensional linear regression model. The black solid lines represent $f(X)$, while the blue curves correspond to the KNN fits using $K = 1$ and $K = 9$. In this case, the $K = 1$ predictions are far too variable, while the smoother $K = 9$ fit is much closer to $f(X)$. **However, since the true relationship is linear, it is hard for a non-parametric approach to compete with linear regression: a non-parametric approach incurs a cost in variance that is not offset by a reduction in bias.*</span>
+<span id="cb90-53"><a href="#cb90-53" aria-hidden="true" tabindex="-1"></a>In what setting will a parametric approach such as least squares linear regression outperform a non-parametric approach such as KNN regression? The answer is simple: **the parametric approach will outperform the non- parametric approach if the parametric form that has been selected is close to the true form of $f$.**</span>
 <span id="cb90-54"><a href="#cb90-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-55"><a href="#cb90-55" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison-3.png)</span>{width="50%"}</span>
+<span id="cb90-55"><a href="#cb90-55" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison.png)</span>{width="50%"}</span>
 <span id="cb90-56"><a href="#cb90-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-57"><a href="#cb90-57" aria-hidden="true" tabindex="-1"></a>Figure 3.19 examines the relative performances of least squares regression and KNN under increasing levels of non-linearity in the relationship between $X$ and $Y$. In more non-linear situation, KNN substantially outperforms linear regression for all values of $K$. **Note that as the extent of non-linearity increases, there is little change in the test set MSE for the non-parametric KNN method, but there is a large increase in the test set MSE of linear regression.**</span>
+<span id="cb90-57"><a href="#cb90-57" aria-hidden="true" tabindex="-1"></a>Figure 3.17 provides an example with data generated from a one-dimensional linear regression model. The black solid lines represent $f(X)$, while the blue curves correspond to the KNN fits using $K = 1$ and $K = 9$. In this case, the $K = 1$ predictions are far too variable, while the smoother $K = 9$ fit is much closer to $f(X)$. **However, since the true relationship is linear, it is hard for a non-parametric approach to compete with linear regression: a non-parametric approach incurs a cost in variance that is not offset by a reduction in bias.*</span>
 <span id="cb90-58"><a href="#cb90-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-59"><a href="#cb90-59" aria-hidden="true" tabindex="-1"></a>In a real life situation in which the true relationship is unknown, one might suspect that KNN should be favored over linear regression because it will at worst be slightly inferior to linear regression if the true relationship is linear, and may give substantially better results if the true relationship is non-linear. But in reality, even when the true relationship is highly non-linear, KNN may still provide inferior results to linear regression. **But in higher dimensions, KNN often performs worse than linear regression.**</span>
+<span id="cb90-59"><a href="#cb90-59" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison-3.png)</span>{width="50%"}</span>
 <span id="cb90-60"><a href="#cb90-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-61"><a href="#cb90-61" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison-4.png)</span>{width="50%"}</span>
+<span id="cb90-61"><a href="#cb90-61" aria-hidden="true" tabindex="-1"></a>Figure 3.19 examines the relative performances of least squares regression and KNN under increasing levels of non-linearity in the relationship between $X$ and $Y$. In more non-linear situation, KNN substantially outperforms linear regression for all values of $K$. **Note that as the extent of non-linearity increases, there is little change in the test set MSE for the non-parametric KNN method, but there is a large increase in the test set MSE of linear regression.**</span>
 <span id="cb90-62"><a href="#cb90-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-63"><a href="#cb90-63" aria-hidden="true" tabindex="-1"></a>Figure 3.20 considers the same strongly non-linear situation as in the</span>
-<span id="cb90-64"><a href="#cb90-64" aria-hidden="true" tabindex="-1"></a>second row of Figure 3.19, except that we have added additional *noise*</span>
-<span id="cb90-65"><a href="#cb90-65" aria-hidden="true" tabindex="-1"></a>predictors that are not associated with the response. But for $p = 3$ the results are mixed, and for $p \ge 4$ linear regression is superior to KNN. In fact, the increase in dimension has only caused a small deterioration in the linear regression test set MSE, but it has caused more than a ten-fold increase in the MSE for KNN. **This decrease in performance as the dimension increases is a common problem for KNN, and results from the fact that in higher dimensions there is effectively a reduction in sample size**. In this data set there are 50 training observations; when $p = 1$, this provides enough information to accurately estimate $f(X)$. However, spreading 50 observations over $p = 20$ dimensions results in a phenomenon in which a given observation has *no nearby neighbors* -- this is the so-called *curse of dimensionality*.</span>
+<span id="cb90-63"><a href="#cb90-63" aria-hidden="true" tabindex="-1"></a>In a real life situation in which the true relationship is unknown, one might suspect that KNN should be favored over linear regression because it will at worst be slightly inferior to linear regression if the true relationship is linear, and may give substantially better results if the true relationship is non-linear. But in reality, even when the true relationship is highly non-linear, KNN may still provide inferior results to linear regression. **But in higher dimensions, KNN often performs worse than linear regression.**</span>
+<span id="cb90-64"><a href="#cb90-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-65"><a href="#cb90-65" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/3-knn-comparison-4.png)</span>{width="50%"}</span>
 <span id="cb90-66"><a href="#cb90-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-67"><a href="#cb90-67" aria-hidden="true" tabindex="-1"></a>**As a general rule, parametric methods will tend to outperform non-parametric approaches when there is a small number of observations per predictor. Even when the dimension is small, we might prefer linear regression to KNN from an interpretability standpoint. If the test MSE of KNN is only slightly lower than that of linear regression, we might be willing to forego a little bit of prediction accuracy for the sake of a simple model that can be described in terms of just a few coefficients, and for which p-values are available.**</span>
-<span id="cb90-68"><a href="#cb90-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-69"><a href="#cb90-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lab</span></span>
+<span id="cb90-67"><a href="#cb90-67" aria-hidden="true" tabindex="-1"></a>Figure 3.20 considers the same strongly non-linear situation as in the</span>
+<span id="cb90-68"><a href="#cb90-68" aria-hidden="true" tabindex="-1"></a>second row of Figure 3.19, except that we have added additional *noise*</span>
+<span id="cb90-69"><a href="#cb90-69" aria-hidden="true" tabindex="-1"></a>predictors that are not associated with the response. But for $p = 3$ the results are mixed, and for $p \ge 4$ linear regression is superior to KNN. In fact, the increase in dimension has only caused a small deterioration in the linear regression test set MSE, but it has caused more than a ten-fold increase in the MSE for KNN. **This decrease in performance as the dimension increases is a common problem for KNN, and results from the fact that in higher dimensions there is effectively a reduction in sample size**. In this data set there are 50 training observations; when $p = 1$, this provides enough information to accurately estimate $f(X)$. However, spreading 50 observations over $p = 20$ dimensions results in a phenomenon in which a given observation has *no nearby neighbors* -- this is the so-called *curse of dimensionality*.</span>
 <span id="cb90-70"><a href="#cb90-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-71"><a href="#cb90-71" aria-hidden="true" tabindex="-1"></a>&lt; just basic regression commands &gt;</span>
+<span id="cb90-71"><a href="#cb90-71" aria-hidden="true" tabindex="-1"></a>**As a general rule, parametric methods will tend to outperform non-parametric approaches when there is a small number of observations per predictor. Even when the dimension is small, we might prefer linear regression to KNN from an interpretability standpoint. If the test MSE of KNN is only slightly lower than that of linear regression, we might be willing to forego a little bit of prediction accuracy for the sake of a simple model that can be described in terms of just a few coefficients, and for which p-values are available.**</span>
 <span id="cb90-72"><a href="#cb90-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-73"><a href="#cb90-73" aria-hidden="true" tabindex="-1"></a>Some key points</span>
+<span id="cb90-73"><a href="#cb90-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lab</span></span>
 <span id="cb90-74"><a href="#cb90-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-75"><a href="#cb90-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`hatvalues(&lt; mod &gt;)`</span>: Computes the hat values for each observation.</span>
+<span id="cb90-75"><a href="#cb90-75" aria-hidden="true" tabindex="-1"></a>&lt; just basic regression commands &gt;</span>
 <span id="cb90-76"><a href="#cb90-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-77"><a href="#cb90-77" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Then can run <span class="in">`hatvalues(&lt; mod &gt;) %&gt;% which.max`</span> to get the largest one.</span>
-<span id="cb90-78"><a href="#cb90-78" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb90-79"><a href="#cb90-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`car::vif()`</span>: Computes the VIF for each predictor.</span>
+<span id="cb90-77"><a href="#cb90-77" aria-hidden="true" tabindex="-1"></a>Some key points</span>
+<span id="cb90-78"><a href="#cb90-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-79"><a href="#cb90-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`hatvalues(&lt; mod &gt;)`</span>: Computes the hat values for each observation.</span>
 <span id="cb90-80"><a href="#cb90-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-81"><a href="#cb90-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In the formula, <span class="in">`poly()`</span> by default orthogonalizes the predictors, so they are not simply a sequence of higher powers of the argument.</span>
-<span id="cb90-82"><a href="#cb90-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-83"><a href="#cb90-83" aria-hidden="true" tabindex="-1"></a><span class="ss">    -  </span>However, a linear model applied to the output of the <span class="in">`poly()`</span> function will have the same fitted values as a linear model applied to the raw polynomials (<span class="in">`raw = TRUE`</span>; although the coefficient estimates, standard errors, and p-values will differ).</span>
-<span id="cb90-84"><a href="#cb90-84" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb90-85"><a href="#cb90-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`contrasts(&lt; factor &gt;)`</span>: Returns the coding that R uses for the dummy variables.</span>
+<span id="cb90-81"><a href="#cb90-81" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Then can run <span class="in">`hatvalues(&lt; mod &gt;) %&gt;% which.max`</span> to get the largest one.</span>
+<span id="cb90-82"><a href="#cb90-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb90-83"><a href="#cb90-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`car::vif()`</span>: Computes the VIF for each predictor.</span>
+<span id="cb90-84"><a href="#cb90-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-85"><a href="#cb90-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In the formula, <span class="in">`poly()`</span> by default orthogonalizes the predictors, so they are not simply a sequence of higher powers of the argument.</span>
 <span id="cb90-86"><a href="#cb90-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-87"><a href="#cb90-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb90-88"><a href="#cb90-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-89"><a href="#cb90-89" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceptual</span></span>
+<span id="cb90-87"><a href="#cb90-87" aria-hidden="true" tabindex="-1"></a><span class="ss">    -  </span>However, a linear model applied to the output of the <span class="in">`poly()`</span> function will have the same fitted values as a linear model applied to the raw polynomials (<span class="in">`raw = TRUE`</span>; although the coefficient estimates, standard errors, and p-values will differ).</span>
+<span id="cb90-88"><a href="#cb90-88" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb90-89"><a href="#cb90-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`contrasts(&lt; factor &gt;)`</span>: Returns the coding that R uses for the dummy variables.</span>
 <span id="cb90-90"><a href="#cb90-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-91"><a href="#cb90-91" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
+<span id="cb90-91"><a href="#cb90-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb90-92"><a href="#cb90-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-93"><a href="#cb90-93" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Describe the null hypotheses to which the p-values shown below correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of the predictors, rather than in terms of the coefficients of the linear model.</span></span>
+<span id="cb90-93"><a href="#cb90-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceptual</span></span>
 <span id="cb90-94"><a href="#cb90-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-97"><a href="#cb90-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-98"><a href="#cb90-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb90-99"><a href="#cb90-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-100"><a href="#cb90-100" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-101"><a href="#cb90-101" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-102"><a href="#cb90-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-103"><a href="#cb90-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-104"><a href="#cb90-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-105"><a href="#cb90-105" aria-hidden="true" tabindex="-1"></a>For <span class="in">`Petal.Length`</span>:</span>
+<span id="cb90-95"><a href="#cb90-95" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
+<span id="cb90-96"><a href="#cb90-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-97"><a href="#cb90-97" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Describe the null hypotheses to which the p-values shown below correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of the predictors, rather than in terms of the coefficients of the linear model.</span></span>
+<span id="cb90-98"><a href="#cb90-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-101"><a href="#cb90-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-102"><a href="#cb90-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb90-103"><a href="#cb90-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-104"><a href="#cb90-104" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-105"><a href="#cb90-105" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
 <span id="cb90-106"><a href="#cb90-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-107"><a href="#cb90-107" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-108"><a href="#cb90-108" aria-hidden="true" tabindex="-1"></a>\begin{align*}</span>
-<span id="cb90-109"><a href="#cb90-109" aria-hidden="true" tabindex="-1"></a>H_0&amp;: \beta_{\text{Petal.Length}} = 0 <span class="sc">\\</span></span>
-<span id="cb90-110"><a href="#cb90-110" aria-hidden="true" tabindex="-1"></a>H_A&amp;: \beta_{\text{Petal.Length}} \ne 0</span>
-<span id="cb90-111"><a href="#cb90-111" aria-hidden="true" tabindex="-1"></a>\end{align*}</span>
-<span id="cb90-112"><a href="#cb90-112" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-113"><a href="#cb90-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-116"><a href="#cb90-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-117"><a href="#cb90-117" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
-<span id="cb90-118"><a href="#cb90-118" aria-hidden="true" tabindex="-1"></a>mod_iris <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb90-119"><a href="#cb90-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-120"><a href="#cb90-120" aria-hidden="true" tabindex="-1"></a><span class="co"># verify p-value</span></span>
-<span id="cb90-121"><a href="#cb90-121" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="ot">&lt;-</span> <span class="fu">coef</span>(mod_iris)[<span class="st">"Petal.Length"</span>]</span>
-<span id="cb90-122"><a href="#cb90-122" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mod_iris<span class="sc">$</span>x</span>
-<span id="cb90-123"><a href="#cb90-123" aria-hidden="true" tabindex="-1"></a>se_beta_hats <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_iris)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> (X))</span>
-<span id="cb90-124"><a href="#cb90-124" aria-hidden="true" tabindex="-1"></a>se_beta_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(se_beta_hats[<span class="dv">3</span>,<span class="dv">3</span>])</span>
-<span id="cb90-125"><a href="#cb90-125" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> beta_hat <span class="sc">/</span> se_beta_hat, <span class="at">df =</span> <span class="fu">nobs</span>(mod_iris) <span class="sc">-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod_iris)), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">2</span> <span class="sc">%&gt;%</span> as.numeric</span>
-<span id="cb90-126"><a href="#cb90-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-127"><a href="#cb90-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-128"><a href="#cb90-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-129"><a href="#cb90-129" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
+<span id="cb90-107"><a href="#cb90-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-108"><a href="#cb90-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-109"><a href="#cb90-109" aria-hidden="true" tabindex="-1"></a>For <span class="in">`Petal.Length`</span>:</span>
+<span id="cb90-110"><a href="#cb90-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-111"><a href="#cb90-111" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-112"><a href="#cb90-112" aria-hidden="true" tabindex="-1"></a>\begin{align*}</span>
+<span id="cb90-113"><a href="#cb90-113" aria-hidden="true" tabindex="-1"></a>H_0&amp;: \beta_{\text{Petal.Length}} = 0 <span class="sc">\\</span></span>
+<span id="cb90-114"><a href="#cb90-114" aria-hidden="true" tabindex="-1"></a>H_A&amp;: \beta_{\text{Petal.Length}} \ne 0</span>
+<span id="cb90-115"><a href="#cb90-115" aria-hidden="true" tabindex="-1"></a>\end{align*}</span>
+<span id="cb90-116"><a href="#cb90-116" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-117"><a href="#cb90-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-120"><a href="#cb90-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-121"><a href="#cb90-121" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb90-122"><a href="#cb90-122" aria-hidden="true" tabindex="-1"></a>mod_iris <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Width <span class="sc">~</span> Petal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Sepal.Length, <span class="at">data =</span> iris, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb90-123"><a href="#cb90-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-124"><a href="#cb90-124" aria-hidden="true" tabindex="-1"></a><span class="co"># verify p-value</span></span>
+<span id="cb90-125"><a href="#cb90-125" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="ot">&lt;-</span> <span class="fu">coef</span>(mod_iris)[<span class="st">"Petal.Length"</span>]</span>
+<span id="cb90-126"><a href="#cb90-126" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mod_iris<span class="sc">$</span>x</span>
+<span id="cb90-127"><a href="#cb90-127" aria-hidden="true" tabindex="-1"></a>se_beta_hats <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod_iris)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> (X))</span>
+<span id="cb90-128"><a href="#cb90-128" aria-hidden="true" tabindex="-1"></a>se_beta_hat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(se_beta_hats[<span class="dv">3</span>,<span class="dv">3</span>])</span>
+<span id="cb90-129"><a href="#cb90-129" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> beta_hat <span class="sc">/</span> se_beta_hat, <span class="at">df =</span> <span class="fu">nobs</span>(mod_iris) <span class="sc">-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod_iris)), <span class="at">lower.tail =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">2</span> <span class="sc">%&gt;%</span> as.numeric</span>
 <span id="cb90-130"><a href="#cb90-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-131"><a href="#cb90-131" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Carefully explain the differences between the KNN classifier and KNN regression methods.</span></span>
+<span id="cb90-131"><a href="#cb90-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb90-132"><a href="#cb90-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-133"><a href="#cb90-133" aria-hidden="true" tabindex="-1"></a>Simply stated, The KNN classifier is categorical and assigns a value based on the most frequent observed category among $K$ nearest neighbors, whereas KNN regression assigns a continuous variable, the average of the response variables for the $K$ nearest neighbors. This represents two different summary functions, which are: for classification</span>
+<span id="cb90-133"><a href="#cb90-133" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
 <span id="cb90-134"><a href="#cb90-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-135"><a href="#cb90-135" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-136"><a href="#cb90-136" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \text{max}_j\bigg\{\frac{1}{K}\sum_{x_i \in \cal{N}_0} I(y_i = j)\bigg<span class="sc">\}</span></span>
-<span id="cb90-137"><a href="#cb90-137" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-135"><a href="#cb90-135" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Carefully explain the differences between the KNN classifier and KNN regression methods.</span></span>
+<span id="cb90-136"><a href="#cb90-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-137"><a href="#cb90-137" aria-hidden="true" tabindex="-1"></a>Simply stated, The KNN classifier is categorical and assigns a value based on the most frequent observed category among $K$ nearest neighbors, whereas KNN regression assigns a continuous variable, the average of the response variables for the $K$ nearest neighbors. This represents two different summary functions, which are: for classification</span>
 <span id="cb90-138"><a href="#cb90-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-139"><a href="#cb90-139" aria-hidden="true" tabindex="-1"></a>and for regression</span>
-<span id="cb90-140"><a href="#cb90-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-139"><a href="#cb90-139" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-140"><a href="#cb90-140" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \text{max}_j\bigg\{\frac{1}{K}\sum_{x_i \in \cal{N}_0} I(y_i = j)\bigg<span class="sc">\}</span></span>
 <span id="cb90-141"><a href="#cb90-141" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-142"><a href="#cb90-142" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i</span>
-<span id="cb90-143"><a href="#cb90-143" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-142"><a href="#cb90-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-143"><a href="#cb90-143" aria-hidden="true" tabindex="-1"></a>and for regression</span>
 <span id="cb90-144"><a href="#cb90-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-145"><a href="#cb90-145" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
-<span id="cb90-146"><a href="#cb90-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-147"><a href="#cb90-147" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose we have a data set with five predictors, $X_1$ = GPA, $X_2$ = IQ, $X_3$ = Level (1 for College and 0 for High School), $X_4$ = Interaction between GPA and IQ, and $X_5$ = Interaction between GPA and Level. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get $\hat\beta_0 = 50$, $\hat\beta_1 = 20$, $\hat\beta_2 = 0.07$, $\hat\beta_3 = 35$, $\hat\beta_4 = 0.01$, $\hat\beta_5 = -10$.</span></span>
+<span id="cb90-145"><a href="#cb90-145" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-146"><a href="#cb90-146" aria-hidden="true" tabindex="-1"></a>\hat{f}(x_0) = \frac{1}{K}\sum_{x_i \in \cal{N}_0} y_i</span>
+<span id="cb90-147"><a href="#cb90-147" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb90-148"><a href="#cb90-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-149"><a href="#cb90-149" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Which answer is correct, and why?</span></span>
-<span id="cb90-150"><a href="#cb90-150" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;      i. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates.</span></span>
-<span id="cb90-151"><a href="#cb90-151" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     ii. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates.</span></span>
-<span id="cb90-152"><a href="#cb90-152" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     iii. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates provided that the GPA is high enough.</span></span>
-<span id="cb90-153"><a href="#cb90-153" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     iv. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates provided that the GPA is high enough.</span></span>
-<span id="cb90-154"><a href="#cb90-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-155"><a href="#cb90-155" aria-hidden="true" tabindex="-1"></a>i. False: $\hat{\beta}_3 &gt; 0$</span>
-<span id="cb90-156"><a href="#cb90-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-157"><a href="#cb90-157" aria-hidden="true" tabindex="-1"></a>ii. False: Have to take into account the interactions</span>
+<span id="cb90-149"><a href="#cb90-149" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
+<span id="cb90-150"><a href="#cb90-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-151"><a href="#cb90-151" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose we have a data set with five predictors, $X_1$ = GPA, $X_2$ = IQ, $X_3$ = Level (1 for College and 0 for High School), $X_4$ = Interaction between GPA and IQ, and $X_5$ = Interaction between GPA and Level. The response is starting salary after graduation (in thousands of dollars). Suppose we use least squares to fit the model, and get $\hat\beta_0 = 50$, $\hat\beta_1 = 20$, $\hat\beta_2 = 0.07$, $\hat\beta_3 = 35$, $\hat\beta_4 = 0.01$, $\hat\beta_5 = -10$.</span></span>
+<span id="cb90-152"><a href="#cb90-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-153"><a href="#cb90-153" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Which answer is correct, and why?</span></span>
+<span id="cb90-154"><a href="#cb90-154" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;      i. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates.</span></span>
+<span id="cb90-155"><a href="#cb90-155" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     ii. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates.</span></span>
+<span id="cb90-156"><a href="#cb90-156" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     iii. For a fixed value of IQ and GPA, high school graduates earn more on average than college graduates provided that the GPA is high enough.</span></span>
+<span id="cb90-157"><a href="#cb90-157" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     iv. For a fixed value of IQ and GPA, college graduates earn more on average than high school graduates provided that the GPA is high enough.</span></span>
 <span id="cb90-158"><a href="#cb90-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-159"><a href="#cb90-159" aria-hidden="true" tabindex="-1"></a>iii. True: $\hat{\beta}_5 = -10$, which means the slope for GPA decreases by 10 for college students. So for large enough GPAs, high school plane surpasses that of college</span>
+<span id="cb90-159"><a href="#cb90-159" aria-hidden="true" tabindex="-1"></a>i. False: $\hat{\beta}_3 &gt; 0$</span>
 <span id="cb90-160"><a href="#cb90-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-161"><a href="#cb90-161" aria-hidden="true" tabindex="-1"></a>iv. False: above reason</span>
+<span id="cb90-161"><a href="#cb90-161" aria-hidden="true" tabindex="-1"></a>ii. False: Have to take into account the interactions</span>
 <span id="cb90-162"><a href="#cb90-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-165"><a href="#cb90-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-166"><a href="#cb90-166" aria-hidden="true" tabindex="-1"></a><span class="co"># fitted response curve</span></span>
-<span id="cb90-167"><a href="#cb90-167" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="cf">function</span>(gpa, iq, level) {</span>
-<span id="cb90-168"><a href="#cb90-168" aria-hidden="true" tabindex="-1"></a>  <span class="dv">50</span> <span class="sc">+</span></span>
-<span id="cb90-169"><a href="#cb90-169" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> <span class="dv">20</span> <span class="sc">+</span></span>
-<span id="cb90-170"><a href="#cb90-170" aria-hidden="true" tabindex="-1"></a>  iq <span class="sc">*</span> <span class="fl">0.07</span> <span class="sc">+</span></span>
-<span id="cb90-171"><a href="#cb90-171" aria-hidden="true" tabindex="-1"></a>  level <span class="sc">*</span> <span class="dv">35</span> <span class="sc">+</span></span>
-<span id="cb90-172"><a href="#cb90-172" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> iq <span class="sc">*</span> <span class="fl">0.01</span> <span class="sc">+</span></span>
-<span id="cb90-173"><a href="#cb90-173" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> level <span class="sc">*</span> <span class="sc">-</span><span class="dv">10</span></span>
-<span id="cb90-174"><a href="#cb90-174" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-175"><a href="#cb90-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-176"><a href="#cb90-176" aria-hidden="true" tabindex="-1"></a><span class="co"># set predictors</span></span>
-<span id="cb90-177"><a href="#cb90-177" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
-<span id="cb90-178"><a href="#cb90-178" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="at">length =</span> <span class="dv">20</span>)</span>
+<span id="cb90-163"><a href="#cb90-163" aria-hidden="true" tabindex="-1"></a>iii. True: $\hat{\beta}_5 = -10$, which means the slope for GPA decreases by 10 for college students. So for large enough GPAs, high school plane surpasses that of college</span>
+<span id="cb90-164"><a href="#cb90-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-165"><a href="#cb90-165" aria-hidden="true" tabindex="-1"></a>iv. False: above reason</span>
+<span id="cb90-166"><a href="#cb90-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-169"><a href="#cb90-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-170"><a href="#cb90-170" aria-hidden="true" tabindex="-1"></a><span class="co"># fitted response curve</span></span>
+<span id="cb90-171"><a href="#cb90-171" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="cf">function</span>(gpa, iq, level) {</span>
+<span id="cb90-172"><a href="#cb90-172" aria-hidden="true" tabindex="-1"></a>  <span class="dv">50</span> <span class="sc">+</span></span>
+<span id="cb90-173"><a href="#cb90-173" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> <span class="dv">20</span> <span class="sc">+</span></span>
+<span id="cb90-174"><a href="#cb90-174" aria-hidden="true" tabindex="-1"></a>  iq <span class="sc">*</span> <span class="fl">0.07</span> <span class="sc">+</span></span>
+<span id="cb90-175"><a href="#cb90-175" aria-hidden="true" tabindex="-1"></a>  level <span class="sc">*</span> <span class="dv">35</span> <span class="sc">+</span></span>
+<span id="cb90-176"><a href="#cb90-176" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> iq <span class="sc">*</span> <span class="fl">0.01</span> <span class="sc">+</span></span>
+<span id="cb90-177"><a href="#cb90-177" aria-hidden="true" tabindex="-1"></a>  gpa <span class="sc">*</span> level <span class="sc">*</span> <span class="sc">-</span><span class="dv">10</span></span>
+<span id="cb90-178"><a href="#cb90-178" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb90-179"><a href="#cb90-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-180"><a href="#cb90-180" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate response</span></span>
-<span id="cb90-181"><a href="#cb90-181" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="at">FUN =</span> model, <span class="at">level =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> t</span>
-<span id="cb90-182"><a href="#cb90-182" aria-hidden="true" tabindex="-1"></a>high_school <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="at">FUN =</span> model, <span class="at">level =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> t</span>
+<span id="cb90-180"><a href="#cb90-180" aria-hidden="true" tabindex="-1"></a><span class="co"># set predictors</span></span>
+<span id="cb90-181"><a href="#cb90-181" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
+<span id="cb90-182"><a href="#cb90-182" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="at">length =</span> <span class="dv">20</span>)</span>
 <span id="cb90-183"><a href="#cb90-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-184"><a href="#cb90-184" aria-hidden="true" tabindex="-1"></a><span class="co"># plot surfaces</span></span>
-<span id="cb90-185"><a href="#cb90-185" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x =</span> x, <span class="at">y =</span> y) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-186"><a href="#cb90-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_surface</span>(</span>
-<span id="cb90-187"><a href="#cb90-187" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>college,</span>
-<span id="cb90-188"><a href="#cb90-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorscale =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="st">"rgb(107,184,214)"</span>, <span class="st">"rgb(0,90,124)"</span>)),</span>
-<span id="cb90-189"><a href="#cb90-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorbar =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"College"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-184"><a href="#cb90-184" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate response</span></span>
+<span id="cb90-185"><a href="#cb90-185" aria-hidden="true" tabindex="-1"></a>college <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="at">FUN =</span> model, <span class="at">level =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> t</span>
+<span id="cb90-186"><a href="#cb90-186" aria-hidden="true" tabindex="-1"></a>high_school <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, <span class="at">FUN =</span> model, <span class="at">level =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> t</span>
+<span id="cb90-187"><a href="#cb90-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-188"><a href="#cb90-188" aria-hidden="true" tabindex="-1"></a><span class="co"># plot surfaces</span></span>
+<span id="cb90-189"><a href="#cb90-189" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x =</span> x, <span class="at">y =</span> y) <span class="sc">%&gt;%</span> </span>
 <span id="cb90-190"><a href="#cb90-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_surface</span>(</span>
-<span id="cb90-191"><a href="#cb90-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>high_school,</span>
-<span id="cb90-192"><a href="#cb90-192" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorscale =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="st">"rgb(255,112,184)"</span>, <span class="st">"rgb(128,0,64)"</span>)),</span>
-<span id="cb90-193"><a href="#cb90-193" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorbar =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"High school"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-194"><a href="#cb90-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(</span>
-<span id="cb90-195"><a href="#cb90-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"GPA"</span>),</span>
-<span id="cb90-196"><a href="#cb90-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"IQ"</span>),</span>
-<span id="cb90-197"><a href="#cb90-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Salary"</span>)))</span>
-<span id="cb90-198"><a href="#cb90-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-199"><a href="#cb90-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-200"><a href="#cb90-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-201"><a href="#cb90-201" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.</span></span>
+<span id="cb90-191"><a href="#cb90-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>college,</span>
+<span id="cb90-192"><a href="#cb90-192" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorscale =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="st">"rgb(107,184,214)"</span>, <span class="st">"rgb(0,90,124)"</span>)),</span>
+<span id="cb90-193"><a href="#cb90-193" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorbar =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"College"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-194"><a href="#cb90-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_surface</span>(</span>
+<span id="cb90-195"><a href="#cb90-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>high_school,</span>
+<span id="cb90-196"><a href="#cb90-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorscale =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="st">"rgb(255,112,184)"</span>, <span class="st">"rgb(128,0,64)"</span>)),</span>
+<span id="cb90-197"><a href="#cb90-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorbar =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"High school"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-198"><a href="#cb90-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">scene =</span> <span class="fu">list</span>(</span>
+<span id="cb90-199"><a href="#cb90-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"GPA"</span>),</span>
+<span id="cb90-200"><a href="#cb90-200" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"IQ"</span>),</span>
+<span id="cb90-201"><a href="#cb90-201" aria-hidden="true" tabindex="-1"></a>    <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Salary"</span>)))</span>
 <span id="cb90-202"><a href="#cb90-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-205"><a href="#cb90-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-206"><a href="#cb90-206" aria-hidden="true" tabindex="-1"></a><span class="fu">model</span>(<span class="at">gpa =</span> <span class="dv">4</span>, <span class="at">iq =</span> <span class="dv">110</span>, <span class="at">level =</span> <span class="dv">1</span>)</span>
-<span id="cb90-207"><a href="#cb90-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-208"><a href="#cb90-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-209"><a href="#cb90-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-210"><a href="#cb90-210" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.</span></span>
+<span id="cb90-203"><a href="#cb90-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-204"><a href="#cb90-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-205"><a href="#cb90-205" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.</span></span>
+<span id="cb90-206"><a href="#cb90-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-209"><a href="#cb90-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-210"><a href="#cb90-210" aria-hidden="true" tabindex="-1"></a><span class="fu">model</span>(<span class="at">gpa =</span> <span class="dv">4</span>, <span class="at">iq =</span> <span class="dv">110</span>, <span class="at">level =</span> <span class="dv">1</span>)</span>
 <span id="cb90-211"><a href="#cb90-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-212"><a href="#cb90-212" aria-hidden="true" tabindex="-1"></a>False. Scale is based on units, need information about the significance.</span>
+<span id="cb90-212"><a href="#cb90-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb90-213"><a href="#cb90-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-214"><a href="#cb90-214" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
+<span id="cb90-214"><a href="#cb90-214" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. True or false: Since the coefficient for the GPA/IQ interaction term is very small, there is very little evidence of an interaction effect. Justify your answer.</span></span>
 <span id="cb90-215"><a href="#cb90-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-216"><a href="#cb90-216" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; I collect a set of data ($n = 100$ observations) containing a single predictor and a quantitative response. I then fit a linear regression model to the data, as well as a separate cubic regression, i.e. $Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3 + \epsilon$.</span></span>
+<span id="cb90-216"><a href="#cb90-216" aria-hidden="true" tabindex="-1"></a>False. Scale is based on units, need information about the significance.</span>
 <span id="cb90-217"><a href="#cb90-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-218"><a href="#cb90-218" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Suppose that the true relationship between $X$ and $Y$ is linear, i.e. $Y = \beta_0 + \beta_1X + \epsilon$. Consider the training residual sum of squares (RSS) for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.</span></span>
+<span id="cb90-218"><a href="#cb90-218" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
 <span id="cb90-219"><a href="#cb90-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-220"><a href="#cb90-220" aria-hidden="true" tabindex="-1"></a>The more complex model will have a smaller *training* RSS because of the lower bias.</span>
+<span id="cb90-220"><a href="#cb90-220" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; I collect a set of data ($n = 100$ observations) containing a single predictor and a quantitative response. I then fit a linear regression model to the data, as well as a separate cubic regression, i.e. $Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3 + \epsilon$.</span></span>
 <span id="cb90-221"><a href="#cb90-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-222"><a href="#cb90-222" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (b) Answer (a) using test rather than training RSS.</span></span>
+<span id="cb90-222"><a href="#cb90-222" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Suppose that the true relationship between $X$ and $Y$ is linear, i.e. $Y = \beta_0 + \beta_1X + \epsilon$. Consider the training residual sum of squares (RSS) for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.</span></span>
 <span id="cb90-223"><a href="#cb90-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-224"><a href="#cb90-224" aria-hidden="true" tabindex="-1"></a>Given that the true model is actually linear, the more complex model will have a larger *testing* RSS because of the larger variance (overfitting).</span>
+<span id="cb90-224"><a href="#cb90-224" aria-hidden="true" tabindex="-1"></a>The more complex model will have a smaller *training* RSS because of the lower bias.</span>
 <span id="cb90-225"><a href="#cb90-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-226"><a href="#cb90-226" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (c) Suppose that the true relationship between $X$ and $Y$ is not linear, but we don’t know how far it is from linear. Consider the training RSS for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.</span></span>
+<span id="cb90-226"><a href="#cb90-226" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (b) Answer (a) using test rather than training RSS.</span></span>
 <span id="cb90-227"><a href="#cb90-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-228"><a href="#cb90-228" aria-hidden="true" tabindex="-1"></a>The further from linear the true model gets, the larger the *training* RSS will become for the linear model because of low flexibility and high bias.</span>
+<span id="cb90-228"><a href="#cb90-228" aria-hidden="true" tabindex="-1"></a>Given that the true model is actually linear, the more complex model will have a larger *testing* RSS because of the larger variance (overfitting).</span>
 <span id="cb90-229"><a href="#cb90-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-230"><a href="#cb90-230" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (d) Answer (c) using test rather than training RSS.</span></span>
+<span id="cb90-230"><a href="#cb90-230" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (c) Suppose that the true relationship between $X$ and $Y$ is not linear, but we don’t know how far it is from linear. Consider the training RSS for the linear regression, and also the training RSS for the cubic regression. Would we expect one to be lower than the other, would we expect them to be the same, or is there not enough information to tell? Justify your answer.</span></span>
 <span id="cb90-231"><a href="#cb90-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-232"><a href="#cb90-232" aria-hidden="true" tabindex="-1"></a>Same as (c).</span>
+<span id="cb90-232"><a href="#cb90-232" aria-hidden="true" tabindex="-1"></a>The further from linear the true model gets, the larger the *training* RSS will become for the linear model because of low flexibility and high bias.</span>
 <span id="cb90-233"><a href="#cb90-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-234"><a href="#cb90-234" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 5 </span></span>
+<span id="cb90-234"><a href="#cb90-234" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; (d) Answer (c) using test rather than training RSS.</span></span>
 <span id="cb90-235"><a href="#cb90-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-236"><a href="#cb90-236" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Consider the fitted values that result from performing linear regression without an intercept. In this setting, the $i$th fitted value takes the form </span></span>
-<span id="cb90-237"><a href="#cb90-237" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-238"><a href="#cb90-238" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{y}_i = x_i\hat\beta</span></span>
-<span id="cb90-239"><a href="#cb90-239" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-240"><a href="#cb90-240" aria-hidden="true" tabindex="-1"></a><span class="at">where</span></span>
+<span id="cb90-236"><a href="#cb90-236" aria-hidden="true" tabindex="-1"></a>Same as (c).</span>
+<span id="cb90-237"><a href="#cb90-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-238"><a href="#cb90-238" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 5 </span></span>
+<span id="cb90-239"><a href="#cb90-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-240"><a href="#cb90-240" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Consider the fitted values that result from performing linear regression without an intercept. In this setting, the $i$th fitted value takes the form </span></span>
 <span id="cb90-241"><a href="#cb90-241" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-242"><a href="#cb90-242" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{\beta} = \left(\sum_{i=1}^nx_iy_i\right) / \left(\sum_{i' = 1}^n x^2_{i'}\right).</span></span>
+<span id="cb90-242"><a href="#cb90-242" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{y}_i = x_i\hat\beta</span></span>
 <span id="cb90-243"><a href="#cb90-243" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-244"><a href="#cb90-244" aria-hidden="true" tabindex="-1"></a><span class="at">Show that we can write</span></span>
+<span id="cb90-244"><a href="#cb90-244" aria-hidden="true" tabindex="-1"></a><span class="at">where</span></span>
 <span id="cb90-245"><a href="#cb90-245" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-246"><a href="#cb90-246" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{y}_i = \sum_{i' = 1}^na_{i'}y_{i'}</span></span>
+<span id="cb90-246"><a href="#cb90-246" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{\beta} = \left(\sum_{i=1}^nx_iy_i\right) / \left(\sum_{i' = 1}^n x^2_{i'}\right).</span></span>
 <span id="cb90-247"><a href="#cb90-247" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
-<span id="cb90-248"><a href="#cb90-248" aria-hidden="true" tabindex="-1"></a><span class="at">What is $a_{i'}$?</span></span>
-<span id="cb90-249"><a href="#cb90-249" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Note: We interpret this result by saying that the fitted values from linear regression are linear combinations of the response values.*</span></span>
-<span id="cb90-250"><a href="#cb90-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-251"><a href="#cb90-251" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-252"><a href="#cb90-252" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb90-253"><a href="#cb90-253" aria-hidden="true" tabindex="-1"></a>\hat{y}_i </span>
-<span id="cb90-254"><a href="#cb90-254" aria-hidden="true" tabindex="-1"></a>  &amp; = x_i \frac{\sum_{i=1}^nx_iy_i}{\sum_{i' = 1}^n x^2_{i'}} <span class="sc">\\</span></span>
-<span id="cb90-255"><a href="#cb90-255" aria-hidden="true" tabindex="-1"></a>  &amp; = x_i \frac{\sum_{i'=1}^nx_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
-<span id="cb90-256"><a href="#cb90-256" aria-hidden="true" tabindex="-1"></a>  &amp; = \frac{\sum_{i'=1}^n x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
-<span id="cb90-257"><a href="#cb90-257" aria-hidden="true" tabindex="-1"></a>  &amp; = \sum_{i'=1}^n \frac{ x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
-<span id="cb90-258"><a href="#cb90-258" aria-hidden="true" tabindex="-1"></a>  &amp; = \sum_{i'=1}^n \frac{ x_i x_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} y_{i'}</span>
-<span id="cb90-259"><a href="#cb90-259" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb90-260"><a href="#cb90-260" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-261"><a href="#cb90-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-262"><a href="#cb90-262" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 6</span></span>
-<span id="cb90-263"><a href="#cb90-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-264"><a href="#cb90-264" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Using (3.4), argue that in the case of simple linear regression, the least squares line always passes through the point $(\bar{x}, \bar{y})$.</span></span>
+<span id="cb90-248"><a href="#cb90-248" aria-hidden="true" tabindex="-1"></a><span class="at">Show that we can write</span></span>
+<span id="cb90-249"><a href="#cb90-249" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
+<span id="cb90-250"><a href="#cb90-250" aria-hidden="true" tabindex="-1"></a><span class="at">\hat{y}_i = \sum_{i' = 1}^na_{i'}y_{i'}</span></span>
+<span id="cb90-251"><a href="#cb90-251" aria-hidden="true" tabindex="-1"></a><span class="at">$$</span></span>
+<span id="cb90-252"><a href="#cb90-252" aria-hidden="true" tabindex="-1"></a><span class="at">What is $a_{i'}$?</span></span>
+<span id="cb90-253"><a href="#cb90-253" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Note: We interpret this result by saying that the fitted values from linear regression are linear combinations of the response values.*</span></span>
+<span id="cb90-254"><a href="#cb90-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-255"><a href="#cb90-255" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-256"><a href="#cb90-256" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb90-257"><a href="#cb90-257" aria-hidden="true" tabindex="-1"></a>\hat{y}_i </span>
+<span id="cb90-258"><a href="#cb90-258" aria-hidden="true" tabindex="-1"></a>  &amp; = x_i \frac{\sum_{i=1}^nx_iy_i}{\sum_{i' = 1}^n x^2_{i'}} <span class="sc">\\</span></span>
+<span id="cb90-259"><a href="#cb90-259" aria-hidden="true" tabindex="-1"></a>  &amp; = x_i \frac{\sum_{i'=1}^nx_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
+<span id="cb90-260"><a href="#cb90-260" aria-hidden="true" tabindex="-1"></a>  &amp; = \frac{\sum_{i'=1}^n x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
+<span id="cb90-261"><a href="#cb90-261" aria-hidden="true" tabindex="-1"></a>  &amp; = \sum_{i'=1}^n \frac{ x_i x_{i'}y_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} <span class="sc">\\</span></span>
+<span id="cb90-262"><a href="#cb90-262" aria-hidden="true" tabindex="-1"></a>  &amp; = \sum_{i'=1}^n \frac{ x_i x_{i'}}{\sum_{i'' = 1}^n x^2_{i''}} y_{i'}</span>
+<span id="cb90-263"><a href="#cb90-263" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb90-264"><a href="#cb90-264" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb90-265"><a href="#cb90-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-266"><a href="#cb90-266" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-267"><a href="#cb90-267" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb90-268"><a href="#cb90-268" aria-hidden="true" tabindex="-1"></a>\hat{y} &amp;= \hat\beta_0 + \hat\beta_1\bar{x} <span class="sc">\\</span></span>
-<span id="cb90-269"><a href="#cb90-269" aria-hidden="true" tabindex="-1"></a>  &amp;= (\bar{y} - \hat\beta_1\bar{x}) + \hat\beta_1\bar{x} <span class="sc">\\</span></span>
-<span id="cb90-270"><a href="#cb90-270" aria-hidden="true" tabindex="-1"></a>  &amp;= \bar{y}</span>
-<span id="cb90-271"><a href="#cb90-271" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb90-272"><a href="#cb90-272" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-273"><a href="#cb90-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-274"><a href="#cb90-274" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 7</span></span>
-<span id="cb90-275"><a href="#cb90-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-276"><a href="#cb90-276" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; It is claimed in the text that in the case of simple linear regression of $Y$ onto $X$, the $R^2$ statistic (3.17) is equal to the square of the correlation between $X$ and $Y$ (3.18). Prove that this is the case. For simplicity, you may assume that $\bar{x} = \bar{y} = 0$.</span></span>
+<span id="cb90-266"><a href="#cb90-266" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 6</span></span>
+<span id="cb90-267"><a href="#cb90-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-268"><a href="#cb90-268" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Using (3.4), argue that in the case of simple linear regression, the least squares line always passes through the point $(\bar{x}, \bar{y})$.</span></span>
+<span id="cb90-269"><a href="#cb90-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-270"><a href="#cb90-270" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-271"><a href="#cb90-271" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb90-272"><a href="#cb90-272" aria-hidden="true" tabindex="-1"></a>\hat{y} &amp;= \hat\beta_0 + \hat\beta_1\bar{x} <span class="sc">\\</span></span>
+<span id="cb90-273"><a href="#cb90-273" aria-hidden="true" tabindex="-1"></a>  &amp;= (\bar{y} - \hat\beta_1\bar{x}) + \hat\beta_1\bar{x} <span class="sc">\\</span></span>
+<span id="cb90-274"><a href="#cb90-274" aria-hidden="true" tabindex="-1"></a>  &amp;= \bar{y}</span>
+<span id="cb90-275"><a href="#cb90-275" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb90-276"><a href="#cb90-276" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb90-277"><a href="#cb90-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-278"><a href="#cb90-278" aria-hidden="true" tabindex="-1"></a>&lt; just algebra after making simplifying assumptions &gt;</span>
+<span id="cb90-278"><a href="#cb90-278" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 7</span></span>
 <span id="cb90-279"><a href="#cb90-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-280"><a href="#cb90-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### Applied</span></span>
+<span id="cb90-280"><a href="#cb90-280" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; It is claimed in the text that in the case of simple linear regression of $Y$ onto $X$, the $R^2$ statistic (3.17) is equal to the square of the correlation between $X$ and $Y$ (3.18). Prove that this is the case. For simplicity, you may assume that $\bar{x} = \bar{y} = 0$.</span></span>
 <span id="cb90-281"><a href="#cb90-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-282"><a href="#cb90-282" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 8</span></span>
+<span id="cb90-282"><a href="#cb90-282" aria-hidden="true" tabindex="-1"></a>&lt; just algebra after making simplifying assumptions &gt;</span>
 <span id="cb90-283"><a href="#cb90-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-286"><a href="#cb90-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-287"><a href="#cb90-287" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb90-288"><a href="#cb90-288" aria-hidden="true" tabindex="-1"></a>data_car <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Auto</span>
-<span id="cb90-289"><a href="#cb90-289" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> horsepower, data_car)</span>
-<span id="cb90-290"><a href="#cb90-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-291"><a href="#cb90-291" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
-<span id="cb90-292"><a href="#cb90-292" aria-hidden="true" tabindex="-1"></a>mod_car <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower, data_car)</span>
+<span id="cb90-284"><a href="#cb90-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### Applied</span></span>
+<span id="cb90-285"><a href="#cb90-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-286"><a href="#cb90-286" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 8</span></span>
+<span id="cb90-287"><a href="#cb90-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-290"><a href="#cb90-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-291"><a href="#cb90-291" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb90-292"><a href="#cb90-292" aria-hidden="true" tabindex="-1"></a>data_car <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Auto</span>
 <span id="cb90-293"><a href="#cb90-293" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> horsepower, data_car)</span>
-<span id="cb90-294"><a href="#cb90-294" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod_car, <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb90-295"><a href="#cb90-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-296"><a href="#cb90-296" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mod_car)</span>
-<span id="cb90-297"><a href="#cb90-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-298"><a href="#cb90-298" aria-hidden="true" tabindex="-1"></a><span class="co"># get strength</span></span>
-<span id="cb90-299"><a href="#cb90-299" aria-hidden="true" tabindex="-1"></a>mod_car <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
-<span id="cb90-300"><a href="#cb90-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-301"><a href="#cb90-301" aria-hidden="true" tabindex="-1"></a><span class="co"># get coef</span></span>
-<span id="cb90-302"><a href="#cb90-302" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(mod_car)</span>
-<span id="cb90-303"><a href="#cb90-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-304"><a href="#cb90-304" aria-hidden="true" tabindex="-1"></a><span class="co"># inference</span></span>
-<span id="cb90-305"><a href="#cb90-305" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; prediction of new obs</span></span>
-<span id="cb90-306"><a href="#cb90-306" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod_car, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">horsepower =</span> <span class="fu">c</span>(<span class="dv">98</span>)), <span class="at">interval =</span> <span class="st">"pred"</span>)</span>
-<span id="cb90-307"><a href="#cb90-307" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod_car, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">horsepower =</span> <span class="fu">c</span>(<span class="dv">98</span>)), <span class="at">interval =</span> <span class="st">"conf"</span>)</span>
-<span id="cb90-308"><a href="#cb90-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-309"><a href="#cb90-309" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnostic plots</span></span>
-<span id="cb90-310"><a href="#cb90-310" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb90-311"><a href="#cb90-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-312"><a href="#cb90-312" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; nonlinearity and unequal variance</span></span>
-<span id="cb90-313"><a href="#cb90-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-314"><a href="#cb90-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-294"><a href="#cb90-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-295"><a href="#cb90-295" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb90-296"><a href="#cb90-296" aria-hidden="true" tabindex="-1"></a>mod_car <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> horsepower, data_car)</span>
+<span id="cb90-297"><a href="#cb90-297" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> horsepower, data_car)</span>
+<span id="cb90-298"><a href="#cb90-298" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod_car, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb90-299"><a href="#cb90-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-300"><a href="#cb90-300" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mod_car)</span>
+<span id="cb90-301"><a href="#cb90-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-302"><a href="#cb90-302" aria-hidden="true" tabindex="-1"></a><span class="co"># get strength</span></span>
+<span id="cb90-303"><a href="#cb90-303" aria-hidden="true" tabindex="-1"></a>mod_car <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
+<span id="cb90-304"><a href="#cb90-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-305"><a href="#cb90-305" aria-hidden="true" tabindex="-1"></a><span class="co"># get coef</span></span>
+<span id="cb90-306"><a href="#cb90-306" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(mod_car)</span>
+<span id="cb90-307"><a href="#cb90-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-308"><a href="#cb90-308" aria-hidden="true" tabindex="-1"></a><span class="co"># inference</span></span>
+<span id="cb90-309"><a href="#cb90-309" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; prediction of new obs</span></span>
+<span id="cb90-310"><a href="#cb90-310" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod_car, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">horsepower =</span> <span class="fu">c</span>(<span class="dv">98</span>)), <span class="at">interval =</span> <span class="st">"pred"</span>)</span>
+<span id="cb90-311"><a href="#cb90-311" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod_car, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">horsepower =</span> <span class="fu">c</span>(<span class="dv">98</span>)), <span class="at">interval =</span> <span class="st">"conf"</span>)</span>
+<span id="cb90-312"><a href="#cb90-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-313"><a href="#cb90-313" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnostic plots</span></span>
+<span id="cb90-314"><a href="#cb90-314" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
 <span id="cb90-315"><a href="#cb90-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-316"><a href="#cb90-316" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 9</span></span>
+<span id="cb90-316"><a href="#cb90-316" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; nonlinearity and unequal variance</span></span>
 <span id="cb90-317"><a href="#cb90-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-320"><a href="#cb90-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-321"><a href="#cb90-321" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot matrix</span></span>
-<span id="cb90-322"><a href="#cb90-322" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data_car)</span>
-<span id="cb90-323"><a href="#cb90-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-324"><a href="#cb90-324" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span>
-<span id="cb90-325"><a href="#cb90-325" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_car[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb90-326"><a href="#cb90-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-327"><a href="#cb90-327" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
-<span id="cb90-328"><a href="#cb90-328" aria-hidden="true" tabindex="-1"></a>mod_car_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> . <span class="sc">-</span> name, <span class="at">data =</span> data_car, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb90-329"><a href="#cb90-329" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_car_mlr)</span>
+<span id="cb90-318"><a href="#cb90-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-319"><a href="#cb90-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-320"><a href="#cb90-320" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 9</span></span>
+<span id="cb90-321"><a href="#cb90-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-324"><a href="#cb90-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-325"><a href="#cb90-325" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot matrix</span></span>
+<span id="cb90-326"><a href="#cb90-326" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(data_car)</span>
+<span id="cb90-327"><a href="#cb90-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-328"><a href="#cb90-328" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation matrix</span></span>
+<span id="cb90-329"><a href="#cb90-329" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_car[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
 <span id="cb90-330"><a href="#cb90-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-331"><a href="#cb90-331" aria-hidden="true" tabindex="-1"></a><span class="co"># is a relationship between Y and the set of Xs</span></span>
-<span id="cb90-332"><a href="#cb90-332" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; displacement, weight, year and origin appear to be significant predictors</span></span>
-<span id="cb90-333"><a href="#cb90-333" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; hat(beta)_year &gt;  0 ==&gt; newer cars get better gas mileage</span></span>
+<span id="cb90-331"><a href="#cb90-331" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb90-332"><a href="#cb90-332" aria-hidden="true" tabindex="-1"></a>mod_car_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> . <span class="sc">-</span> name, <span class="at">data =</span> data_car, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb90-333"><a href="#cb90-333" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_car_mlr)</span>
 <span id="cb90-334"><a href="#cb90-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-335"><a href="#cb90-335" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnostic plots</span></span>
-<span id="cb90-336"><a href="#cb90-336" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car_mlr, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb90-337"><a href="#cb90-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-338"><a href="#cb90-338" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; unequal variance</span></span>
-<span id="cb90-339"><a href="#cb90-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-340"><a href="#cb90-340" aria-hidden="true" tabindex="-1"></a><span class="co"># search for higher order effects</span></span>
+<span id="cb90-335"><a href="#cb90-335" aria-hidden="true" tabindex="-1"></a><span class="co"># is a relationship between Y and the set of Xs</span></span>
+<span id="cb90-336"><a href="#cb90-336" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; displacement, weight, year and origin appear to be significant predictors</span></span>
+<span id="cb90-337"><a href="#cb90-337" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; hat(beta)_year &gt;  0 ==&gt; newer cars get better gas mileage</span></span>
+<span id="cb90-338"><a href="#cb90-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-339"><a href="#cb90-339" aria-hidden="true" tabindex="-1"></a><span class="co"># diagnostic plots</span></span>
+<span id="cb90-340"><a href="#cb90-340" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car_mlr, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
 <span id="cb90-341"><a href="#cb90-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-342"><a href="#cb90-342" aria-hidden="true" tabindex="-1"></a><span class="co"># get residuals</span></span>
-<span id="cb90-343"><a href="#cb90-343" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod_car_mlr) </span>
-<span id="cb90-344"><a href="#cb90-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-345"><a href="#cb90-345" aria-hidden="true" tabindex="-1"></a><span class="co"># plot against each X</span></span>
-<span id="cb90-346"><a href="#cb90-346" aria-hidden="true" tabindex="-1"></a>nms_x <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mod_car_mlr<span class="sc">$</span>x[, <span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb90-347"><a href="#cb90-347" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(<span class="fu">data.frame</span>(mod_car_mlr<span class="sc">$</span>x)[, <span class="sc">-</span><span class="dv">1</span>], nms_x, <span class="cf">function</span>(x, nm) {</span>
-<span id="cb90-348"><a href="#cb90-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">x =</span> x, <span class="at">y =</span> e, <span class="at">main =</span> nm)</span>
-<span id="cb90-349"><a href="#cb90-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="at">x =</span> x, <span class="at">y =</span> e), <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb90-350"><a href="#cb90-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>)</span>
-<span id="cb90-351"><a href="#cb90-351" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb90-352"><a href="#cb90-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-353"><a href="#cb90-353" aria-hidden="true" tabindex="-1"></a><span class="co"># if there is relationship of any kind, that indicates there is something more going on because we have controlled for the linear main effects</span></span>
-<span id="cb90-354"><a href="#cb90-354" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; something with displacement, horsepower, weight, and, year</span></span>
-<span id="cb90-355"><a href="#cb90-355" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; combined with the hereditary principle, these seem like good variables</span></span>
+<span id="cb90-342"><a href="#cb90-342" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; unequal variance</span></span>
+<span id="cb90-343"><a href="#cb90-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-344"><a href="#cb90-344" aria-hidden="true" tabindex="-1"></a><span class="co"># search for higher order effects</span></span>
+<span id="cb90-345"><a href="#cb90-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-346"><a href="#cb90-346" aria-hidden="true" tabindex="-1"></a><span class="co"># get residuals</span></span>
+<span id="cb90-347"><a href="#cb90-347" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod_car_mlr) </span>
+<span id="cb90-348"><a href="#cb90-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-349"><a href="#cb90-349" aria-hidden="true" tabindex="-1"></a><span class="co"># plot against each X</span></span>
+<span id="cb90-350"><a href="#cb90-350" aria-hidden="true" tabindex="-1"></a>nms_x <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mod_car_mlr<span class="sc">$</span>x[, <span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb90-351"><a href="#cb90-351" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(<span class="fu">data.frame</span>(mod_car_mlr<span class="sc">$</span>x)[, <span class="sc">-</span><span class="dv">1</span>], nms_x, <span class="cf">function</span>(x, nm) {</span>
+<span id="cb90-352"><a href="#cb90-352" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">x =</span> x, <span class="at">y =</span> e, <span class="at">main =</span> nm)</span>
+<span id="cb90-353"><a href="#cb90-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="at">x =</span> x, <span class="at">y =</span> e), <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb90-354"><a href="#cb90-354" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>)</span>
+<span id="cb90-355"><a href="#cb90-355" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb90-356"><a href="#cb90-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-357"><a href="#cb90-357" aria-hidden="true" tabindex="-1"></a><span class="co"># try interaction effects</span></span>
-<span id="cb90-358"><a href="#cb90-358" aria-hidden="true" tabindex="-1"></a>mod_car_int <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_car_mlr, . <span class="sc">~</span> . <span class="sc">+</span> displacement<span class="sc">:</span>weight <span class="sc">+</span> displacement<span class="sc">:</span>year <span class="sc">+</span> displacement<span class="sc">:</span>origin <span class="sc">+</span> weight<span class="sc">:</span>year <span class="sc">+</span> weight<span class="sc">:</span>origin <span class="sc">+</span> year<span class="sc">:</span>origin, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb90-359"><a href="#cb90-359" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_car_int)</span>
+<span id="cb90-357"><a href="#cb90-357" aria-hidden="true" tabindex="-1"></a><span class="co"># if there is relationship of any kind, that indicates there is something more going on because we have controlled for the linear main effects</span></span>
+<span id="cb90-358"><a href="#cb90-358" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; something with displacement, horsepower, weight, and, year</span></span>
+<span id="cb90-359"><a href="#cb90-359" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; combined with the hereditary principle, these seem like good variables</span></span>
 <span id="cb90-360"><a href="#cb90-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-361"><a href="#cb90-361" aria-hidden="true" tabindex="-1"></a><span class="co"># only a couple of the interactions are significant</span></span>
-<span id="cb90-362"><a href="#cb90-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-363"><a href="#cb90-363" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car_int, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb90-361"><a href="#cb90-361" aria-hidden="true" tabindex="-1"></a><span class="co"># try interaction effects</span></span>
+<span id="cb90-362"><a href="#cb90-362" aria-hidden="true" tabindex="-1"></a>mod_car_int <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_car_mlr, . <span class="sc">~</span> . <span class="sc">+</span> displacement<span class="sc">:</span>weight <span class="sc">+</span> displacement<span class="sc">:</span>year <span class="sc">+</span> displacement<span class="sc">:</span>origin <span class="sc">+</span> weight<span class="sc">:</span>year <span class="sc">+</span> weight<span class="sc">:</span>origin <span class="sc">+</span> year<span class="sc">:</span>origin, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb90-363"><a href="#cb90-363" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_car_int)</span>
 <span id="cb90-364"><a href="#cb90-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-365"><a href="#cb90-365" aria-hidden="true" tabindex="-1"></a><span class="co"># get residuals</span></span>
-<span id="cb90-366"><a href="#cb90-366" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod_car_int) </span>
-<span id="cb90-367"><a href="#cb90-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-368"><a href="#cb90-368" aria-hidden="true" tabindex="-1"></a><span class="co"># plot against each X</span></span>
-<span id="cb90-369"><a href="#cb90-369" aria-hidden="true" tabindex="-1"></a>nms_x <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mod_car_int<span class="sc">$</span>x[, <span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb90-370"><a href="#cb90-370" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(<span class="fu">data.frame</span>(mod_car_int<span class="sc">$</span>x)[, <span class="sc">-</span><span class="dv">1</span>], nms_x, <span class="cf">function</span>(x, nm) {</span>
-<span id="cb90-371"><a href="#cb90-371" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">x =</span> x, <span class="at">y =</span> e, <span class="at">main =</span> nm)</span>
-<span id="cb90-372"><a href="#cb90-372" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="at">x =</span> x, <span class="at">y =</span> e), <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb90-373"><a href="#cb90-373" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>)</span>
-<span id="cb90-374"><a href="#cb90-374" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb90-375"><a href="#cb90-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-376"><a href="#cb90-376" aria-hidden="true" tabindex="-1"></a><span class="co"># now only unequal variance is left after controlling for interactions as well</span></span>
-<span id="cb90-377"><a href="#cb90-377" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; except for maybe year</span></span>
-<span id="cb90-378"><a href="#cb90-378" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; every function of year is significant</span></span>
-<span id="cb90-379"><a href="#cb90-379" aria-hidden="true" tabindex="-1"></a>mod_car_int2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_car_int, . <span class="sc">~</span> . <span class="sc">+</span> <span class="fu">sqrt</span>(year), <span class="at">data =</span> data_car)</span>
-<span id="cb90-380"><a href="#cb90-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-381"><a href="#cb90-381" aria-hidden="true" tabindex="-1"></a><span class="co"># see if significant</span></span>
-<span id="cb90-382"><a href="#cb90-382" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_car_int2, mod_car_int)</span>
-<span id="cb90-383"><a href="#cb90-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-384"><a href="#cb90-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-385"><a href="#cb90-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-386"><a href="#cb90-386" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 10</span></span>
+<span id="cb90-365"><a href="#cb90-365" aria-hidden="true" tabindex="-1"></a><span class="co"># only a couple of the interactions are significant</span></span>
+<span id="cb90-366"><a href="#cb90-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-367"><a href="#cb90-367" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_car_int, <span class="at">which =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb90-368"><a href="#cb90-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-369"><a href="#cb90-369" aria-hidden="true" tabindex="-1"></a><span class="co"># get residuals</span></span>
+<span id="cb90-370"><a href="#cb90-370" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod_car_int) </span>
+<span id="cb90-371"><a href="#cb90-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-372"><a href="#cb90-372" aria-hidden="true" tabindex="-1"></a><span class="co"># plot against each X</span></span>
+<span id="cb90-373"><a href="#cb90-373" aria-hidden="true" tabindex="-1"></a>nms_x <span class="ot">&lt;-</span> <span class="fu">colnames</span>(mod_car_int<span class="sc">$</span>x[, <span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb90-374"><a href="#cb90-374" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(<span class="fu">data.frame</span>(mod_car_int<span class="sc">$</span>x)[, <span class="sc">-</span><span class="dv">1</span>], nms_x, <span class="cf">function</span>(x, nm) {</span>
+<span id="cb90-375"><a href="#cb90-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">x =</span> x, <span class="at">y =</span> e, <span class="at">main =</span> nm)</span>
+<span id="cb90-376"><a href="#cb90-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="at">x =</span> x, <span class="at">y =</span> e), <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb90-377"><a href="#cb90-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>)</span>
+<span id="cb90-378"><a href="#cb90-378" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb90-379"><a href="#cb90-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-380"><a href="#cb90-380" aria-hidden="true" tabindex="-1"></a><span class="co"># now only unequal variance is left after controlling for interactions as well</span></span>
+<span id="cb90-381"><a href="#cb90-381" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; except for maybe year</span></span>
+<span id="cb90-382"><a href="#cb90-382" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; every function of year is significant</span></span>
+<span id="cb90-383"><a href="#cb90-383" aria-hidden="true" tabindex="-1"></a>mod_car_int2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_car_int, . <span class="sc">~</span> . <span class="sc">+</span> <span class="fu">sqrt</span>(year), <span class="at">data =</span> data_car)</span>
+<span id="cb90-384"><a href="#cb90-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-385"><a href="#cb90-385" aria-hidden="true" tabindex="-1"></a><span class="co"># see if significant</span></span>
+<span id="cb90-386"><a href="#cb90-386" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_car_int2, mod_car_int)</span>
 <span id="cb90-387"><a href="#cb90-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-390"><a href="#cb90-390" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-391"><a href="#cb90-391" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb90-392"><a href="#cb90-392" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; price = quan, urban and us = qual</span></span>
-<span id="cb90-393"><a href="#cb90-393" aria-hidden="true" tabindex="-1"></a>data_seats <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Carseats</span>
-<span id="cb90-394"><a href="#cb90-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-395"><a href="#cb90-395" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mlr model</span></span>
-<span id="cb90-396"><a href="#cb90-396" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Price <span class="sc">+</span> Urban <span class="sc">+</span> US, <span class="at">data =</span> data_seats, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb90-397"><a href="#cb90-397" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-388"><a href="#cb90-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-389"><a href="#cb90-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-390"><a href="#cb90-390" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 10</span></span>
+<span id="cb90-391"><a href="#cb90-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-394"><a href="#cb90-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-395"><a href="#cb90-395" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb90-396"><a href="#cb90-396" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; price = quan, urban and us = qual</span></span>
+<span id="cb90-397"><a href="#cb90-397" aria-hidden="true" tabindex="-1"></a>data_seats <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Carseats</span>
 <span id="cb90-398"><a href="#cb90-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-399"><a href="#cb90-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-400"><a href="#cb90-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-401"><a href="#cb90-401" aria-hidden="true" tabindex="-1"></a>Coefficient interpretations</span>
+<span id="cb90-399"><a href="#cb90-399" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mlr model</span></span>
+<span id="cb90-400"><a href="#cb90-400" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sales <span class="sc">~</span> Price <span class="sc">+</span> Urban <span class="sc">+</span> US, <span class="at">data =</span> data_seats, <span class="at">x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb90-401"><a href="#cb90-401" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
 <span id="cb90-402"><a href="#cb90-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-403"><a href="#cb90-403" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_0$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "(Intercept)") %&gt;% pull(estimate) %&gt;% round(3)`</span>: For a non-urban store located outside of the US, we expect there to be 13,043 car seat sales on average.</span>
+<span id="cb90-403"><a href="#cb90-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb90-404"><a href="#cb90-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-405"><a href="#cb90-405" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{Price}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "Price") %&gt;% pull(estimate) %&gt;% round(3)`</span>: For each dollar increase in the price of the carseat, we expect the unit sales to decrease by approximately 54 units, on average. </span>
+<span id="cb90-405"><a href="#cb90-405" aria-hidden="true" tabindex="-1"></a>Coefficient interpretations</span>
 <span id="cb90-406"><a href="#cb90-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-407"><a href="#cb90-407" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{UrbanYes}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "UrbanYes") %&gt;% pull(estimate) %&gt;% round(3)`</span>: Stores located in urban areas have approximately 22 less sales on average than non-urban stores.</span>
+<span id="cb90-407"><a href="#cb90-407" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_0$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "(Intercept)") %&gt;% pull(estimate) %&gt;% round(3)`</span>: For a non-urban store located outside of the US, we expect there to be 13,043 car seat sales on average.</span>
 <span id="cb90-408"><a href="#cb90-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-409"><a href="#cb90-409" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{USYes}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "USYes") %&gt;% pull(estimate) %&gt;% round(3)`</span>: US stores have approximately 1201 more sales on average than non-US stores.</span>
+<span id="cb90-409"><a href="#cb90-409" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{Price}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "Price") %&gt;% pull(estimate) %&gt;% round(3)`</span>: For each dollar increase in the price of the carseat, we expect the unit sales to decrease by approximately 54 units, on average. </span>
 <span id="cb90-410"><a href="#cb90-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-411"><a href="#cb90-411" aria-hidden="true" tabindex="-1"></a>Written-out model</span>
+<span id="cb90-411"><a href="#cb90-411" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{UrbanYes}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "UrbanYes") %&gt;% pull(estimate) %&gt;% round(3)`</span>: Stores located in urban areas have approximately 22 less sales on average than non-urban stores.</span>
 <span id="cb90-412"><a href="#cb90-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-413"><a href="#cb90-413" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-414"><a href="#cb90-414" aria-hidden="true" tabindex="-1"></a>\text{Sales} = \Bigg(\hat{\beta}_0 + \begin{cases}</span>
-<span id="cb90-415"><a href="#cb90-415" aria-hidden="true" tabindex="-1"></a>   \hat{\beta}_{\text{UrbanYes}},     &amp; \text{if $\text{Urban}$ = Yes, $\text{US}$ = No} <span class="sc">\\</span></span>
-<span id="cb90-416"><a href="#cb90-416" aria-hidden="true" tabindex="-1"></a>    \hat{\beta}_{\text{USYes}},    &amp; \text{if $\text{Urban}$ = No, $\text{US}$ = Yes} <span class="sc">\\</span></span>
-<span id="cb90-417"><a href="#cb90-417" aria-hidden="true" tabindex="-1"></a>    \hat{\beta}_{\text{UrbanYes}} + \hat{\beta}_{\text{USYes}},    &amp; \text{if $\text{Urban}$ = $\text{US}$ = Yes} <span class="sc">\\</span></span>
-<span id="cb90-418"><a href="#cb90-418" aria-hidden="true" tabindex="-1"></a>    0,       &amp; \text{Otherwise}</span>
-<span id="cb90-419"><a href="#cb90-419" aria-hidden="true" tabindex="-1"></a>\end{cases}\Bigg)</span>
-<span id="cb90-420"><a href="#cb90-420" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\hat{\beta}_{\text{Price}} \times \text{Price}</span>
-<span id="cb90-421"><a href="#cb90-421" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-422"><a href="#cb90-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-423"><a href="#cb90-423" aria-hidden="true" tabindex="-1"></a>which come out to be</span>
-<span id="cb90-424"><a href="#cb90-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-413"><a href="#cb90-413" aria-hidden="true" tabindex="-1"></a>$\hat{\beta}_{\text{USYes}}$ = <span class="in">`r mod_seats %&gt;% broom::tidy() %&gt;% filter(term == "USYes") %&gt;% pull(estimate) %&gt;% round(3)`</span>: US stores have approximately 1201 more sales on average than non-US stores.</span>
+<span id="cb90-414"><a href="#cb90-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-415"><a href="#cb90-415" aria-hidden="true" tabindex="-1"></a>Written-out model</span>
+<span id="cb90-416"><a href="#cb90-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-417"><a href="#cb90-417" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-418"><a href="#cb90-418" aria-hidden="true" tabindex="-1"></a>\text{Sales} = \Bigg(\hat{\beta}_0 + \begin{cases}</span>
+<span id="cb90-419"><a href="#cb90-419" aria-hidden="true" tabindex="-1"></a>   \hat{\beta}_{\text{UrbanYes}},     &amp; \text{if $\text{Urban}$ = Yes, $\text{US}$ = No} <span class="sc">\\</span></span>
+<span id="cb90-420"><a href="#cb90-420" aria-hidden="true" tabindex="-1"></a>    \hat{\beta}_{\text{USYes}},    &amp; \text{if $\text{Urban}$ = No, $\text{US}$ = Yes} <span class="sc">\\</span></span>
+<span id="cb90-421"><a href="#cb90-421" aria-hidden="true" tabindex="-1"></a>    \hat{\beta}_{\text{UrbanYes}} + \hat{\beta}_{\text{USYes}},    &amp; \text{if $\text{Urban}$ = $\text{US}$ = Yes} <span class="sc">\\</span></span>
+<span id="cb90-422"><a href="#cb90-422" aria-hidden="true" tabindex="-1"></a>    0,       &amp; \text{Otherwise}</span>
+<span id="cb90-423"><a href="#cb90-423" aria-hidden="true" tabindex="-1"></a>\end{cases}\Bigg)</span>
+<span id="cb90-424"><a href="#cb90-424" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\hat{\beta}_{\text{Price}} \times \text{Price}</span>
 <span id="cb90-425"><a href="#cb90-425" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-426"><a href="#cb90-426" aria-hidden="true" tabindex="-1"></a>\text{Sales} = \Bigg(13 + \begin{cases}</span>
-<span id="cb90-427"><a href="#cb90-427" aria-hidden="true" tabindex="-1"></a>   -0.022,   &amp; \text{if $\text{Urban}$ is Yes, $\text{US}$ is No} <span class="sc">\\</span></span>
-<span id="cb90-428"><a href="#cb90-428" aria-hidden="true" tabindex="-1"></a>    1.20,    &amp; \text{if $\text{Urban}$ is No, $\text{US}$ is Yes} <span class="sc">\\</span></span>
-<span id="cb90-429"><a href="#cb90-429" aria-hidden="true" tabindex="-1"></a>    1.18,    &amp; \text{if $\text{Urban}$ and $\text{US}$ is Yes} <span class="sc">\\</span></span>
-<span id="cb90-430"><a href="#cb90-430" aria-hidden="true" tabindex="-1"></a>    0,       &amp; \text{Otherwise}</span>
-<span id="cb90-431"><a href="#cb90-431" aria-hidden="true" tabindex="-1"></a>\end{cases}</span>
-<span id="cb90-432"><a href="#cb90-432" aria-hidden="true" tabindex="-1"></a>\Bigg)</span>
-<span id="cb90-433"><a href="#cb90-433" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>0.054 \times \textit{Price}</span>
-<span id="cb90-434"><a href="#cb90-434" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-435"><a href="#cb90-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-438"><a href="#cb90-438" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-439"><a href="#cb90-439" aria-hidden="true" tabindex="-1"></a><span class="co"># reject null for Price and US (not for Urban)</span></span>
-<span id="cb90-440"><a href="#cb90-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-441"><a href="#cb90-441" aria-hidden="true" tabindex="-1"></a><span class="co"># fit smaller model and test</span></span>
-<span id="cb90-442"><a href="#cb90-442" aria-hidden="true" tabindex="-1"></a>mod_seats2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_seats, . <span class="sc">~</span> . <span class="sc">-</span> Urban)</span>
-<span id="cb90-443"><a href="#cb90-443" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_seats, mod_seats2)</span>
+<span id="cb90-426"><a href="#cb90-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-427"><a href="#cb90-427" aria-hidden="true" tabindex="-1"></a>which come out to be</span>
+<span id="cb90-428"><a href="#cb90-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-429"><a href="#cb90-429" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-430"><a href="#cb90-430" aria-hidden="true" tabindex="-1"></a>\text{Sales} = \Bigg(13 + \begin{cases}</span>
+<span id="cb90-431"><a href="#cb90-431" aria-hidden="true" tabindex="-1"></a>   -0.022,   &amp; \text{if $\text{Urban}$ is Yes, $\text{US}$ is No} <span class="sc">\\</span></span>
+<span id="cb90-432"><a href="#cb90-432" aria-hidden="true" tabindex="-1"></a>    1.20,    &amp; \text{if $\text{Urban}$ is No, $\text{US}$ is Yes} <span class="sc">\\</span></span>
+<span id="cb90-433"><a href="#cb90-433" aria-hidden="true" tabindex="-1"></a>    1.18,    &amp; \text{if $\text{Urban}$ and $\text{US}$ is Yes} <span class="sc">\\</span></span>
+<span id="cb90-434"><a href="#cb90-434" aria-hidden="true" tabindex="-1"></a>    0,       &amp; \text{Otherwise}</span>
+<span id="cb90-435"><a href="#cb90-435" aria-hidden="true" tabindex="-1"></a>\end{cases}</span>
+<span id="cb90-436"><a href="#cb90-436" aria-hidden="true" tabindex="-1"></a>\Bigg)</span>
+<span id="cb90-437"><a href="#cb90-437" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>0.054 \times \textit{Price}</span>
+<span id="cb90-438"><a href="#cb90-438" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-439"><a href="#cb90-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-442"><a href="#cb90-442" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-443"><a href="#cb90-443" aria-hidden="true" tabindex="-1"></a><span class="co"># reject null for Price and US (not for Urban)</span></span>
 <span id="cb90-444"><a href="#cb90-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-445"><a href="#cb90-445" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; fail to reject --&gt; reduced model is better</span></span>
-<span id="cb90-446"><a href="#cb90-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-447"><a href="#cb90-447" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
-<span id="cb90-448"><a href="#cb90-448" aria-hidden="true" tabindex="-1"></a>mod_seats2 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
-<span id="cb90-449"><a href="#cb90-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-450"><a href="#cb90-450" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; just about the same fit</span></span>
-<span id="cb90-451"><a href="#cb90-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-452"><a href="#cb90-452" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence intervals for coefficients on reduced model</span></span>
-<span id="cb90-453"><a href="#cb90-453" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod_seats2)</span>
-<span id="cb90-454"><a href="#cb90-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-455"><a href="#cb90-455" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect for outliers / high leverage observations</span></span>
-<span id="cb90-456"><a href="#cb90-456" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_seats2)</span>
-<span id="cb90-457"><a href="#cb90-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-458"><a href="#cb90-458" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; there are a few high leverage points, but they are not influential</span></span>
-<span id="cb90-459"><a href="#cb90-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-460"><a href="#cb90-460" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-445"><a href="#cb90-445" aria-hidden="true" tabindex="-1"></a><span class="co"># fit smaller model and test</span></span>
+<span id="cb90-446"><a href="#cb90-446" aria-hidden="true" tabindex="-1"></a>mod_seats2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_seats, . <span class="sc">~</span> . <span class="sc">-</span> Urban)</span>
+<span id="cb90-447"><a href="#cb90-447" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_seats, mod_seats2)</span>
+<span id="cb90-448"><a href="#cb90-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-449"><a href="#cb90-449" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; fail to reject --&gt; reduced model is better</span></span>
+<span id="cb90-450"><a href="#cb90-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-451"><a href="#cb90-451" aria-hidden="true" tabindex="-1"></a>mod_seats <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
+<span id="cb90-452"><a href="#cb90-452" aria-hidden="true" tabindex="-1"></a>mod_seats2 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(r.squared)</span>
+<span id="cb90-453"><a href="#cb90-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-454"><a href="#cb90-454" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; just about the same fit</span></span>
+<span id="cb90-455"><a href="#cb90-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-456"><a href="#cb90-456" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence intervals for coefficients on reduced model</span></span>
+<span id="cb90-457"><a href="#cb90-457" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod_seats2)</span>
+<span id="cb90-458"><a href="#cb90-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-459"><a href="#cb90-459" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect for outliers / high leverage observations</span></span>
+<span id="cb90-460"><a href="#cb90-460" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_seats2)</span>
 <span id="cb90-461"><a href="#cb90-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-462"><a href="#cb90-462" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 11</span></span>
+<span id="cb90-462"><a href="#cb90-462" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; there are a few high leverage points, but they are not influential</span></span>
 <span id="cb90-463"><a href="#cb90-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-466"><a href="#cb90-466" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-467"><a href="#cb90-467" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
-<span id="cb90-468"><a href="#cb90-468" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb90-469"><a href="#cb90-469" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb90-470"><a href="#cb90-470" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb90-471"><a href="#cb90-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-472"><a href="#cb90-472" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models without intercept</span></span>
-<span id="cb90-473"><a href="#cb90-473" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="dv">0</span>)</span>
-<span id="cb90-474"><a href="#cb90-474" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_yx)</span>
-<span id="cb90-475"><a href="#cb90-475" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> y <span class="sc">+</span> <span class="dv">0</span>)</span>
-<span id="cb90-476"><a href="#cb90-476" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_xy)</span>
-<span id="cb90-477"><a href="#cb90-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-478"><a href="#cb90-478" aria-hidden="true" tabindex="-1"></a><span class="co"># results</span></span>
-<span id="cb90-479"><a href="#cb90-479" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; different estimates, same test-statistics</span></span>
-<span id="cb90-480"><a href="#cb90-480" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; this can be shown mathematically using the derived formulas for regression without an intercept</span></span>
+<span id="cb90-464"><a href="#cb90-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-465"><a href="#cb90-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-466"><a href="#cb90-466" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 11</span></span>
+<span id="cb90-467"><a href="#cb90-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-470"><a href="#cb90-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-471"><a href="#cb90-471" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb90-472"><a href="#cb90-472" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb90-473"><a href="#cb90-473" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb90-474"><a href="#cb90-474" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb90-475"><a href="#cb90-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-476"><a href="#cb90-476" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models without intercept</span></span>
+<span id="cb90-477"><a href="#cb90-477" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> <span class="dv">0</span>)</span>
+<span id="cb90-478"><a href="#cb90-478" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_yx)</span>
+<span id="cb90-479"><a href="#cb90-479" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> y <span class="sc">+</span> <span class="dv">0</span>)</span>
+<span id="cb90-480"><a href="#cb90-480" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_xy)</span>
 <span id="cb90-481"><a href="#cb90-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-482"><a href="#cb90-482" aria-hidden="true" tabindex="-1"></a><span class="co"># now with an intercept, show test statistics are the same for y ~ x and x ~ y</span></span>
-<span id="cb90-483"><a href="#cb90-483" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb90-484"><a href="#cb90-484" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb90-485"><a href="#cb90-485" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> y)</span>
-<span id="cb90-486"><a href="#cb90-486" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>()</span>
-<span id="cb90-487"><a href="#cb90-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-488"><a href="#cb90-488" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-489"><a href="#cb90-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-490"><a href="#cb90-490" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 12</span></span>
+<span id="cb90-482"><a href="#cb90-482" aria-hidden="true" tabindex="-1"></a><span class="co"># results</span></span>
+<span id="cb90-483"><a href="#cb90-483" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; different estimates, same test-statistics</span></span>
+<span id="cb90-484"><a href="#cb90-484" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; this can be shown mathematically using the derived formulas for regression without an intercept</span></span>
+<span id="cb90-485"><a href="#cb90-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-486"><a href="#cb90-486" aria-hidden="true" tabindex="-1"></a><span class="co"># now with an intercept, show test statistics are the same for y ~ x and x ~ y</span></span>
+<span id="cb90-487"><a href="#cb90-487" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb90-488"><a href="#cb90-488" aria-hidden="true" tabindex="-1"></a>mod_yx <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>()</span>
+<span id="cb90-489"><a href="#cb90-489" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> y)</span>
+<span id="cb90-490"><a href="#cb90-490" aria-hidden="true" tabindex="-1"></a>mod_xy <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">glance</span>()</span>
 <span id="cb90-491"><a href="#cb90-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-492"><a href="#cb90-492" aria-hidden="true" tabindex="-1"></a>Can show that estimates will be the same if swap $X$ and $Y$ variables under a certain condition.</span>
+<span id="cb90-492"><a href="#cb90-492" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb90-493"><a href="#cb90-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-494"><a href="#cb90-494" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-495"><a href="#cb90-495" aria-hidden="true" tabindex="-1"></a>Y \sim X: \hat\beta = \sum_i x_iy_i / \sum_{i'} x_{i'}^2</span>
-<span id="cb90-496"><a href="#cb90-496" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-494"><a href="#cb90-494" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 12</span></span>
+<span id="cb90-495"><a href="#cb90-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-496"><a href="#cb90-496" aria-hidden="true" tabindex="-1"></a>Can show that estimates will be the same if swap $X$ and $Y$ variables under a certain condition.</span>
 <span id="cb90-497"><a href="#cb90-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-498"><a href="#cb90-498" aria-hidden="true" tabindex="-1"></a>The coefficient for the regression of X onto Y swaps the $x$ and $y$ variables:</span>
-<span id="cb90-499"><a href="#cb90-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-498"><a href="#cb90-498" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-499"><a href="#cb90-499" aria-hidden="true" tabindex="-1"></a>Y \sim X: \hat\beta = \sum_i x_iy_i / \sum_{i'} x_{i'}^2</span>
 <span id="cb90-500"><a href="#cb90-500" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-501"><a href="#cb90-501" aria-hidden="true" tabindex="-1"></a>X \sim Y: \hat\beta = \sum_i x_iy_i / \sum_{i'} y_{i'}^2</span>
-<span id="cb90-502"><a href="#cb90-502" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-501"><a href="#cb90-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-502"><a href="#cb90-502" aria-hidden="true" tabindex="-1"></a>The coefficient for the regression of X onto Y swaps the $x$ and $y$ variables:</span>
 <span id="cb90-503"><a href="#cb90-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-504"><a href="#cb90-504" aria-hidden="true" tabindex="-1"></a>So they are the same when $\sum_{i} x_{i}^2 = \sum_{i} y_{i}^2$</span>
-<span id="cb90-505"><a href="#cb90-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-506"><a href="#cb90-506" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 13</span></span>
+<span id="cb90-504"><a href="#cb90-504" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-505"><a href="#cb90-505" aria-hidden="true" tabindex="-1"></a>X \sim Y: \hat\beta = \sum_i x_iy_i / \sum_{i'} y_{i'}^2</span>
+<span id="cb90-506"><a href="#cb90-506" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb90-507"><a href="#cb90-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-510"><a href="#cb90-510" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-511"><a href="#cb90-511" aria-hidden="true" tabindex="-1"></a><span class="co"># investigate coefficient confidence intervals based on the amount of noise</span></span>
-<span id="cb90-512"><a href="#cb90-512" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb90-513"><a href="#cb90-513" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb90-514"><a href="#cb90-514" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb90-515"><a href="#cb90-515" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb90-516"><a href="#cb90-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-517"><a href="#cb90-517" aria-hidden="true" tabindex="-1"></a><span class="co"># generate three response vecotrs with difference error variances</span></span>
-<span id="cb90-518"><a href="#cb90-518" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(epsilon) beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, epsilon))</span>
-<span id="cb90-519"><a href="#cb90-519" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"original epsilon"</span>, <span class="st">"smaller epsilon"</span>, <span class="st">"larger epsilon"</span>)</span>
+<span id="cb90-508"><a href="#cb90-508" aria-hidden="true" tabindex="-1"></a>So they are the same when $\sum_{i} x_{i}^2 = \sum_{i} y_{i}^2$</span>
+<span id="cb90-509"><a href="#cb90-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-510"><a href="#cb90-510" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 13</span></span>
+<span id="cb90-511"><a href="#cb90-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-514"><a href="#cb90-514" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-515"><a href="#cb90-515" aria-hidden="true" tabindex="-1"></a><span class="co"># investigate coefficient confidence intervals based on the amount of noise</span></span>
+<span id="cb90-516"><a href="#cb90-516" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb90-517"><a href="#cb90-517" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb90-518"><a href="#cb90-518" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb90-519"><a href="#cb90-519" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb90-520"><a href="#cb90-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-521"><a href="#cb90-521" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models based on same x</span></span>
-<span id="cb90-522"><a href="#cb90-522" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> y <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(y) <span class="fu">lm</span>(y <span class="sc">~</span> x))</span>
-<span id="cb90-523"><a href="#cb90-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-524"><a href="#cb90-524" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate coefficient confidence intervals</span></span>
-<span id="cb90-525"><a href="#cb90-525" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) <span class="fu">coef</span>(mod)[<span class="dv">2</span>])</span>
-<span id="cb90-526"><a href="#cb90-526" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) <span class="fu">confint</span>(mod))</span>
+<span id="cb90-521"><a href="#cb90-521" aria-hidden="true" tabindex="-1"></a><span class="co"># generate three response vecotrs with difference error variances</span></span>
+<span id="cb90-522"><a href="#cb90-522" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(epsilon) beta0 <span class="sc">+</span> beta1 <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, epsilon))</span>
+<span id="cb90-523"><a href="#cb90-523" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"original epsilon"</span>, <span class="st">"smaller epsilon"</span>, <span class="st">"larger epsilon"</span>)</span>
+<span id="cb90-524"><a href="#cb90-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-525"><a href="#cb90-525" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models based on same x</span></span>
+<span id="cb90-526"><a href="#cb90-526" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> y <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(y) <span class="fu">lm</span>(y <span class="sc">~</span> x))</span>
 <span id="cb90-527"><a href="#cb90-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-528"><a href="#cb90-528" aria-hidden="true" tabindex="-1"></a><span class="co"># wider confidence intervals with more noise as expected, and more biased fits</span></span>
-<span id="cb90-529"><a href="#cb90-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-530"><a href="#cb90-530" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-528"><a href="#cb90-528" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate coefficient confidence intervals</span></span>
+<span id="cb90-529"><a href="#cb90-529" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) <span class="fu">coef</span>(mod)[<span class="dv">2</span>])</span>
+<span id="cb90-530"><a href="#cb90-530" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) <span class="fu">confint</span>(mod))</span>
 <span id="cb90-531"><a href="#cb90-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-532"><a href="#cb90-532" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 14</span></span>
+<span id="cb90-532"><a href="#cb90-532" aria-hidden="true" tabindex="-1"></a><span class="co"># wider confidence intervals with more noise as expected, and more biased fits</span></span>
 <span id="cb90-533"><a href="#cb90-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-536"><a href="#cb90-536" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-537"><a href="#cb90-537" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
-<span id="cb90-538"><a href="#cb90-538" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb90-539"><a href="#cb90-539" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
-<span id="cb90-540"><a href="#cb90-540" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">/</span> <span class="dv">10</span></span>
-<span id="cb90-541"><a href="#cb90-541" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="fl">0.3</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb90-542"><a href="#cb90-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-543"><a href="#cb90-543" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-544"><a href="#cb90-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-545"><a href="#cb90-545" aria-hidden="true" tabindex="-1"></a>The model is of the form:</span>
+<span id="cb90-534"><a href="#cb90-534" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-535"><a href="#cb90-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-536"><a href="#cb90-536" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 14</span></span>
+<span id="cb90-537"><a href="#cb90-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-540"><a href="#cb90-540" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-541"><a href="#cb90-541" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb90-542"><a href="#cb90-542" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb90-543"><a href="#cb90-543" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb90-544"><a href="#cb90-544" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">/</span> <span class="dv">10</span></span>
+<span id="cb90-545"><a href="#cb90-545" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="fl">0.3</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb90-546"><a href="#cb90-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-547"><a href="#cb90-547" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb90-548"><a href="#cb90-548" aria-hidden="true" tabindex="-1"></a>Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon</span>
-<span id="cb90-549"><a href="#cb90-549" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-547"><a href="#cb90-547" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-548"><a href="#cb90-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-549"><a href="#cb90-549" aria-hidden="true" tabindex="-1"></a>The model is of the form:</span>
 <span id="cb90-550"><a href="#cb90-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-551"><a href="#cb90-551" aria-hidden="true" tabindex="-1"></a>The coefficients are $\beta_0 = 2$, $\beta_1 = 2$, $\beta_3 = 0.3$.</span>
-<span id="cb90-552"><a href="#cb90-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-555"><a href="#cb90-555" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-556"><a href="#cb90-556" aria-hidden="true" tabindex="-1"></a><span class="co"># investigate relationship between x1 and x2</span></span>
-<span id="cb90-557"><a href="#cb90-557" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, x2)</span>
-<span id="cb90-558"><a href="#cb90-558" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, x2)</span>
-<span id="cb90-559"><a href="#cb90-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-560"><a href="#cb90-560" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
-<span id="cb90-561"><a href="#cb90-561" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
-<span id="cb90-562"><a href="#cb90-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-563"><a href="#cb90-563" aria-hidden="true" tabindex="-1"></a><span class="co"># compare fitted coefficients to population values, then test</span></span>
-<span id="cb90-564"><a href="#cb90-564" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mod)</span>
-<span id="cb90-565"><a href="#cb90-565" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-551"><a href="#cb90-551" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-552"><a href="#cb90-552" aria-hidden="true" tabindex="-1"></a>Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon</span>
+<span id="cb90-553"><a href="#cb90-553" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb90-554"><a href="#cb90-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-555"><a href="#cb90-555" aria-hidden="true" tabindex="-1"></a>The coefficients are $\beta_0 = 2$, $\beta_1 = 2$, $\beta_3 = 0.3$.</span>
+<span id="cb90-556"><a href="#cb90-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-559"><a href="#cb90-559" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-560"><a href="#cb90-560" aria-hidden="true" tabindex="-1"></a><span class="co"># investigate relationship between x1 and x2</span></span>
+<span id="cb90-561"><a href="#cb90-561" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, x2)</span>
+<span id="cb90-562"><a href="#cb90-562" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, x2)</span>
+<span id="cb90-563"><a href="#cb90-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-564"><a href="#cb90-564" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb90-565"><a href="#cb90-565" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
 <span id="cb90-566"><a href="#cb90-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-567"><a href="#cb90-567" aria-hidden="true" tabindex="-1"></a><span class="co"># fail to reject for x2</span></span>
-<span id="cb90-568"><a href="#cb90-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-569"><a href="#cb90-569" aria-hidden="true" tabindex="-1"></a><span class="co"># now fit models with the predictors individually</span></span>
-<span id="cb90-570"><a href="#cb90-570" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
-<span id="cb90-571"><a href="#cb90-571" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
-<span id="cb90-572"><a href="#cb90-572" aria-hidden="true" tabindex="-1"></a>mod1 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-573"><a href="#cb90-573" aria-hidden="true" tabindex="-1"></a>mod2 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-574"><a href="#cb90-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-575"><a href="#cb90-575" aria-hidden="true" tabindex="-1"></a><span class="co"># both reject</span></span>
-<span id="cb90-576"><a href="#cb90-576" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; this contradicts the mlr model where x2 was not significant</span></span>
-<span id="cb90-577"><a href="#cb90-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-578"><a href="#cb90-578" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain new observations</span></span>
-<span id="cb90-579"><a href="#cb90-579" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, <span class="fl">0.1</span>)</span>
-<span id="cb90-580"><a href="#cb90-580" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(x2, <span class="fl">0.8</span>)</span>
-<span id="cb90-581"><a href="#cb90-581" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="dv">6</span>)</span>
-<span id="cb90-582"><a href="#cb90-582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-583"><a href="#cb90-583" aria-hidden="true" tabindex="-1"></a><span class="co"># refit models and see effect</span></span>
-<span id="cb90-584"><a href="#cb90-584" aria-hidden="true" tabindex="-1"></a>mod_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
-<span id="cb90-585"><a href="#cb90-585" aria-hidden="true" tabindex="-1"></a>mod1_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
-<span id="cb90-586"><a href="#cb90-586" aria-hidden="true" tabindex="-1"></a>mod2_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
-<span id="cb90-587"><a href="#cb90-587" aria-hidden="true" tabindex="-1"></a>mod_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-588"><a href="#cb90-588" aria-hidden="true" tabindex="-1"></a>mod1_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-589"><a href="#cb90-589" aria-hidden="true" tabindex="-1"></a>mod2_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
-<span id="cb90-590"><a href="#cb90-590" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-591"><a href="#cb90-591" aria-hidden="true" tabindex="-1"></a><span class="co"># seems similar results in the individual predictor models, however in the mlr model now both are significant -&gt; investigate why</span></span>
-<span id="cb90-592"><a href="#cb90-592" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_new) <span class="co"># high leverage with respect to x1 and x2</span></span>
-<span id="cb90-593"><a href="#cb90-593" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x1)</span>
-<span id="cb90-594"><a href="#cb90-594" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.1</span>, <span class="dv">6</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># outlier in y</span></span>
-<span id="cb90-595"><a href="#cb90-595" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x2)</span>
-<span id="cb90-596"><a href="#cb90-596" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.8</span>, <span class="dv">6</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># high leverage (i.e. outlier in x)</span></span>
-<span id="cb90-597"><a href="#cb90-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-598"><a href="#cb90-598" aria-hidden="true" tabindex="-1"></a><span class="co"># useful to consider plot of the xs</span></span>
-<span id="cb90-599"><a href="#cb90-599" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, x2)</span>
-<span id="cb90-600"><a href="#cb90-600" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.1</span>, <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb90-567"><a href="#cb90-567" aria-hidden="true" tabindex="-1"></a><span class="co"># compare fitted coefficients to population values, then test</span></span>
+<span id="cb90-568"><a href="#cb90-568" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mod)</span>
+<span id="cb90-569"><a href="#cb90-569" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-570"><a href="#cb90-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-571"><a href="#cb90-571" aria-hidden="true" tabindex="-1"></a><span class="co"># fail to reject for x2</span></span>
+<span id="cb90-572"><a href="#cb90-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-573"><a href="#cb90-573" aria-hidden="true" tabindex="-1"></a><span class="co"># now fit models with the predictors individually</span></span>
+<span id="cb90-574"><a href="#cb90-574" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
+<span id="cb90-575"><a href="#cb90-575" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
+<span id="cb90-576"><a href="#cb90-576" aria-hidden="true" tabindex="-1"></a>mod1 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-577"><a href="#cb90-577" aria-hidden="true" tabindex="-1"></a>mod2 <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-578"><a href="#cb90-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-579"><a href="#cb90-579" aria-hidden="true" tabindex="-1"></a><span class="co"># both reject</span></span>
+<span id="cb90-580"><a href="#cb90-580" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; this contradicts the mlr model where x2 was not significant</span></span>
+<span id="cb90-581"><a href="#cb90-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-582"><a href="#cb90-582" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain new observations</span></span>
+<span id="cb90-583"><a href="#cb90-583" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1, <span class="fl">0.1</span>)</span>
+<span id="cb90-584"><a href="#cb90-584" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(x2, <span class="fl">0.8</span>)</span>
+<span id="cb90-585"><a href="#cb90-585" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="dv">6</span>)</span>
+<span id="cb90-586"><a href="#cb90-586" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-587"><a href="#cb90-587" aria-hidden="true" tabindex="-1"></a><span class="co"># refit models and see effect</span></span>
+<span id="cb90-588"><a href="#cb90-588" aria-hidden="true" tabindex="-1"></a>mod_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
+<span id="cb90-589"><a href="#cb90-589" aria-hidden="true" tabindex="-1"></a>mod1_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
+<span id="cb90-590"><a href="#cb90-590" aria-hidden="true" tabindex="-1"></a>mod2_new <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
+<span id="cb90-591"><a href="#cb90-591" aria-hidden="true" tabindex="-1"></a>mod_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-592"><a href="#cb90-592" aria-hidden="true" tabindex="-1"></a>mod1_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-593"><a href="#cb90-593" aria-hidden="true" tabindex="-1"></a>mod2_new <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb90-594"><a href="#cb90-594" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-595"><a href="#cb90-595" aria-hidden="true" tabindex="-1"></a><span class="co"># seems similar results in the individual predictor models, however in the mlr model now both are significant -&gt; investigate why</span></span>
+<span id="cb90-596"><a href="#cb90-596" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_new) <span class="co"># high leverage with respect to x1 and x2</span></span>
+<span id="cb90-597"><a href="#cb90-597" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x1)</span>
+<span id="cb90-598"><a href="#cb90-598" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.1</span>, <span class="dv">6</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># outlier in y</span></span>
+<span id="cb90-599"><a href="#cb90-599" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x2)</span>
+<span id="cb90-600"><a href="#cb90-600" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.8</span>, <span class="dv">6</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># high leverage (i.e. outlier in x)</span></span>
 <span id="cb90-601"><a href="#cb90-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-602"><a href="#cb90-602" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-603"><a href="#cb90-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-604"><a href="#cb90-604" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 15</span></span>
+<span id="cb90-602"><a href="#cb90-602" aria-hidden="true" tabindex="-1"></a><span class="co"># useful to consider plot of the xs</span></span>
+<span id="cb90-603"><a href="#cb90-603" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, x2)</span>
+<span id="cb90-604"><a href="#cb90-604" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">0.1</span>, <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
 <span id="cb90-605"><a href="#cb90-605" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-608"><a href="#cb90-608" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-609"><a href="#cb90-609" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb90-610"><a href="#cb90-610" aria-hidden="true" tabindex="-1"></a>data_boston <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Boston</span>
-<span id="cb90-611"><a href="#cb90-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-612"><a href="#cb90-612" aria-hidden="true" tabindex="-1"></a><span class="co"># fit many SLR models</span></span>
-<span id="cb90-613"><a href="#cb90-613" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> data_boston <span class="sc">%&gt;%</span> </span>
-<span id="cb90-614"><a href="#cb90-614" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>crim) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-615"><a href="#cb90-615" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(x) <span class="fu">lm</span>(data_boston<span class="sc">$</span>crim <span class="sc">~</span> x))</span>
-<span id="cb90-616"><a href="#cb90-616" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) broom<span class="sc">::</span><span class="fu">glance</span>(mod)[<span class="dv">1</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb90-617"><a href="#cb90-617" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; all significant except chas</span></span>
-<span id="cb90-618"><a href="#cb90-618" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-619"><a href="#cb90-619" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mlr model</span></span>
-<span id="cb90-620"><a href="#cb90-620" aria-hidden="true" tabindex="-1"></a>mod_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>( crim <span class="sc">~</span> ., <span class="at">data =</span> data_boston)</span>
-<span id="cb90-621"><a href="#cb90-621" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_mlr)</span>
-<span id="cb90-622"><a href="#cb90-622" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; can now only reject for zn, nox, dis, rad, lstat and medv</span></span>
-<span id="cb90-623"><a href="#cb90-623" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-624"><a href="#cb90-624" aria-hidden="true" tabindex="-1"></a><span class="co"># extract two sets of coefficients and plot against each other</span></span>
-<span id="cb90-625"><a href="#cb90-625" aria-hidden="true" tabindex="-1"></a>betas_slr <span class="ot">&lt;-</span> mods <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(\(mod) broom<span class="sc">::</span><span class="fu">tidy</span>(mod)[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
-<span id="cb90-626"><a href="#cb90-626" aria-hidden="true" tabindex="-1"></a>betas_mlr <span class="ot">&lt;-</span> <span class="fu">coef</span>(mod_mlr)[<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb90-627"><a href="#cb90-627" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(betas_mlr <span class="sc">~</span> betas_slr)</span>
-<span id="cb90-628"><a href="#cb90-628" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-629"><a href="#cb90-629" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-630"><a href="#cb90-630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-631"><a href="#cb90-631" aria-hidden="true" tabindex="-1"></a>The estimated coefficients differ (in particular the estimated coefficient for</span>
-<span id="cb90-632"><a href="#cb90-632" aria-hidden="true" tabindex="-1"></a><span class="in">`nox`</span> is dramatically different) between the two modelling strategies.</span>
-<span id="cb90-633"><a href="#cb90-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-636"><a href="#cb90-636" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-637"><a href="#cb90-637" aria-hidden="true" tabindex="-1"></a><span class="co"># fit many cubic models models</span></span>
-<span id="cb90-638"><a href="#cb90-638" aria-hidden="true" tabindex="-1"></a>mods_cubic <span class="ot">&lt;-</span> data_boston <span class="sc">%&gt;%</span> </span>
-<span id="cb90-639"><a href="#cb90-639" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(crim, chas)) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-640"><a href="#cb90-640" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(x) <span class="fu">lm</span>(data_boston<span class="sc">$</span>crim <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">3</span>)))</span>
-<span id="cb90-641"><a href="#cb90-641" aria-hidden="true" tabindex="-1"></a>mods_cubic <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) broom<span class="sc">::</span><span class="fu">tidy</span>(mod))</span>
-<span id="cb90-642"><a href="#cb90-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-643"><a href="#cb90-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-644"><a href="#cb90-644" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-645"><a href="#cb90-645" aria-hidden="true" tabindex="-1"></a>Several models have a significant cubic term, if not then the quadratic term is significant for the rest.</span>
+<span id="cb90-606"><a href="#cb90-606" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-607"><a href="#cb90-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-608"><a href="#cb90-608" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 15</span></span>
+<span id="cb90-609"><a href="#cb90-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-612"><a href="#cb90-612" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-613"><a href="#cb90-613" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb90-614"><a href="#cb90-614" aria-hidden="true" tabindex="-1"></a>data_boston <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Boston</span>
+<span id="cb90-615"><a href="#cb90-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-616"><a href="#cb90-616" aria-hidden="true" tabindex="-1"></a><span class="co"># fit many SLR models</span></span>
+<span id="cb90-617"><a href="#cb90-617" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> data_boston <span class="sc">%&gt;%</span> </span>
+<span id="cb90-618"><a href="#cb90-618" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>crim) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-619"><a href="#cb90-619" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(x) <span class="fu">lm</span>(data_boston<span class="sc">$</span>crim <span class="sc">~</span> x))</span>
+<span id="cb90-620"><a href="#cb90-620" aria-hidden="true" tabindex="-1"></a>mods <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) broom<span class="sc">::</span><span class="fu">glance</span>(mod)[<span class="dv">1</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb90-621"><a href="#cb90-621" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; all significant except chas</span></span>
+<span id="cb90-622"><a href="#cb90-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-623"><a href="#cb90-623" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mlr model</span></span>
+<span id="cb90-624"><a href="#cb90-624" aria-hidden="true" tabindex="-1"></a>mod_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>( crim <span class="sc">~</span> ., <span class="at">data =</span> data_boston)</span>
+<span id="cb90-625"><a href="#cb90-625" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_mlr)</span>
+<span id="cb90-626"><a href="#cb90-626" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; can now only reject for zn, nox, dis, rad, lstat and medv</span></span>
+<span id="cb90-627"><a href="#cb90-627" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-628"><a href="#cb90-628" aria-hidden="true" tabindex="-1"></a><span class="co"># extract two sets of coefficients and plot against each other</span></span>
+<span id="cb90-629"><a href="#cb90-629" aria-hidden="true" tabindex="-1"></a>betas_slr <span class="ot">&lt;-</span> mods <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(\(mod) broom<span class="sc">::</span><span class="fu">tidy</span>(mod)[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">%&gt;%</span> as.numeric)</span>
+<span id="cb90-630"><a href="#cb90-630" aria-hidden="true" tabindex="-1"></a>betas_mlr <span class="ot">&lt;-</span> <span class="fu">coef</span>(mod_mlr)[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb90-631"><a href="#cb90-631" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(betas_mlr <span class="sc">~</span> betas_slr)</span>
+<span id="cb90-632"><a href="#cb90-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-633"><a href="#cb90-633" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-634"><a href="#cb90-634" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-635"><a href="#cb90-635" aria-hidden="true" tabindex="-1"></a>The estimated coefficients differ (in particular the estimated coefficient for</span>
+<span id="cb90-636"><a href="#cb90-636" aria-hidden="true" tabindex="-1"></a><span class="in">`nox`</span> is dramatically different) between the two modelling strategies.</span>
+<span id="cb90-637"><a href="#cb90-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-640"><a href="#cb90-640" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-641"><a href="#cb90-641" aria-hidden="true" tabindex="-1"></a><span class="co"># fit many cubic models models</span></span>
+<span id="cb90-642"><a href="#cb90-642" aria-hidden="true" tabindex="-1"></a>mods_cubic <span class="ot">&lt;-</span> data_boston <span class="sc">%&gt;%</span> </span>
+<span id="cb90-643"><a href="#cb90-643" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(crim, chas)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-644"><a href="#cb90-644" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(x) <span class="fu">lm</span>(data_boston<span class="sc">$</span>crim <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">3</span>)))</span>
+<span id="cb90-645"><a href="#cb90-645" aria-hidden="true" tabindex="-1"></a>mods_cubic <span class="sc">%&gt;%</span> <span class="fu">map</span>(\(mod) broom<span class="sc">::</span><span class="fu">tidy</span>(mod))</span>
+<span id="cb90-646"><a href="#cb90-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-647"><a href="#cb90-647" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-648"><a href="#cb90-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-649"><a href="#cb90-649" aria-hidden="true" tabindex="-1"></a>Several models have a significant cubic term, if not then the quadratic term is significant for the rest.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

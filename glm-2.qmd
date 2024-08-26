@@ -1,0 +1,110 @@
+# GLM -- Model fitting
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+<embed src="files/glm-2-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+## Problems
+
+<embed src="files/glm-2-problems.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+# load packages
+library(tidyverse)
+library(magrittr)
+
+# Q1) setup
+
+# load data
+data_seeds <- data.frame(treatment = c(4.81,5.36 ,4.17,3.48,4.41,4.69,3.59,4.44,5.87,4.89,3.83,4.71,6.03,5.48,4.98,4.32,4.90,5.15,5.75,6.34),
+                           control = c(4.17,4.66,3.05,5.58,5.18,3.66,4.01,4.50,6.11,3.90,4.10,4.61,5.17,5.62,3.57,4.53,5.33,6.05,5.59,5.14)) %>% 
+  pivot_longer(cols = everything(), names_to = "group", values_to = "weight") %>% 
+  arrange(group)
+
+# a) EDA
+
+# summary statistics and plots
+data_seeds %>% 
+  summarize(.by = group,
+             n = n(),
+             mean = mean(weight),
+             sd = sd(weight))
+data_seeds %$% boxplot(weight ~ group, horizontal = TRUE)
+ggplot(data = data_seeds,
+       aes(x = weight,
+           color = group)) + 
+  geom_density()
+
+# b) unpaird t-test
+t.test(x = data_seeds %>% filter(group == "treatment") %>% pull(weight),
+       y = data_seeds %>% filter(group == "control") %>% pull(weight),
+       conf.level = 0.95)
+
+# c) SSE estimates
+S_0 <- sum((data_seeds$weight - mean(data_seeds$weight))^2)
+y_bar1 <- mean(data_seeds[which(data_seeds$group == "treatment"),]$weight)
+y_bar2 <- mean(data_seeds[which(data_seeds$group == "control"),]$weight)
+S_1 <- sum((data_seeds$weight - c(rep(y_bar2, 20), rep(y_bar1, 20)))^2) # order based on how sorted
+
+# g) F-test
+mod_full <- lm(weight ~ group, data = data_seeds)
+mod_reduced <- lm(weight ~ 1, data = data_seeds) 
+anova(mod_full, mod_reduced)
+
+# -> manual
+F_star <- (S_0 - S_1) / (S_1 / 38)
+
+# i) residual analysis 
+mod_reduced %>% plot(which = 2)
+mod_reduced %>% residuals %>% hist(main = "hist of residuals")
+
+```
+
+```{r}
+
+# Q2 setup
+
+# load data
+data_weights <- data.frame(id = 1:20,
+                           before = c(100.8,102.0,105.9,108.0,92.0,116.7,110.2,135.0,123.5,95.0,105.0,85.0,107.2,80.0,115.1,103.5,82.0,101.5,103.5,93.0),
+                           after = c(97.0,107.5,97.0,108.0,84.0,111.5,102.5,127.5,118.5,94.2,105.0,82.4,98.2,83.6,115.0,103.0,80.0,101.5,102.6,93.0))
+
+# summary stats
+data_weights %>% 
+  summarize(across(c(before, after), list(mean = mean, sd = sd)))
+
+# a) unpaired t-test
+t.test(x = data_weights$before,
+       y = data_weights$after,
+       conf.level = 0.95)
+
+# a) paired t-test
+
+# calculate difference
+data_weights %<>% 
+  mutate(diff = before - after)
+data_weights %>% 
+  summarize(mean(diff),
+            sd(diff))
+
+t.test(x = data_weights$before,
+       y = data_weights$after,
+       paired = TRUE,
+       conf.level = 0.95)
+
+# or equivalently
+t.test(x = data_weights$diff,
+       conf.level = 0.95)
+
+```

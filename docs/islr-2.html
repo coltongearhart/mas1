@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>3&nbsp; Statistical learning – MAS I</title>
+<title>3&nbsp; ISLR – Statistical learning – MAS I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,9 +138,9 @@ window.Quarto = {
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></a></li></ol></nav>
       <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span>
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
@@ -220,19 +220,31 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./islr-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -432,7 +444,9 @@ E\big(y_o - \hat{f}(x_0)\big)^2 = \text{Var}(\hat{f}(x_0)) + [\text{Bias}(\hat{f
 <p><span class="math display">\[
 P(Y = j \mid X = x_0)
 \]</span></p>
-<p>is the largest. Note that the above formula is a <em>conditional probability</em>: it is the probability that <span class="math inline">\(Y = j\)</span>, given the observed predictor vector <span class="math inline">\(x_0\)</span>. This very simple classifier is called the <em>Bayes classifier</em>. In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if <span class="math inline">\(P(Y = j \mid X = x_0) &gt; 0.5\)</span>, and class two otherwise.</p>
+<p>is the largest. Note that the above formula is a <em>conditional probability</em>: it is the probability that <span class="math inline">\(Y = j\)</span>, given the observed predictor vector <span class="math inline">\(x_0\)</span>. This very simple classifier is called the <em>Bayes classifier</em>. It is super simple to calculate this:</p>
+<p><img src="files/images/2-bayes-classifier-calc.png" class="img-fluid" style="width:50.0%"></p>
+<p>In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if <span class="math inline">\(P(Y = j \mid X = x_0) &gt; 0.5\)</span>, and class two otherwise.</p>
 <p>Here is an example:</p>
 <p><img src="files/images/2-bayes-classifier.png" class="img-fluid" style="width:50.0%"></p>
 <p>For each value of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, there is a different probability of the response being orange or blue. Since this is simulated data, we know how the data were generated and we can calculate the conditional probabilities for each value of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. The purple dashed line represents the points where the probability is exactly 50%. This is called the <em>Bayes decision boundary</em>.</p>
@@ -719,8 +733,7 @@ P(Y = j \mid X = x_0) = \frac{1}{K}\sum_{i \in \cal{N}_0} I(y_i = j)
 <span><span class="op">}</span></span>
 <span><span class="va">results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Green"                 "Red"                   "Green"                
-[4] "c(\"Red\", \"Green\")" "Green"                </code></pre>
+<pre><code>[1] "Green" "Green" "Green" "Green" "Green"</code></pre>
 </div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># note if results include a vector of two classes, then there was a tie. Not sure how to break ties, but could research and code something...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1349,12 +1362,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./islr-3.html" class="pagination-link" aria-label="Linear regression">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./islr-3.html" class="pagination-link" aria-label="ISLR -- Linear regression">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Statistical learning</span></span>
+<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ISLR -- Statistical learning</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-prereqs</span></span>
@@ -1601,356 +1614,360 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb29-247"><a href="#cb29-247" aria-hidden="true" tabindex="-1"></a>P(Y = j \mid X = x_0)</span>
 <span id="cb29-248"><a href="#cb29-248" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb29-249"><a href="#cb29-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-250"><a href="#cb29-250" aria-hidden="true" tabindex="-1"></a>is the largest. Note that the above formula is a *conditional probability*: it is the probability that $Y = j$, given the observed predictor vector $x_0$. This very simple classifier is called the *Bayes classifier*. In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if $P(Y = j \mid X = x_0) &gt; 0.5$, and class two otherwise.</span>
+<span id="cb29-250"><a href="#cb29-250" aria-hidden="true" tabindex="-1"></a>is the largest. Note that the above formula is a *conditional probability*: it is the probability that $Y = j$, given the observed predictor vector $x_0$. This very simple classifier is called the *Bayes classifier*. It is super simple to calculate this:</span>
 <span id="cb29-251"><a href="#cb29-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-252"><a href="#cb29-252" aria-hidden="true" tabindex="-1"></a>Here is an example:</span>
+<span id="cb29-252"><a href="#cb29-252" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-bayes-classifier-calc.png)</span>{width="50%"}</span>
 <span id="cb29-253"><a href="#cb29-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-254"><a href="#cb29-254" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-bayes-classifier.png)</span>{width="50%"}</span>
+<span id="cb29-254"><a href="#cb29-254" aria-hidden="true" tabindex="-1"></a>In a two-class problem where there are only two possible response values, say class 1 or class 2, the Bayes classifier corresponds to predicting class one if $P(Y = j \mid X = x_0) &gt; 0.5$, and class two otherwise.</span>
 <span id="cb29-255"><a href="#cb29-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-256"><a href="#cb29-256" aria-hidden="true" tabindex="-1"></a>For each value of $X_1$ and $X_2$, there is a different probability of the response being orange or blue. Since this is simulated data, we know how the data were generated and we can calculate the conditional probabilities for each value of $X_1$ and $X_2$. The purple dashed line represents the points where the probability is exactly 50%. This is called the *Bayes decision boundary*.</span>
+<span id="cb29-256"><a href="#cb29-256" aria-hidden="true" tabindex="-1"></a>Here is an example:</span>
 <span id="cb29-257"><a href="#cb29-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-258"><a href="#cb29-258" aria-hidden="true" tabindex="-1"></a>The Bayes classifier produces the lowest possible test error rate, called the *Bayes error rate*. Since the Bayes classifier will always choose the class for which the above formula is largest, the error rate will be $1 − \text{max}_j \, P(Y = j \mid X = x_0)$ at $X = x_0$. In general, the overall Bayes error rate is given by</span>
+<span id="cb29-258"><a href="#cb29-258" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-bayes-classifier.png)</span>{width="50%"}</span>
 <span id="cb29-259"><a href="#cb29-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-260"><a href="#cb29-260" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb29-261"><a href="#cb29-261" aria-hidden="true" tabindex="-1"></a>1 - E\big(\underset{j}{\text{max}} \, P(Y = j \mid X)\big)</span>
-<span id="cb29-262"><a href="#cb29-262" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb29-260"><a href="#cb29-260" aria-hidden="true" tabindex="-1"></a>For each value of $X_1$ and $X_2$, there is a different probability of the response being orange or blue. Since this is simulated data, we know how the data were generated and we can calculate the conditional probabilities for each value of $X_1$ and $X_2$. The purple dashed line represents the points where the probability is exactly 50%. This is called the *Bayes decision boundary*.</span>
+<span id="cb29-261"><a href="#cb29-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-262"><a href="#cb29-262" aria-hidden="true" tabindex="-1"></a>The Bayes classifier produces the lowest possible test error rate, called the *Bayes error rate*. Since the Bayes classifier will always choose the class for which the above formula is largest, the error rate will be $1 − \text{max}_j \, P(Y = j \mid X = x_0)$ at $X = x_0$. In general, the overall Bayes error rate is given by</span>
 <span id="cb29-263"><a href="#cb29-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-264"><a href="#cb29-264" aria-hidden="true" tabindex="-1"></a>where the expectation averages the probability over all possible values of $X$. **The Bayes error rate is analogous to the irreducible error, discussed earlier.**</span>
-<span id="cb29-265"><a href="#cb29-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-266"><a href="#cb29-266" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ??? how does this work --&gt;</span></span>
+<span id="cb29-264"><a href="#cb29-264" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb29-265"><a href="#cb29-265" aria-hidden="true" tabindex="-1"></a>1 - E\big(\underset{j}{\text{max}} \, P(Y = j \mid X)\big)</span>
+<span id="cb29-266"><a href="#cb29-266" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb29-267"><a href="#cb29-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-268"><a href="#cb29-268" aria-hidden="true" tabindex="-1"></a>**$K$-Nearest neighbors**</span>
+<span id="cb29-268"><a href="#cb29-268" aria-hidden="true" tabindex="-1"></a>where the expectation averages the probability over all possible values of $X$. **The Bayes error rate is analogous to the irreducible error, discussed earlier.**</span>
 <span id="cb29-269"><a href="#cb29-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-270"><a href="#cb29-270" aria-hidden="true" tabindex="-1"></a>In theory we would always like to predict qualitative responses using the Bayes classifier. But for real data, we do not know the conditional distribution of $Y$ given $X$, and so computing the Bayes classifier is impossible. Therefore, the Bayes classifier serves as an unattainable gold standard against which to compare other methods.</span>
+<span id="cb29-270"><a href="#cb29-270" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ??? how does this work --&gt;</span></span>
 <span id="cb29-271"><a href="#cb29-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-272"><a href="#cb29-272" aria-hidden="true" tabindex="-1"></a>Many approaches attempt to estimate the conditional distribution of $Y$ given $X$, and then classify a given observation to the class with highest *estimated* probability. One such method is the *K-nearest neighbors* (KNN) classifier. Given a positive integer $K$ and a test observation $x_0$, the KNN classifier first identifies the $K$ points in the training data that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates the conditional probability for class $j$ as the fraction of points in $\cal{N}_0$ whose response values equal $j$:</span>
+<span id="cb29-272"><a href="#cb29-272" aria-hidden="true" tabindex="-1"></a>**$K$-Nearest neighbors**</span>
 <span id="cb29-273"><a href="#cb29-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-274"><a href="#cb29-274" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb29-275"><a href="#cb29-275" aria-hidden="true" tabindex="-1"></a>P(Y = j \mid X = x_0) = \frac{1}{K}\sum_{i \in \cal{N}_0} I(y_i = j)</span>
-<span id="cb29-276"><a href="#cb29-276" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb29-274"><a href="#cb29-274" aria-hidden="true" tabindex="-1"></a>In theory we would always like to predict qualitative responses using the Bayes classifier. But for real data, we do not know the conditional distribution of $Y$ given $X$, and so computing the Bayes classifier is impossible. Therefore, the Bayes classifier serves as an unattainable gold standard against which to compare other methods.</span>
+<span id="cb29-275"><a href="#cb29-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-276"><a href="#cb29-276" aria-hidden="true" tabindex="-1"></a>Many approaches attempt to estimate the conditional distribution of $Y$ given $X$, and then classify a given observation to the class with highest *estimated* probability. One such method is the *K-nearest neighbors* (KNN) classifier. Given a positive integer $K$ and a test observation $x_0$, the KNN classifier first identifies the $K$ points in the training data that are closest to $x_0$, represented by $\cal{N}_0$. It then estimates the conditional probability for class $j$ as the fraction of points in $\cal{N}_0$ whose response values equal $j$:</span>
 <span id="cb29-277"><a href="#cb29-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-278"><a href="#cb29-278" aria-hidden="true" tabindex="-1"></a>Finally, KNN classifies the test observation $x_0$ to the class with the largest probability from the equation above.</span>
-<span id="cb29-279"><a href="#cb29-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-280"><a href="#cb29-280" aria-hidden="true" tabindex="-1"></a>Here is an example of the KNN approach:</span>
+<span id="cb29-278"><a href="#cb29-278" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb29-279"><a href="#cb29-279" aria-hidden="true" tabindex="-1"></a>P(Y = j \mid X = x_0) = \frac{1}{K}\sum_{i \in \cal{N}_0} I(y_i = j)</span>
+<span id="cb29-280"><a href="#cb29-280" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb29-281"><a href="#cb29-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-282"><a href="#cb29-282" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn.png)</span>{width="50%"}</span>
+<span id="cb29-282"><a href="#cb29-282" aria-hidden="true" tabindex="-1"></a>Finally, KNN classifies the test observation $x_0$ to the class with the largest probability from the equation above.</span>
 <span id="cb29-283"><a href="#cb29-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-284"><a href="#cb29-284" aria-hidden="true" tabindex="-1"></a>Despite the fact that it is a very simple approach, KNN can often produce classifiers that are surprisingly close to the optimal Bayes classifier. Note that even though the true distribution is not known by the KNN classifier, the KNN decision boundary is very close to that of the Bayes classifier.</span>
+<span id="cb29-284"><a href="#cb29-284" aria-hidden="true" tabindex="-1"></a>Here is an example of the KNN approach:</span>
 <span id="cb29-285"><a href="#cb29-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-286"><a href="#cb29-286" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-2.png)</span>{width="50%"}</span>
+<span id="cb29-286"><a href="#cb29-286" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn.png)</span>{width="50%"}</span>
 <span id="cb29-287"><a href="#cb29-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-288"><a href="#cb29-288" aria-hidden="true" tabindex="-1"></a>However, the choice of $K$ has a drastic effect on the KNN classifier obtained.</span>
+<span id="cb29-288"><a href="#cb29-288" aria-hidden="true" tabindex="-1"></a>Despite the fact that it is a very simple approach, KNN can often produce classifiers that are surprisingly close to the optimal Bayes classifier. Note that even though the true distribution is not known by the KNN classifier, the KNN decision boundary is very close to that of the Bayes classifier.</span>
 <span id="cb29-289"><a href="#cb29-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-290"><a href="#cb29-290" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-3.png)</span>{width="50%"}</span>
+<span id="cb29-290"><a href="#cb29-290" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-2.png)</span>{width="50%"}</span>
 <span id="cb29-291"><a href="#cb29-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-292"><a href="#cb29-292" aria-hidden="true" tabindex="-1"></a>When $K = 1$, the decision boundary is overly flexible and finds patterns in the data that don’t correspond to the Bayes decision boundary. This corresponds to a classifier that has low bias but very high variance. As $K$ grows, the method becomes less flexible and produces a decision boundary that is close to linear. This corresponds to a low-variance but high-bias classifier.</span>
+<span id="cb29-292"><a href="#cb29-292" aria-hidden="true" tabindex="-1"></a>However, the choice of $K$ has a drastic effect on the KNN classifier obtained.</span>
 <span id="cb29-293"><a href="#cb29-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-294"><a href="#cb29-294" aria-hidden="true" tabindex="-1"></a>Just as in the regression setting, there is not a strong relationship between the training error rate and the test error rate. With $K = 1$, the KNN training error rate is 0, but the test error rate may be quite high. **In general, as we use more flexible classification methods, the training error rate will decline but the test error rate may not.**</span>
+<span id="cb29-294"><a href="#cb29-294" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-3.png)</span>{width="50%"}</span>
 <span id="cb29-295"><a href="#cb29-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-296"><a href="#cb29-296" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-results.png)</span>{width="50%"}</span>
+<span id="cb29-296"><a href="#cb29-296" aria-hidden="true" tabindex="-1"></a>When $K = 1$, the decision boundary is overly flexible and finds patterns in the data that don’t correspond to the Bayes decision boundary. This corresponds to a classifier that has low bias but very high variance. As $K$ grows, the method becomes less flexible and produces a decision boundary that is close to linear. This corresponds to a low-variance but high-bias classifier.</span>
 <span id="cb29-297"><a href="#cb29-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-298"><a href="#cb29-298" aria-hidden="true" tabindex="-1"></a>As $1/K$ increases, the method becomes more flexible. As in the regression setting, the training error rate consistently declines as the flexibility increases. However, the test error exhibits a characteristic U-shape, declining at first (with a minimum at approximately $K = 10$) before increasing again when the method becomes excessively flexible and overfits.</span>
+<span id="cb29-298"><a href="#cb29-298" aria-hidden="true" tabindex="-1"></a>Just as in the regression setting, there is not a strong relationship between the training error rate and the test error rate. With $K = 1$, the KNN training error rate is 0, but the test error rate may be quite high. **In general, as we use more flexible classification methods, the training error rate will decline but the test error rate may not.**</span>
 <span id="cb29-299"><a href="#cb29-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-300"><a href="#cb29-300" aria-hidden="true" tabindex="-1"></a>**In both the regression and classification settings, choosing the correct level of flexibility is critical to the success of any statistical learning method. The bias-variance trade-off, and the resulting U-shape in the test error, can make this a difficult task.**</span>
+<span id="cb29-300"><a href="#cb29-300" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-knn-results.png)</span>{width="50%"}</span>
 <span id="cb29-301"><a href="#cb29-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-302"><a href="#cb29-302" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lab</span></span>
+<span id="cb29-302"><a href="#cb29-302" aria-hidden="true" tabindex="-1"></a>As $1/K$ increases, the method becomes more flexible. As in the regression setting, the training error rate consistently declines as the flexibility increases. However, the test error exhibits a characteristic U-shape, declining at first (with a minimum at approximately $K = 10$) before increasing again when the method becomes excessively flexible and overfits.</span>
 <span id="cb29-303"><a href="#cb29-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-304"><a href="#cb29-304" aria-hidden="true" tabindex="-1"></a>&lt; just basic R commands &gt;</span>
+<span id="cb29-304"><a href="#cb29-304" aria-hidden="true" tabindex="-1"></a>**In both the regression and classification settings, choosing the correct level of flexibility is critical to the success of any statistical learning method. The bias-variance trade-off, and the resulting U-shape in the test error, can make this a difficult task.**</span>
 <span id="cb29-305"><a href="#cb29-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-306"><a href="#cb29-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb29-306"><a href="#cb29-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## Lab</span></span>
 <span id="cb29-307"><a href="#cb29-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-308"><a href="#cb29-308" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceptual</span></span>
+<span id="cb29-308"><a href="#cb29-308" aria-hidden="true" tabindex="-1"></a>&lt; just basic R commands &gt;</span>
 <span id="cb29-309"><a href="#cb29-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-310"><a href="#cb29-310" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
+<span id="cb29-310"><a href="#cb29-310" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb29-311"><a href="#cb29-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-312"><a href="#cb29-312" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; For each of parts (a) through (d), indicate whether we would generally expect the performance of a flexible statistical learning method to be better or worse than an inflexible method. Justify your answer.</span></span>
-<span id="cb29-313"><a href="#cb29-313" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb29-314"><a href="#cb29-314" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. The sample size $n$ is extremely large, and the number of predictors $p$ is small.</span></span>
+<span id="cb29-312"><a href="#cb29-312" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conceptual</span></span>
+<span id="cb29-313"><a href="#cb29-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-314"><a href="#cb29-314" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
 <span id="cb29-315"><a href="#cb29-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-316"><a href="#cb29-316" aria-hidden="true" tabindex="-1"></a>A flexible model will perform better than an inflexible model because there are ample degrees of freedom to estimate many parameters and still have many leftover for error df.</span>
-<span id="cb29-317"><a href="#cb29-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-318"><a href="#cb29-318" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. The number of predictors $p$ is extremely large, and the number of observations $n$ is small.</span></span>
+<span id="cb29-316"><a href="#cb29-316" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; For each of parts (a) through (d), indicate whether we would generally expect the performance of a flexible statistical learning method to be better or worse than an inflexible method. Justify your answer.</span></span>
+<span id="cb29-317"><a href="#cb29-317" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb29-318"><a href="#cb29-318" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. The sample size $n$ is extremely large, and the number of predictors $p$ is small.</span></span>
 <span id="cb29-319"><a href="#cb29-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-320"><a href="#cb29-320" aria-hidden="true" tabindex="-1"></a>An inflexible will be better because there is a high chance of some predictors being randomly associated.</span>
+<span id="cb29-320"><a href="#cb29-320" aria-hidden="true" tabindex="-1"></a>A flexible model will perform better than an inflexible model because there are ample degrees of freedom to estimate many parameters and still have many leftover for error df.</span>
 <span id="cb29-321"><a href="#cb29-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-322"><a href="#cb29-322" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. The relationship between the predictors and response is highly non-linear.</span></span>
+<span id="cb29-322"><a href="#cb29-322" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. The number of predictors $p$ is extremely large, and the number of observations $n$ is small.</span></span>
 <span id="cb29-323"><a href="#cb29-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-324"><a href="#cb29-324" aria-hidden="true" tabindex="-1"></a>A flexible model will perform better because it can pick up on the non-linear trends better.</span>
+<span id="cb29-324"><a href="#cb29-324" aria-hidden="true" tabindex="-1"></a>An inflexible will be better because there is a high chance of some predictors being randomly associated.</span>
 <span id="cb29-325"><a href="#cb29-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-326"><a href="#cb29-326" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; d. The variance of the error terms, i.e. $\sigma^2 = \text{Var}(\epsilon)$, is extremely high.</span></span>
+<span id="cb29-326"><a href="#cb29-326" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. The relationship between the predictors and response is highly non-linear.</span></span>
 <span id="cb29-327"><a href="#cb29-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-328"><a href="#cb29-328" aria-hidden="true" tabindex="-1"></a>Inflexible model will be better because the flexible model will pick up on the noise a lot better even though it is not related to the relationship to the $X$s.</span>
+<span id="cb29-328"><a href="#cb29-328" aria-hidden="true" tabindex="-1"></a>A flexible model will perform better because it can pick up on the non-linear trends better.</span>
 <span id="cb29-329"><a href="#cb29-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-330"><a href="#cb29-330" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
+<span id="cb29-330"><a href="#cb29-330" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; d. The variance of the error terms, i.e. $\sigma^2 = \text{Var}(\epsilon)$, is extremely high.</span></span>
 <span id="cb29-331"><a href="#cb29-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-332"><a href="#cb29-332" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Explain whether each scenario is a classification or regression problem, and indicate whether we are most interested in inference or prediction. Finally, provide $n$ and $p$.</span></span>
-<span id="cb29-333"><a href="#cb29-333" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb29-334"><a href="#cb29-334" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. We collect a set of data on the top 500 firms in the US. For each firm we record profit, number of employees, industry and the CEO salary. We are interested in understanding which factors affect CEO salary.</span></span>
+<span id="cb29-332"><a href="#cb29-332" aria-hidden="true" tabindex="-1"></a>Inflexible model will be better because the flexible model will pick up on the noise a lot better even though it is not related to the relationship to the $X$s.</span>
+<span id="cb29-333"><a href="#cb29-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-334"><a href="#cb29-334" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
 <span id="cb29-335"><a href="#cb29-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-336"><a href="#cb29-336" aria-hidden="true" tabindex="-1"></a>Regression; inference; $n = 500, p = 3$</span>
-<span id="cb29-337"><a href="#cb29-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-338"><a href="#cb29-338" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. We are considering launching a new product and wish to know whether it will be a success or a failure. We collect data on 20 similar products that were previously launched. For each product we have recorded whether it was a success or failure, price charged for the product, marketing budget, competition price, and ten other variables.</span></span>
+<span id="cb29-336"><a href="#cb29-336" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Explain whether each scenario is a classification or regression problem, and indicate whether we are most interested in inference or prediction. Finally, provide $n$ and $p$.</span></span>
+<span id="cb29-337"><a href="#cb29-337" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb29-338"><a href="#cb29-338" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. We collect a set of data on the top 500 firms in the US. For each firm we record profit, number of employees, industry and the CEO salary. We are interested in understanding which factors affect CEO salary.</span></span>
 <span id="cb29-339"><a href="#cb29-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-340"><a href="#cb29-340" aria-hidden="true" tabindex="-1"></a>Classification; prediction; $n = 20, p = 13$</span>
+<span id="cb29-340"><a href="#cb29-340" aria-hidden="true" tabindex="-1"></a>Regression; inference; $n = 500, p = 3$</span>
 <span id="cb29-341"><a href="#cb29-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-342"><a href="#cb29-342" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. We are interested in predicting the % change in the USD/Euro exchange rate in relation to the weekly changes in the world stock markets. Hence we collect weekly data for all of 2012. For each week we record the % change in the USD/Euro, the % change in the US market, the % change in the British market, and the % change in the German market.</span></span>
+<span id="cb29-342"><a href="#cb29-342" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. We are considering launching a new product and wish to know whether it will be a success or a failure. We collect data on 20 similar products that were previously launched. For each product we have recorded whether it was a success or failure, price charged for the product, marketing budget, competition price, and ten other variables.</span></span>
 <span id="cb29-343"><a href="#cb29-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-344"><a href="#cb29-344" aria-hidden="true" tabindex="-1"></a>Regression; prediction; $n = 52, p = 3$.</span>
+<span id="cb29-344"><a href="#cb29-344" aria-hidden="true" tabindex="-1"></a>Classification; prediction; $n = 20, p = 13$</span>
 <span id="cb29-345"><a href="#cb29-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-346"><a href="#cb29-346" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
+<span id="cb29-346"><a href="#cb29-346" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. We are interested in predicting the % change in the USD/Euro exchange rate in relation to the weekly changes in the world stock markets. Hence we collect weekly data for all of 2012. For each week we record the % change in the USD/Euro, the % change in the US market, the % change in the British market, and the % change in the German market.</span></span>
 <span id="cb29-347"><a href="#cb29-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-348"><a href="#cb29-348" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; We now revisit the bias-variance decomposition.</span></span>
-<span id="cb29-349"><a href="#cb29-349" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb29-350"><a href="#cb29-350" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Provide a sketch of typical (squared) bias, variance, training error, test error, and Bayes (or irreducible) error curves, on a single plot, as we go from less flexible statistical learning methods towards more flexible approaches. The x-axis should represent the amount of flexibility in the method, and the y-axis should represent the values for each curve. There should be five curves. Make sure to label each one.</span></span>
+<span id="cb29-348"><a href="#cb29-348" aria-hidden="true" tabindex="-1"></a>Regression; prediction; $n = 52, p = 3$.</span>
+<span id="cb29-349"><a href="#cb29-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-350"><a href="#cb29-350" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
 <span id="cb29-351"><a href="#cb29-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-352"><a href="#cb29-352" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-q3.png)</span></span>
-<span id="cb29-353"><a href="#cb29-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-354"><a href="#cb29-354" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Explain why each of the five curves has the shape displayed in part (a).</span></span>
+<span id="cb29-352"><a href="#cb29-352" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; We now revisit the bias-variance decomposition.</span></span>
+<span id="cb29-353"><a href="#cb29-353" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb29-354"><a href="#cb29-354" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Provide a sketch of typical (squared) bias, variance, training error, test error, and Bayes (or irreducible) error curves, on a single plot, as we go from less flexible statistical learning methods towards more flexible approaches. The x-axis should represent the amount of flexibility in the method, and the y-axis should represent the values for each curve. There should be five curves. Make sure to label each one.</span></span>
 <span id="cb29-355"><a href="#cb29-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-356"><a href="#cb29-356" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bias: Decreases until leveling off as flexibility increases (nears zero)</span>
+<span id="cb29-356"><a href="#cb29-356" aria-hidden="true" tabindex="-1"></a><span class="al">![](files/images/2-q3.png)</span></span>
 <span id="cb29-357"><a href="#cb29-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-358"><a href="#cb29-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variance: Increases faster as flexibility increases</span>
+<span id="cb29-358"><a href="#cb29-358" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Explain why each of the five curves has the shape displayed in part (a).</span></span>
 <span id="cb29-359"><a href="#cb29-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-360"><a href="#cb29-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bayes (irreducible error): Constant, unrelated to flexibility ($X$)</span>
+<span id="cb29-360"><a href="#cb29-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bias: Decreases until leveling off as flexibility increases (nears zero)</span>
 <span id="cb29-361"><a href="#cb29-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-362"><a href="#cb29-362" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Training error rate: Decrease monotonically as flexibility increases</span>
+<span id="cb29-362"><a href="#cb29-362" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variance: Increases faster as flexibility increases</span>
 <span id="cb29-363"><a href="#cb29-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-364"><a href="#cb29-364" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Testing error rate: U-shaped with minimum where bias and variance are simultaneously minimized</span>
+<span id="cb29-364"><a href="#cb29-364" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bayes (irreducible error): Constant, unrelated to flexibility ($X$)</span>
 <span id="cb29-365"><a href="#cb29-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-366"><a href="#cb29-366" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
+<span id="cb29-366"><a href="#cb29-366" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Training error rate: Decrease monotonically as flexibility increases</span>
 <span id="cb29-367"><a href="#cb29-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-368"><a href="#cb29-368" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; You will now think of some real-life applications for statistical learning.</span></span>
-<span id="cb29-369"><a href="#cb29-369" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb29-370"><a href="#cb29-370" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Describe three real-life applications in which classification might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.</span></span>
+<span id="cb29-368"><a href="#cb29-368" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Testing error rate: U-shaped with minimum where bias and variance are simultaneously minimized</span>
+<span id="cb29-369"><a href="#cb29-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-370"><a href="#cb29-370" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
 <span id="cb29-371"><a href="#cb29-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-372"><a href="#cb29-372" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Insurance, predict whether a policyholder will have a claim or not. Response is binary, predictors are variables such as credit score, age of business, type of business, etc. Goal is prediction, want to see if a new customer is likely to have a claim.</span>
-<span id="cb29-373"><a href="#cb29-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-374"><a href="#cb29-374" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>&lt; good enough &gt;</span>
+<span id="cb29-372"><a href="#cb29-372" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; You will now think of some real-life applications for statistical learning.</span></span>
+<span id="cb29-373"><a href="#cb29-373" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb29-374"><a href="#cb29-374" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Describe three real-life applications in which classification might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.</span></span>
 <span id="cb29-375"><a href="#cb29-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-376"><a href="#cb29-376" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Describe three real-life applications in which regression might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.</span></span>
+<span id="cb29-376"><a href="#cb29-376" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Insurance, predict whether a policyholder will have a claim or not. Response is binary, predictors are variables such as credit score, age of business, type of business, etc. Goal is prediction, want to see if a new customer is likely to have a claim.</span>
 <span id="cb29-377"><a href="#cb29-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-378"><a href="#cb29-378" aria-hidden="true" tabindex="-1"></a>Insurance, predict the amount of a claim. Response is claim size in dollars, same predictors as in a.</span>
+<span id="cb29-378"><a href="#cb29-378" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>&lt; good enough &gt;</span>
 <span id="cb29-379"><a href="#cb29-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-380"><a href="#cb29-380" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. Describe three real-life applications in which cluster analysis might be useful.</span></span>
+<span id="cb29-380"><a href="#cb29-380" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. Describe three real-life applications in which regression might be useful. Describe the response, as well as the predictors. Is the goal of each application inference or prediction? Explain your answer.</span></span>
 <span id="cb29-381"><a href="#cb29-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-382"><a href="#cb29-382" aria-hidden="true" tabindex="-1"></a>Insurance, determining if a business is low, medium or high risk. Same predictors as a.</span>
+<span id="cb29-382"><a href="#cb29-382" aria-hidden="true" tabindex="-1"></a>Insurance, predict the amount of a claim. Response is claim size in dollars, same predictors as in a.</span>
 <span id="cb29-383"><a href="#cb29-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-384"><a href="#cb29-384" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 5</span></span>
+<span id="cb29-384"><a href="#cb29-384" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. Describe three real-life applications in which cluster analysis might be useful.</span></span>
 <span id="cb29-385"><a href="#cb29-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-386"><a href="#cb29-386" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; What are the advantages and disadvantages of a very flexible (versus a less flexible) approach for regression or classification? Under what circumstances might a more flexible approach be preferred to a less flexible approach? When might a less flexible approach be preferred?</span></span>
+<span id="cb29-386"><a href="#cb29-386" aria-hidden="true" tabindex="-1"></a>Insurance, determining if a business is low, medium or high risk. Same predictors as a.</span>
 <span id="cb29-387"><a href="#cb29-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-388"><a href="#cb29-388" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Flexible models can pick up on non-linear patterns in regression and are more useful in prediction when we are only concerned with accuracy, especially with large $n$; and they are less biased, however more variable. A less flexible approach is better for inference when we want to understand the relationship(s) between $Y$ and $X$; more bias, but less variable.</span>
+<span id="cb29-388"><a href="#cb29-388" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 5</span></span>
 <span id="cb29-389"><a href="#cb29-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-390"><a href="#cb29-390" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 6</span></span>
+<span id="cb29-390"><a href="#cb29-390" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; What are the advantages and disadvantages of a very flexible (versus a less flexible) approach for regression or classification? Under what circumstances might a more flexible approach be preferred to a less flexible approach? When might a less flexible approach be preferred?</span></span>
 <span id="cb29-391"><a href="#cb29-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-392"><a href="#cb29-392" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Describe the differences between a parametric and a non-parametric statistical learning approach. What are the advantages of a parametric approach to regression or classification (as opposed to a non-parametric approach)? What are its disadvantages?</span></span>
+<span id="cb29-392"><a href="#cb29-392" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Flexible models can pick up on non-linear patterns in regression and are more useful in prediction when we are only concerned with accuracy, especially with large $n$; and they are less biased, however more variable. A less flexible approach is better for inference when we want to understand the relationship(s) between $Y$ and $X$; more bias, but less variable.</span>
 <span id="cb29-393"><a href="#cb29-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-394"><a href="#cb29-394" aria-hidden="true" tabindex="-1"></a>Parametric approach assumes a functional form of the response and one needs to only estimate parameters, which is a simpler task. And because of the assumption, the model is more interpretable. However a non-parametric method just fits the data as best as possible. Non-parametric methods can be less biased, but are more variable, especially as the complexity increases and more data is needed because of the more parameters being estimated.</span>
+<span id="cb29-394"><a href="#cb29-394" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 6</span></span>
 <span id="cb29-395"><a href="#cb29-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-396"><a href="#cb29-396" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 7</span></span>
+<span id="cb29-396"><a href="#cb29-396" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Describe the differences between a parametric and a non-parametric statistical learning approach. What are the advantages of a parametric approach to regression or classification (as opposed to a non-parametric approach)? What are its disadvantages?</span></span>
 <span id="cb29-397"><a href="#cb29-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-398"><a href="#cb29-398" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The table below provides a training data set containing six observations, three predictors, and one qualitative response variable.</span></span>
-<span id="cb29-399"><a href="#cb29-399" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-400"><a href="#cb29-400" aria-hidden="true" tabindex="-1"></a> <span class="al">![](files/images/2-ex-7-table.png)</span>{width="50%"}</span>
+<span id="cb29-398"><a href="#cb29-398" aria-hidden="true" tabindex="-1"></a>Parametric approach assumes a functional form of the response and one needs to only estimate parameters, which is a simpler task. And because of the assumption, the model is more interpretable. However a non-parametric method just fits the data as best as possible. Non-parametric methods can be less biased, but are more variable, especially as the complexity increases and more data is needed because of the more parameters being estimated.</span>
+<span id="cb29-399"><a href="#cb29-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-400"><a href="#cb29-400" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 7</span></span>
 <span id="cb29-401"><a href="#cb29-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-402"><a href="#cb29-402" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-403"><a href="#cb29-403" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose we wish to use this data set to make a prediction for $Y$ when $X_1 = X_2 = X_3 = 0$ using $K$-nearest neighbors.</span></span>
-<span id="cb29-404"><a href="#cb29-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-405"><a href="#cb29-405" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Compute the Euclidean distance between each observation and the test point, $X_1 = X_2 = X_3 = 0$.</span></span>
-<span id="cb29-406"><a href="#cb29-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-409"><a href="#cb29-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-410"><a href="#cb29-410" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb29-411"><a href="#cb29-411" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb29-412"><a href="#cb29-412" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb29-413"><a href="#cb29-413" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb29-414"><a href="#cb29-414" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb29-415"><a href="#cb29-415" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Red"</span>, <span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Green"</span>, <span class="st">"Red"</span>)</span>
-<span id="cb29-416"><a href="#cb29-416" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-417"><a href="#cb29-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-418"><a href="#cb29-418" aria-hidden="true" tabindex="-1"></a><span class="co"># define function to calculate euclidean distance </span></span>
-<span id="cb29-419"><a href="#cb29-419" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; sum function calculates the sum of the squares of absolute difference between  corresponding elements of vec_1 and vec_2 </span></span>
-<span id="cb29-420"><a href="#cb29-420" aria-hidden="true" tabindex="-1"></a>calc_euc_dist <span class="ot">&lt;-</span> <span class="cf">function</span>(vec_1, vec_2) {</span>
-<span id="cb29-421"><a href="#cb29-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subtract</span>(vec_1, vec_2) <span class="sc">%&gt;%</span> <span class="fu">raise_to_power</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> sqrt</span>
-<span id="cb29-422"><a href="#cb29-422" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb29-423"><a href="#cb29-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-424"><a href="#cb29-424" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate euclidean distance for each observation</span></span>
-<span id="cb29-425"><a href="#cb29-425" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb29-426"><a href="#cb29-426" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-427"><a href="#cb29-427" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euc_dist =</span> <span class="fu">calc_euc_dist</span>(<span class="fu">c</span>(x1, x2, x3), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>)),</span>
-<span id="cb29-428"><a href="#cb29-428" aria-hidden="true" tabindex="-1"></a>         <span class="at">.keep =</span> <span class="st">"none"</span>)</span>
-<span id="cb29-429"><a href="#cb29-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-430"><a href="#cb29-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-431"><a href="#cb29-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-432"><a href="#cb29-432" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. What is our prediction with K = 1? Why?</span></span>
+<span id="cb29-402"><a href="#cb29-402" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The table below provides a training data set containing six observations, three predictors, and one qualitative response variable.</span></span>
+<span id="cb29-403"><a href="#cb29-403" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-404"><a href="#cb29-404" aria-hidden="true" tabindex="-1"></a> <span class="al">![](files/images/2-ex-7-table.png)</span>{width="50%"}</span>
+<span id="cb29-405"><a href="#cb29-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-406"><a href="#cb29-406" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-407"><a href="#cb29-407" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose we wish to use this data set to make a prediction for $Y$ when $X_1 = X_2 = X_3 = 0$ using $K$-nearest neighbors.</span></span>
+<span id="cb29-408"><a href="#cb29-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-409"><a href="#cb29-409" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; a. Compute the Euclidean distance between each observation and the test point, $X_1 = X_2 = X_3 = 0$.</span></span>
+<span id="cb29-410"><a href="#cb29-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-413"><a href="#cb29-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-414"><a href="#cb29-414" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb29-415"><a href="#cb29-415" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-416"><a href="#cb29-416" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb29-417"><a href="#cb29-417" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb29-418"><a href="#cb29-418" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb29-419"><a href="#cb29-419" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Red"</span>, <span class="st">"Red"</span>, <span class="st">"Green"</span>, <span class="st">"Green"</span>, <span class="st">"Red"</span>)</span>
+<span id="cb29-420"><a href="#cb29-420" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-421"><a href="#cb29-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-422"><a href="#cb29-422" aria-hidden="true" tabindex="-1"></a><span class="co"># define function to calculate euclidean distance </span></span>
+<span id="cb29-423"><a href="#cb29-423" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; sum function calculates the sum of the squares of absolute difference between  corresponding elements of vec_1 and vec_2 </span></span>
+<span id="cb29-424"><a href="#cb29-424" aria-hidden="true" tabindex="-1"></a>calc_euc_dist <span class="ot">&lt;-</span> <span class="cf">function</span>(vec_1, vec_2) {</span>
+<span id="cb29-425"><a href="#cb29-425" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subtract</span>(vec_1, vec_2) <span class="sc">%&gt;%</span> <span class="fu">raise_to_power</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span> sum <span class="sc">%&gt;%</span> sqrt</span>
+<span id="cb29-426"><a href="#cb29-426" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb29-427"><a href="#cb29-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-428"><a href="#cb29-428" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate euclidean distance for each observation</span></span>
+<span id="cb29-429"><a href="#cb29-429" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb29-430"><a href="#cb29-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-431"><a href="#cb29-431" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euc_dist =</span> <span class="fu">calc_euc_dist</span>(<span class="fu">c</span>(x1, x2, x3), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>)),</span>
+<span id="cb29-432"><a href="#cb29-432" aria-hidden="true" tabindex="-1"></a>         <span class="at">.keep =</span> <span class="st">"none"</span>)</span>
 <span id="cb29-433"><a href="#cb29-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-436"><a href="#cb29-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-437"><a href="#cb29-437" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb29-438"><a href="#cb29-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-439"><a href="#cb29-439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euc_dist =</span> <span class="fu">calc_euc_dist</span>(<span class="fu">c</span>(x1, x2, x3), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>)),</span>
-<span id="cb29-440"><a href="#cb29-440" aria-hidden="true" tabindex="-1"></a>         <span class="at">.keep =</span> <span class="st">"unused"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-441"><a href="#cb29-441" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-442"><a href="#cb29-442" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">order_by =</span> euc_dist, <span class="at">n =</span> <span class="dv">1</span>)</span>
-<span id="cb29-443"><a href="#cb29-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-444"><a href="#cb29-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-445"><a href="#cb29-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-446"><a href="#cb29-446" aria-hidden="true" tabindex="-1"></a>Green is our prediction</span>
+<span id="cb29-434"><a href="#cb29-434" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-435"><a href="#cb29-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-436"><a href="#cb29-436" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; b. What is our prediction with K = 1? Why?</span></span>
+<span id="cb29-437"><a href="#cb29-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-440"><a href="#cb29-440" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-441"><a href="#cb29-441" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb29-442"><a href="#cb29-442" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-443"><a href="#cb29-443" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euc_dist =</span> <span class="fu">calc_euc_dist</span>(<span class="fu">c</span>(x1, x2, x3), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>)),</span>
+<span id="cb29-444"><a href="#cb29-444" aria-hidden="true" tabindex="-1"></a>         <span class="at">.keep =</span> <span class="st">"unused"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-445"><a href="#cb29-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-446"><a href="#cb29-446" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">order_by =</span> euc_dist, <span class="at">n =</span> <span class="dv">1</span>)</span>
 <span id="cb29-447"><a href="#cb29-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-448"><a href="#cb29-448" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. What is our prediction with K = 3? Why?</span></span>
+<span id="cb29-448"><a href="#cb29-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb29-449"><a href="#cb29-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-450"><a href="#cb29-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-453"><a href="#cb29-453" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-454"><a href="#cb29-454" aria-hidden="true" tabindex="-1"></a><span class="co"># turn above into a function</span></span>
-<span id="cb29-455"><a href="#cb29-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-456"><a href="#cb29-456" aria-hidden="true" tabindex="-1"></a><span class="co"># define function to do KNN prediction for a particular test point</span></span>
-<span id="cb29-457"><a href="#cb29-457" aria-hidden="true" tabindex="-1"></a>algorithm_knn <span class="ot">&lt;-</span> <span class="cf">function</span>(df, y, x0, <span class="at">k =</span> <span class="dv">1</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb29-458"><a href="#cb29-458" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-459"><a href="#cb29-459" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get column names</span></span>
-<span id="cb29-460"><a href="#cb29-460" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">=</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb29-461"><a href="#cb29-461" aria-hidden="true" tabindex="-1"></a>    colnames</span>
-<span id="cb29-462"><a href="#cb29-462" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-463"><a href="#cb29-463" aria-hidden="true" tabindex="-1"></a>  <span class="co"># standardized column names</span></span>
-<span id="cb29-464"><a href="#cb29-464" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -&gt; place response variable first and renamed</span></span>
-<span id="cb29-465"><a href="#cb29-465" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -&gt; followed by explanatory variables renamed x1, x2, ... (unnecessary)</span></span>
-<span id="cb29-466"><a href="#cb29-466" aria-hidden="true" tabindex="-1"></a>  df_z <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb29-467"><a href="#cb29-467" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">y =</span> <span class="fu">any_of</span>(y), <span class="fu">any_of</span>(nms[<span class="fu">which</span>(nms <span class="sc">!=</span> y)])) <span class="co">#%&gt;% </span></span>
-<span id="cb29-468"><a href="#cb29-468" aria-hidden="true" tabindex="-1"></a>    <span class="co">#rename_with(~ paste0("x", 1:(ncol(df)-1)), .cols = any_of(nms[which(nms != y)]))</span></span>
-<span id="cb29-469"><a href="#cb29-469" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb29-470"><a href="#cb29-470" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate euclidean distances</span></span>
-<span id="cb29-471"><a href="#cb29-471" aria-hidden="true" tabindex="-1"></a>  euc_dist <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb29-472"><a href="#cb29-472" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_z)) {</span>
-<span id="cb29-473"><a href="#cb29-473" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-474"><a href="#cb29-474" aria-hidden="true" tabindex="-1"></a>    euc_dist[i] <span class="ot">=</span> <span class="fu">calc_euc_dist</span>(<span class="fu">as.vector</span>(df_z[i, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(df_z)], <span class="at">mode =</span> <span class="st">"double"</span>), x0) </span>
-<span id="cb29-475"><a href="#cb29-475" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-476"><a href="#cb29-476" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb29-477"><a href="#cb29-477" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-478"><a href="#cb29-478" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create dataframe of results</span></span>
-<span id="cb29-479"><a href="#cb29-479" aria-hidden="true" tabindex="-1"></a>  df_dist <span class="ot">=</span> df_z <span class="sc">%&gt;%</span> </span>
-<span id="cb29-480"><a href="#cb29-480" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(y) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-481"><a href="#cb29-481" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_cols</span>(<span class="at">euc_dist =</span> euc_dist)</span>
-<span id="cb29-482"><a href="#cb29-482" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-483"><a href="#cb29-483" aria-hidden="true" tabindex="-1"></a>  <span class="co"># display results</span></span>
-<span id="cb29-484"><a href="#cb29-484" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> df_dist <span class="sc">%&gt;%</span> </span>
-<span id="cb29-485"><a href="#cb29-485" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_min</span>(<span class="at">order_by =</span> euc_dist, <span class="at">n =</span> k) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-486"><a href="#cb29-486" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> y, </span>
-<span id="cb29-487"><a href="#cb29-487" aria-hidden="true" tabindex="-1"></a>              <span class="at">est_prob =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(.))</span>
-<span id="cb29-488"><a href="#cb29-488" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-489"><a href="#cb29-489" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conditionally simplify results</span></span>
-<span id="cb29-490"><a href="#cb29-490" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(final_result) {</span>
-<span id="cb29-491"><a href="#cb29-491" aria-hidden="true" tabindex="-1"></a>    results <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb29-492"><a href="#cb29-492" aria-hidden="true" tabindex="-1"></a>      <span class="fu">slice_min</span>(<span class="at">order_by =</span> est_prob) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-493"><a href="#cb29-493" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(y) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-494"><a href="#cb29-494" aria-hidden="true" tabindex="-1"></a>      as.character</span>
-<span id="cb29-495"><a href="#cb29-495" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb29-496"><a href="#cb29-496" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-497"><a href="#cb29-497" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb29-498"><a href="#cb29-498" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-499"><a href="#cb29-499" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-500"><a href="#cb29-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-501"><a href="#cb29-501" aria-hidden="true" tabindex="-1"></a><span class="co"># test function on K = 1</span></span>
-<span id="cb29-502"><a href="#cb29-502" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">1</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb29-503"><a href="#cb29-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-504"><a href="#cb29-504" aria-hidden="true" tabindex="-1"></a><span class="co"># now for K = 3</span></span>
-<span id="cb29-505"><a href="#cb29-505" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb29-506"><a href="#cb29-506" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-450"><a href="#cb29-450" aria-hidden="true" tabindex="-1"></a>Green is our prediction</span>
+<span id="cb29-451"><a href="#cb29-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-452"><a href="#cb29-452" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; c. What is our prediction with K = 3? Why?</span></span>
+<span id="cb29-453"><a href="#cb29-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-454"><a href="#cb29-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-457"><a href="#cb29-457" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-458"><a href="#cb29-458" aria-hidden="true" tabindex="-1"></a><span class="co"># turn above into a function</span></span>
+<span id="cb29-459"><a href="#cb29-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-460"><a href="#cb29-460" aria-hidden="true" tabindex="-1"></a><span class="co"># define function to do KNN prediction for a particular test point</span></span>
+<span id="cb29-461"><a href="#cb29-461" aria-hidden="true" tabindex="-1"></a>algorithm_knn <span class="ot">&lt;-</span> <span class="cf">function</span>(df, y, x0, <span class="at">k =</span> <span class="dv">1</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb29-462"><a href="#cb29-462" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-463"><a href="#cb29-463" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get column names</span></span>
+<span id="cb29-464"><a href="#cb29-464" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">=</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb29-465"><a href="#cb29-465" aria-hidden="true" tabindex="-1"></a>    colnames</span>
+<span id="cb29-466"><a href="#cb29-466" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-467"><a href="#cb29-467" aria-hidden="true" tabindex="-1"></a>  <span class="co"># standardized column names</span></span>
+<span id="cb29-468"><a href="#cb29-468" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -&gt; place response variable first and renamed</span></span>
+<span id="cb29-469"><a href="#cb29-469" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -&gt; followed by explanatory variables renamed x1, x2, ... (unnecessary)</span></span>
+<span id="cb29-470"><a href="#cb29-470" aria-hidden="true" tabindex="-1"></a>  df_z <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb29-471"><a href="#cb29-471" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">y =</span> <span class="fu">any_of</span>(y), <span class="fu">any_of</span>(nms[<span class="fu">which</span>(nms <span class="sc">!=</span> y)])) <span class="co">#%&gt;% </span></span>
+<span id="cb29-472"><a href="#cb29-472" aria-hidden="true" tabindex="-1"></a>    <span class="co">#rename_with(~ paste0("x", 1:(ncol(df)-1)), .cols = any_of(nms[which(nms != y)]))</span></span>
+<span id="cb29-473"><a href="#cb29-473" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb29-474"><a href="#cb29-474" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate euclidean distances</span></span>
+<span id="cb29-475"><a href="#cb29-475" aria-hidden="true" tabindex="-1"></a>  euc_dist <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb29-476"><a href="#cb29-476" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_z)) {</span>
+<span id="cb29-477"><a href="#cb29-477" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-478"><a href="#cb29-478" aria-hidden="true" tabindex="-1"></a>    euc_dist[i] <span class="ot">=</span> <span class="fu">calc_euc_dist</span>(<span class="fu">as.vector</span>(df_z[i, <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(df_z)], <span class="at">mode =</span> <span class="st">"double"</span>), x0) </span>
+<span id="cb29-479"><a href="#cb29-479" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-480"><a href="#cb29-480" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-481"><a href="#cb29-481" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-482"><a href="#cb29-482" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create dataframe of results</span></span>
+<span id="cb29-483"><a href="#cb29-483" aria-hidden="true" tabindex="-1"></a>  df_dist <span class="ot">=</span> df_z <span class="sc">%&gt;%</span> </span>
+<span id="cb29-484"><a href="#cb29-484" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(y) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-485"><a href="#cb29-485" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_cols</span>(<span class="at">euc_dist =</span> euc_dist)</span>
+<span id="cb29-486"><a href="#cb29-486" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-487"><a href="#cb29-487" aria-hidden="true" tabindex="-1"></a>  <span class="co"># display results</span></span>
+<span id="cb29-488"><a href="#cb29-488" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> df_dist <span class="sc">%&gt;%</span> </span>
+<span id="cb29-489"><a href="#cb29-489" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_min</span>(<span class="at">order_by =</span> euc_dist, <span class="at">n =</span> k) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-490"><a href="#cb29-490" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> y, </span>
+<span id="cb29-491"><a href="#cb29-491" aria-hidden="true" tabindex="-1"></a>              <span class="at">est_prob =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(.))</span>
+<span id="cb29-492"><a href="#cb29-492" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-493"><a href="#cb29-493" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conditionally simplify results</span></span>
+<span id="cb29-494"><a href="#cb29-494" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(final_result) {</span>
+<span id="cb29-495"><a href="#cb29-495" aria-hidden="true" tabindex="-1"></a>    results <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb29-496"><a href="#cb29-496" aria-hidden="true" tabindex="-1"></a>      <span class="fu">slice_min</span>(<span class="at">order_by =</span> est_prob) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-497"><a href="#cb29-497" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(y) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-498"><a href="#cb29-498" aria-hidden="true" tabindex="-1"></a>      as.character</span>
+<span id="cb29-499"><a href="#cb29-499" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-500"><a href="#cb29-500" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-501"><a href="#cb29-501" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb29-502"><a href="#cb29-502" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-503"><a href="#cb29-503" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-504"><a href="#cb29-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-505"><a href="#cb29-505" aria-hidden="true" tabindex="-1"></a><span class="co"># test function on K = 1</span></span>
+<span id="cb29-506"><a href="#cb29-506" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">1</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb29-507"><a href="#cb29-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-508"><a href="#cb29-508" aria-hidden="true" tabindex="-1"></a><span class="co"># test a set of points</span></span>
-<span id="cb29-509"><a href="#cb29-509" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb29-510"><a href="#cb29-510" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>),</span>
-<span id="cb29-511"><a href="#cb29-511" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>),</span>
-<span id="cb29-512"><a href="#cb29-512" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>)</span>
-<span id="cb29-513"><a href="#cb29-513" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-514"><a href="#cb29-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-515"><a href="#cb29-515" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb29-516"><a href="#cb29-516" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x0)) {</span>
-<span id="cb29-517"><a href="#cb29-517" aria-hidden="true" tabindex="-1"></a>  results[i] <span class="ot">=</span> <span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> x0[i,], <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb29-518"><a href="#cb29-518" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-519"><a href="#cb29-519" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb29-520"><a href="#cb29-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-521"><a href="#cb29-521" aria-hidden="true" tabindex="-1"></a><span class="co"># note if results include a vector of two classes, then there was a tie. Not sure how to break ties, but could research and code something...</span></span>
-<span id="cb29-522"><a href="#cb29-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-523"><a href="#cb29-523" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-508"><a href="#cb29-508" aria-hidden="true" tabindex="-1"></a><span class="co"># now for K = 3</span></span>
+<span id="cb29-509"><a href="#cb29-509" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-510"><a href="#cb29-510" aria-hidden="true" tabindex="-1"></a><span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>), <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-511"><a href="#cb29-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-512"><a href="#cb29-512" aria-hidden="true" tabindex="-1"></a><span class="co"># test a set of points</span></span>
+<span id="cb29-513"><a href="#cb29-513" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-514"><a href="#cb29-514" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>),</span>
+<span id="cb29-515"><a href="#cb29-515" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>),</span>
+<span id="cb29-516"><a href="#cb29-516" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> extraDistr<span class="sc">::</span><span class="fu">rdunif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3</span>)</span>
+<span id="cb29-517"><a href="#cb29-517" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-518"><a href="#cb29-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-519"><a href="#cb29-519" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb29-520"><a href="#cb29-520" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x0)) {</span>
+<span id="cb29-521"><a href="#cb29-521" aria-hidden="true" tabindex="-1"></a>  results[i] <span class="ot">=</span> <span class="fu">algorithm_knn</span>(df, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">x0 =</span> x0[i,], <span class="at">k =</span> <span class="dv">3</span>, <span class="at">final_result =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-522"><a href="#cb29-522" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-523"><a href="#cb29-523" aria-hidden="true" tabindex="-1"></a>results</span>
 <span id="cb29-524"><a href="#cb29-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-525"><a href="#cb29-525" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; d. If the Bayes decision boundary in this problem is highly non- linear, then would we expect the best value for K to be large or small? Why?</span></span>
+<span id="cb29-525"><a href="#cb29-525" aria-hidden="true" tabindex="-1"></a><span class="co"># note if results include a vector of two classes, then there was a tie. Not sure how to break ties, but could research and code something...</span></span>
 <span id="cb29-526"><a href="#cb29-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-527"><a href="#cb29-527" aria-hidden="true" tabindex="-1"></a>Small so that the model is more flexible (high $k$ leads to linear boundaries due to averaging).</span>
+<span id="cb29-527"><a href="#cb29-527" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb29-528"><a href="#cb29-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-529"><a href="#cb29-529" aria-hidden="true" tabindex="-1"></a><span class="fu">### Applied</span></span>
+<span id="cb29-529"><a href="#cb29-529" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; d. If the Bayes decision boundary in this problem is highly non- linear, then would we expect the best value for K to be large or small? Why?</span></span>
 <span id="cb29-530"><a href="#cb29-530" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-531"><a href="#cb29-531" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 8</span></span>
+<span id="cb29-531"><a href="#cb29-531" aria-hidden="true" tabindex="-1"></a>Small so that the model is more flexible (high $k$ leads to linear boundaries due to averaging).</span>
 <span id="cb29-532"><a href="#cb29-532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-535"><a href="#cb29-535" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-536"><a href="#cb29-536" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb29-537"><a href="#cb29-537" aria-hidden="true" tabindex="-1"></a>data_college <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>College</span>
-<span id="cb29-538"><a href="#cb29-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-539"><a href="#cb29-539" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize numeric variables</span></span>
-<span id="cb29-540"><a href="#cb29-540" aria-hidden="true" tabindex="-1"></a>data_college <span class="sc">%&gt;%</span> </span>
-<span id="cb29-541"><a href="#cb29-541" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-542"><a href="#cb29-542" aria-hidden="true" tabindex="-1"></a>  summary</span>
-<span id="cb29-543"><a href="#cb29-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-544"><a href="#cb29-544" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot matrix</span></span>
-<span id="cb29-545"><a href="#cb29-545" aria-hidden="true" tabindex="-1"></a>data_college[, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">%&gt;%</span> pairs</span>
-<span id="cb29-546"><a href="#cb29-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-547"><a href="#cb29-547" aria-hidden="true" tabindex="-1"></a><span class="co"># side-by-side boxplots</span></span>
-<span id="cb29-548"><a href="#cb29-548" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Outstate <span class="sc">~</span> Private, <span class="at">data =</span> data_college)</span>
-<span id="cb29-549"><a href="#cb29-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-550"><a href="#cb29-550" aria-hidden="true" tabindex="-1"></a><span class="co"># create new variable and summarize</span></span>
-<span id="cb29-551"><a href="#cb29-551" aria-hidden="true" tabindex="-1"></a>data_college <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb29-552"><a href="#cb29-552" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Elite =</span> <span class="fu">case_when</span>(</span>
-<span id="cb29-553"><a href="#cb29-553" aria-hidden="true" tabindex="-1"></a>    Top10perc <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb29-554"><a href="#cb29-554" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"No"</span></span>
-<span id="cb29-555"><a href="#cb29-555" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb29-556"><a href="#cb29-556" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_college<span class="sc">$</span>Elite)</span>
-<span id="cb29-557"><a href="#cb29-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-558"><a href="#cb29-558" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-559"><a href="#cb29-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-560"><a href="#cb29-560" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 9</span></span>
+<span id="cb29-533"><a href="#cb29-533" aria-hidden="true" tabindex="-1"></a><span class="fu">### Applied</span></span>
+<span id="cb29-534"><a href="#cb29-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-535"><a href="#cb29-535" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 8</span></span>
+<span id="cb29-536"><a href="#cb29-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-539"><a href="#cb29-539" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-540"><a href="#cb29-540" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb29-541"><a href="#cb29-541" aria-hidden="true" tabindex="-1"></a>data_college <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>College</span>
+<span id="cb29-542"><a href="#cb29-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-543"><a href="#cb29-543" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize numeric variables</span></span>
+<span id="cb29-544"><a href="#cb29-544" aria-hidden="true" tabindex="-1"></a>data_college <span class="sc">%&gt;%</span> </span>
+<span id="cb29-545"><a href="#cb29-545" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-546"><a href="#cb29-546" aria-hidden="true" tabindex="-1"></a>  summary</span>
+<span id="cb29-547"><a href="#cb29-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-548"><a href="#cb29-548" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot matrix</span></span>
+<span id="cb29-549"><a href="#cb29-549" aria-hidden="true" tabindex="-1"></a>data_college[, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">%&gt;%</span> pairs</span>
+<span id="cb29-550"><a href="#cb29-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-551"><a href="#cb29-551" aria-hidden="true" tabindex="-1"></a><span class="co"># side-by-side boxplots</span></span>
+<span id="cb29-552"><a href="#cb29-552" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Outstate <span class="sc">~</span> Private, <span class="at">data =</span> data_college)</span>
+<span id="cb29-553"><a href="#cb29-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-554"><a href="#cb29-554" aria-hidden="true" tabindex="-1"></a><span class="co"># create new variable and summarize</span></span>
+<span id="cb29-555"><a href="#cb29-555" aria-hidden="true" tabindex="-1"></a>data_college <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb29-556"><a href="#cb29-556" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Elite =</span> <span class="fu">case_when</span>(</span>
+<span id="cb29-557"><a href="#cb29-557" aria-hidden="true" tabindex="-1"></a>    Top10perc <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb29-558"><a href="#cb29-558" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="st">"No"</span></span>
+<span id="cb29-559"><a href="#cb29-559" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb29-560"><a href="#cb29-560" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_college<span class="sc">$</span>Elite)</span>
 <span id="cb29-561"><a href="#cb29-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-564"><a href="#cb29-564" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-565"><a href="#cb29-565" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb29-566"><a href="#cb29-566" aria-hidden="true" tabindex="-1"></a>data_auto <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Auto </span>
-<span id="cb29-567"><a href="#cb29-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-568"><a href="#cb29-568" aria-hidden="true" tabindex="-1"></a><span class="co"># determine variable types</span></span>
-<span id="cb29-569"><a href="#cb29-569" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(class)</span>
-<span id="cb29-570"><a href="#cb29-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-571"><a href="#cb29-571" aria-hidden="true" tabindex="-1"></a><span class="co"># find range of each quantitative predictor</span></span>
-<span id="cb29-572"><a href="#cb29-572" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
-<span id="cb29-573"><a href="#cb29-573" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-574"><a href="#cb29-574" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(.), range))</span>
-<span id="cb29-575"><a href="#cb29-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-576"><a href="#cb29-576" aria-hidden="true" tabindex="-1"></a><span class="co"># find mean and st dev of each quantitative predictor</span></span>
-<span id="cb29-577"><a href="#cb29-577" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; then format nicely</span></span>
-<span id="cb29-578"><a href="#cb29-578" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
-<span id="cb29-579"><a href="#cb29-579" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-580"><a href="#cb29-580" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(.), <span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-581"><a href="#cb29-581" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
-<span id="cb29-582"><a href="#cb29-582" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"var"</span>,</span>
-<span id="cb29-583"><a href="#cb29-583" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"val"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-584"><a href="#cb29-584" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> var,</span>
-<span id="cb29-585"><a href="#cb29-585" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">"_"</span>,</span>
-<span id="cb29-586"><a href="#cb29-586" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"var"</span>, <span class="st">"fun"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-587"><a href="#cb29-587" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"fun"</span>,</span>
-<span id="cb29-588"><a href="#cb29-588" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">"val"</span>)</span>
-<span id="cb29-589"><a href="#cb29-589" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-590"><a href="#cb29-590" aria-hidden="true" tabindex="-1"></a><span class="co"># EDA</span></span>
-<span id="cb29-591"><a href="#cb29-591" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; trying to predict mpg</span></span>
-<span id="cb29-592"><a href="#cb29-592" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
-<span id="cb29-593"><a href="#cb29-593" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-594"><a href="#cb29-594" aria-hidden="true" tabindex="-1"></a>  pairs</span>
-<span id="cb29-595"><a href="#cb29-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-596"><a href="#cb29-596" aria-hidden="true" tabindex="-1"></a><span class="co"># useful variables</span></span>
-<span id="cb29-597"><a href="#cb29-597" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; all predictors appear to be correlated with the response (some have non-linear relationship), however there are several that are highly correlated among themselves</span></span>
-<span id="cb29-598"><a href="#cb29-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-599"><a href="#cb29-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-600"><a href="#cb29-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-601"><a href="#cb29-601" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 10</span></span>
+<span id="cb29-562"><a href="#cb29-562" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-563"><a href="#cb29-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-564"><a href="#cb29-564" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 9</span></span>
+<span id="cb29-565"><a href="#cb29-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-568"><a href="#cb29-568" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-569"><a href="#cb29-569" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb29-570"><a href="#cb29-570" aria-hidden="true" tabindex="-1"></a>data_auto <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Auto </span>
+<span id="cb29-571"><a href="#cb29-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-572"><a href="#cb29-572" aria-hidden="true" tabindex="-1"></a><span class="co"># determine variable types</span></span>
+<span id="cb29-573"><a href="#cb29-573" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(class)</span>
+<span id="cb29-574"><a href="#cb29-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-575"><a href="#cb29-575" aria-hidden="true" tabindex="-1"></a><span class="co"># find range of each quantitative predictor</span></span>
+<span id="cb29-576"><a href="#cb29-576" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
+<span id="cb29-577"><a href="#cb29-577" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-578"><a href="#cb29-578" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(.), range))</span>
+<span id="cb29-579"><a href="#cb29-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-580"><a href="#cb29-580" aria-hidden="true" tabindex="-1"></a><span class="co"># find mean and st dev of each quantitative predictor</span></span>
+<span id="cb29-581"><a href="#cb29-581" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; then format nicely</span></span>
+<span id="cb29-582"><a href="#cb29-582" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
+<span id="cb29-583"><a href="#cb29-583" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-584"><a href="#cb29-584" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(.), <span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-585"><a href="#cb29-585" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
+<span id="cb29-586"><a href="#cb29-586" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"var"</span>,</span>
+<span id="cb29-587"><a href="#cb29-587" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"val"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-588"><a href="#cb29-588" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(<span class="at">cols =</span> var,</span>
+<span id="cb29-589"><a href="#cb29-589" aria-hidden="true" tabindex="-1"></a>                       <span class="at">delim =</span> <span class="st">"_"</span>,</span>
+<span id="cb29-590"><a href="#cb29-590" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"var"</span>, <span class="st">"fun"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-591"><a href="#cb29-591" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"fun"</span>,</span>
+<span id="cb29-592"><a href="#cb29-592" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">"val"</span>)</span>
+<span id="cb29-593"><a href="#cb29-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-594"><a href="#cb29-594" aria-hidden="true" tabindex="-1"></a><span class="co"># EDA</span></span>
+<span id="cb29-595"><a href="#cb29-595" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; trying to predict mpg</span></span>
+<span id="cb29-596"><a href="#cb29-596" aria-hidden="true" tabindex="-1"></a>data_auto <span class="sc">%&gt;%</span> </span>
+<span id="cb29-597"><a href="#cb29-597" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-598"><a href="#cb29-598" aria-hidden="true" tabindex="-1"></a>  pairs</span>
+<span id="cb29-599"><a href="#cb29-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-600"><a href="#cb29-600" aria-hidden="true" tabindex="-1"></a><span class="co"># useful variables</span></span>
+<span id="cb29-601"><a href="#cb29-601" aria-hidden="true" tabindex="-1"></a><span class="co"># -&gt; all predictors appear to be correlated with the response (some have non-linear relationship), however there are several that are highly correlated among themselves</span></span>
 <span id="cb29-602"><a href="#cb29-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-605"><a href="#cb29-605" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-606"><a href="#cb29-606" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb29-607"><a href="#cb29-607" aria-hidden="true" tabindex="-1"></a>data_boston <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Boston</span>
-<span id="cb29-608"><a href="#cb29-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-609"><a href="#cb29-609" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt; ... easy stuff ... &gt; </span></span>
-<span id="cb29-610"><a href="#cb29-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-611"><a href="#cb29-611" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-603"><a href="#cb29-603" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-604"><a href="#cb29-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-605"><a href="#cb29-605" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 10</span></span>
+<span id="cb29-606"><a href="#cb29-606" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-609"><a href="#cb29-609" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-610"><a href="#cb29-610" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb29-611"><a href="#cb29-611" aria-hidden="true" tabindex="-1"></a>data_boston <span class="ot">&lt;-</span> ISLR2<span class="sc">::</span>Boston</span>
+<span id="cb29-612"><a href="#cb29-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-613"><a href="#cb29-613" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt; ... easy stuff ... &gt; </span></span>
+<span id="cb29-614"><a href="#cb29-614" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-615"><a href="#cb29-615" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

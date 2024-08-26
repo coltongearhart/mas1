@@ -1,4 +1,4 @@
-# Resampling methods
+# ISLR -- Resampling methods
 
 ```{r}
 #| label: load-prereqs

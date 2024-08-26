@@ -1,0 +1,46 @@
+# GLM -- Introduction
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+<embed src="files/glm-1-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+## Problems
+
+<embed src="files/glm-1-problems.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+library(tidyverse)
+
+# Q6) c)
+# -> numerically maximize log likelihood function
+
+# load data
+data_progeny <- data.frame(females = c(18,31,34,33,27,33,28,23,33,12,19,25,14,4,22,7),
+                           males = c(11,22,27,29,24,29,25,26,38,14,23,31,20,6,34,12))
+
+# define log likelihood function (with respect to theta)
+# -> df = [y, n]
+loglik <- function(df, theta) {
+  sum(df$y) * log(theta) + sum(df$n - df$y) * log(1 - theta)
+}
+
+# calculate values
+thetas <- seq(from = 0.001, to = 0.9999, by = 0.001)
+logliks <- thetas %>% map(\(theta) loglik(data_progeny %>% mutate(n = females + males) %>% select(y = females, n), theta))
+
+# get results
+plot(x = thetas, y = logliks)
+thetas[which.max(logliks)] # close to theoretical result of ~0.4946
+
+```

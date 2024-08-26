@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>6&nbsp; Resampling methods – MAS I</title>
+<title>6&nbsp; ISLR – Resampling methods – MAS I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./glm-1.html" rel="next">
 <link href="./islr-4.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -129,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,9 +138,9 @@ window.Quarto = {
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span></a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
       <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span>
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
@@ -219,25 +220,31 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -335,7 +342,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \text{CV}_{(n)} = \frac{1}{n} \sum_{i = 1}^n \big(\frac{y_i - \hat{y}_i}{1 - h_i}\big)^2
 \]</span></p>
-<p>where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined <span class="quarto-unresolved-ref">?eq-leverage</span>. This is like the ordinary MSE, except the <span class="math inline">\(i\)</span>th residual is divided by <span class="math inline">\(1 − h_i\)</span>. The leverage lies between <span class="math inline">\(1/n\)</span> and 1, and reflects the amount that an observation influences its own fit. Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.</p>
+<p>where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined <a href="islr-3.html#eq-leverage" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>. This is like the ordinary MSE, except the <span class="math inline">\(i\)</span>th residual is divided by <span class="math inline">\(1 − h_i\)</span>. The leverage lies between <span class="math inline">\(1/n\)</span> and 1, and reflects the amount that an observation influences its own fit. Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.</p>
 <p>LOOCV is a very general method, and can be used with any kind of predictive modeling.</p>
 </section><section id="k-fold-cross-validation" class="level4"><h4 class="anchored" data-anchor-id="k-fold-cross-validation">
 <span class="math inline">\(k\)</span>-fold cross-validation</h4>
@@ -407,16 +414,16 @@ window.Quarto = {
 <span>  <span class="fu">map</span><span class="op">(</span>\<span class="op">(</span><span class="va">preds</span><span class="op">)</span> <span class="fu">yardstick</span><span class="fu">::</span><span class="fu"><a href="https://yardstick.tidymodels.org/reference/rmse.html">rmse_vec</a></span><span class="op">(</span>truth <span class="op">=</span> <span class="va">data_test</span><span class="op">$</span><span class="va">mpg</span>, estimate <span class="op">=</span> <span class="va">preds</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">raise_to_power</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 29.39169
+[1] 21.56111
 
 [[2]]
-[1] 23.08439
+[1] 18.38995
 
 [[3]]
-[1] 23.15154
+[1] 18.56034
 
 [[4]]
-[1] 23.15853</code></pre>
+[1] 18.4975</code></pre>
 </div>
 </div>
 </section><section id="leave-one-out-cross-validation-1" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="leave-one-out-cross-validation-1">
@@ -476,16 +483,16 @@ window.Quarto = {
 <span>  <span class="op">}</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 24.19701
+[1] 24.16933
 
 [[2]]
-[1] 19.25581
+[1] 19.21619
 
 [[3]]
-[1] 19.1826
+[1] 19.27685
 
 [[4]]
-[1] 19.11566</code></pre>
+[1] 19.44821</code></pre>
 </div>
 </div>
 </section><section id="the-bootstrap-1" class="level3" data-number="6.2.4"><h3 data-number="6.2.4" class="anchored" data-anchor-id="the-bootstrap-1">
@@ -583,7 +590,7 @@ window.Quarto = {
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">store</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6377</code></pre>
+<pre><code>[1] 0.631</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -1111,14 +1118,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./islr-4.html" class="pagination-link" aria-label="Classification">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span>
+      <a href="./islr-4.html" class="pagination-link" aria-label="ISLR -- Classification">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./glm-1.html" class="pagination-link" aria-label="GLM -- Introduction">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resampling methods</span></span>
+<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ISLR -- Resampling methods</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-prereqs</span></span>

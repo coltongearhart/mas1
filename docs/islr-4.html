@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>5&nbsp; Classification – MAS I</title>
+<title>5&nbsp; ISLR – Classification – MAS I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,9 +138,9 @@ window.Quarto = {
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></a></li></ol></nav>
       <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span>
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
@@ -220,25 +220,37 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GLM – Model fitting</span></span></a>
   </div>
 </li>
       </ul>
@@ -1175,13 +1187,13 @@ predicted Down Up
 <div class="cell-output cell-output-stdout">
 <pre><code>         Direction
 predicted Down Up
-     Down   48 56
-     Up     63 85</code></pre>
+     Down   48 55
+     Up     63 86</code></pre>
 </div>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># calculate accuracy</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">preds_knn3</span> <span class="op">==</span> <span class="va">data_test</span><span class="op">$</span><span class="va">Direction</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5277778</code></pre>
+<pre><code>[1] 0.531746</code></pre>
 </div>
 </div>
 <p>The results have improved slightly. But increasing <span class="math inline">\(K\)</span> further turns out to provide no further improvements.</p>
@@ -1695,23 +1707,23 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <span>            n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># try gtSummary to add total row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="xxgidlckts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xxgidlckts table {
+<div id="vtjfuetatc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vtjfuetatc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xxgidlckts thead, #xxgidlckts tbody, #xxgidlckts tfoot, #xxgidlckts tr, #xxgidlckts td, #xxgidlckts th {
+#vtjfuetatc thead, #vtjfuetatc tbody, #vtjfuetatc tfoot, #vtjfuetatc tr, #vtjfuetatc td, #vtjfuetatc th {
   border-style: none;
 }
 
-#xxgidlckts p {
+#vtjfuetatc p {
   margin: 0;
   padding: 0;
 }
 
-#xxgidlckts .gt_table {
+#vtjfuetatc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1737,12 +1749,12 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_caption {
+#vtjfuetatc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xxgidlckts .gt_title {
+#vtjfuetatc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1754,7 +1766,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-bottom-width: 0;
 }
 
-#xxgidlckts .gt_subtitle {
+#vtjfuetatc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1766,7 +1778,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-top-width: 0;
 }
 
-#xxgidlckts .gt_heading {
+#vtjfuetatc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1778,13 +1790,13 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_bottom_border {
+#vtjfuetatc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_col_headings {
+#vtjfuetatc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1799,7 +1811,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_col_heading {
+#vtjfuetatc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1819,7 +1831,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   overflow-x: hidden;
 }
 
-#xxgidlckts .gt_column_spanner_outer {
+#vtjfuetatc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1831,15 +1843,15 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 4px;
 }
 
-#xxgidlckts .gt_column_spanner_outer:first-child {
+#vtjfuetatc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xxgidlckts .gt_column_spanner_outer:last-child {
+#vtjfuetatc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xxgidlckts .gt_column_spanner {
+#vtjfuetatc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1851,11 +1863,11 @@ Number of Fisher Scoring iterations: 5</code></pre>
   width: 100%;
 }
 
-#xxgidlckts .gt_spanner_row {
+#vtjfuetatc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xxgidlckts .gt_group_heading {
+#vtjfuetatc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1881,7 +1893,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   text-align: left;
 }
 
-#xxgidlckts .gt_empty_group_heading {
+#vtjfuetatc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1896,15 +1908,15 @@ Number of Fisher Scoring iterations: 5</code></pre>
   vertical-align: middle;
 }
 
-#xxgidlckts .gt_from_md > :first-child {
+#vtjfuetatc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xxgidlckts .gt_from_md > :last-child {
+#vtjfuetatc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xxgidlckts .gt_row {
+#vtjfuetatc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1923,7 +1935,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   overflow-x: hidden;
 }
 
-#xxgidlckts .gt_stub {
+#vtjfuetatc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1936,7 +1948,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 5px;
 }
 
-#xxgidlckts .gt_stub_row_group {
+#vtjfuetatc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1950,15 +1962,15 @@ Number of Fisher Scoring iterations: 5</code></pre>
   vertical-align: top;
 }
 
-#xxgidlckts .gt_row_group_first td {
+#vtjfuetatc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xxgidlckts .gt_row_group_first th {
+#vtjfuetatc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xxgidlckts .gt_summary_row {
+#vtjfuetatc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1968,16 +1980,16 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 5px;
 }
 
-#xxgidlckts .gt_first_summary_row {
+#vtjfuetatc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_first_summary_row.thick {
+#vtjfuetatc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xxgidlckts .gt_last_summary_row {
+#vtjfuetatc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1987,7 +1999,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_grand_summary_row {
+#vtjfuetatc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1997,7 +2009,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 5px;
 }
 
-#xxgidlckts .gt_first_grand_summary_row {
+#vtjfuetatc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2007,7 +2019,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_last_grand_summary_row_top {
+#vtjfuetatc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2017,11 +2029,11 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_striped {
+#vtjfuetatc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xxgidlckts .gt_table_body {
+#vtjfuetatc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2030,7 +2042,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_footnotes {
+#vtjfuetatc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2044,7 +2056,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_footnote {
+#vtjfuetatc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2053,7 +2065,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 5px;
 }
 
-#xxgidlckts .gt_sourcenotes {
+#vtjfuetatc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2067,7 +2079,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xxgidlckts .gt_sourcenote {
+#vtjfuetatc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2075,72 +2087,72 @@ Number of Fisher Scoring iterations: 5</code></pre>
   padding-right: 5px;
 }
 
-#xxgidlckts .gt_left {
+#vtjfuetatc .gt_left {
   text-align: left;
 }
 
-#xxgidlckts .gt_center {
+#vtjfuetatc .gt_center {
   text-align: center;
 }
 
-#xxgidlckts .gt_right {
+#vtjfuetatc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xxgidlckts .gt_font_normal {
+#vtjfuetatc .gt_font_normal {
   font-weight: normal;
 }
 
-#xxgidlckts .gt_font_bold {
+#vtjfuetatc .gt_font_bold {
   font-weight: bold;
 }
 
-#xxgidlckts .gt_font_italic {
+#vtjfuetatc .gt_font_italic {
   font-style: italic;
 }
 
-#xxgidlckts .gt_super {
+#vtjfuetatc .gt_super {
   font-size: 65%;
 }
 
-#xxgidlckts .gt_footnote_marks {
+#vtjfuetatc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xxgidlckts .gt_asterisk {
+#vtjfuetatc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xxgidlckts .gt_indent_1 {
+#vtjfuetatc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xxgidlckts .gt_indent_2 {
+#vtjfuetatc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xxgidlckts .gt_indent_3 {
+#vtjfuetatc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xxgidlckts .gt_indent_4 {
+#vtjfuetatc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xxgidlckts .gt_indent_5 {
+#vtjfuetatc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xxgidlckts .katex-display {
+#vtjfuetatc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xxgidlckts div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vtjfuetatc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2761,11 +2773,11 @@ $origin$names
 <pre><code># A tibble: 5 × 4
   model      k accuracy error_rate
   &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
-1 logreg    NA    0.886      0.114
-2 lda       NA    0.899      0.101
-3 qda       NA    0.899      0.101
-4 knn        7    0.835      0.165
-5 nb        NA    0.899      0.101</code></pre>
+1 logreg    NA    0.886     0.114 
+2 lda       NA    0.911     0.0886
+3 qda       NA    0.873     0.127 
+4 knn        7    0.873     0.127 
+5 nb        NA    0.899     0.101 </code></pre>
 </div>
 </div>
 <p>For the models tested here, <span class="math inline">\(k = 7\)</span> appears to perform best. QDA has a lower error rate overall than LDA and logistic regression, but only slightly.</p>
@@ -3249,17 +3261,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./islr-3.html" class="pagination-link" aria-label="Linear regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span>
+      <a href="./islr-3.html" class="pagination-link" aria-label="ISLR -- Linear regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./islr-5.html" class="pagination-link" aria-label="Resampling methods">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Resampling methods</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./islr-5.html" class="pagination-link" aria-label="ISLR -- Resampling methods">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb93" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Classification</span></span>
+<div class="sourceCode" id="cb93" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ISLR -- Classification</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-prereqs</span></span>

@@ -1,4 +1,4 @@
-# Statistical learning
+# ISLR -- Statistical learning
 
 ```{r}
 #| label: load-prereqs
