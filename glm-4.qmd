@@ -1,0 +1,200 @@
+# GLM -- Estimation
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+<embed src="files/glm-4-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+# load data
+data_counts <- data.frame(x = c(-1,-1,0,0,0,0,1,1,1),
+                          y = c(2,3,6,7,8,9,10,12,15))
+
+# plot data
+data_counts %$% plot(x, y)
+
+# fit poisson model with identity link function
+mod_pois <- glm(y ~ x, family = poisson(link = "identity"), data = data_counts)
+summary(mod_pois)
+data_counts %$% plot(x, y)
+abline(a = coef(mod_pois[1]), b = coef(mod_pois[2]), col = "red") # identity link function, so y is already on the correct scale, just plot regular straight line
+
+```
+
+## Problems
+
+<embed src="files/glm-4-problems.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+# 4.1)
+
+# load data
+data_cases <- tribble(
+  ~year, ~"1", ~"2", ~"3", ~"4",
+  1984, 1, 6, 16, 23,
+  1985, 27, 39, 31, 30,
+  1986, 43, 51, 63, 70,
+  1987, 88, 97, 91, 104,
+  1988, 110, 113, 149, 159
+) %>% 
+  pivot_longer(cols = 2:5, names_to = "quarter", values_to = "cases") %>% 
+  mutate(i = row_number())
+
+# plot data
+data_cases %$% plot(x = i, y = cases)
+
+# plot transformed data
+data_cases %$% plot(x = log(i), y = log(cases))
+
+# manual MLE of betas
+
+# initialize values
+b <- matrix(data = c(rep(1, 2), rep(NA, 18)), ncol = 2, dimnames = list(c(), c("b1", "b2")), byrow = TRUE)
+X <- matrix(data = c(rep(1, nrow(data_cases)), log(data_cases$i)), nrow = nrow(data_cases), dimnames = list(c(),c("x1", "x2")))
+y <- data_cases$cases
+
+# iterative weighted least squares algorithm
+k <- 100
+i <- 1
+b_delta <- matrix(data = rep(NA, 2*k), nrow = k)
+tolerance <- 0.0001
+check_converge <- FALSE
+while(!check_converge){
+  
+  # perform calculations
+  # -> NOTE: because of data structure (row of X is already t(xi))
+  W <- exp(X %*% as.matrix(b[i,])) %>% as.vector %>% diag
+  z <- X %*% as.matrix(b[i,]) + (y * exp(-X %*% b[i,])) - 1
+  J <- t(X) %*% W %*% X
+  
+  # save results
+  i = i + 1
+  b[i, ] = solve(J) %*% t(X) %*% W %*% z
+  
+  # check if converged
+  b_delta[i, ] = b[i - 1, ] - b[i,]
+  if((abs(b_delta[i, 1]) < tolerance && abs(b_delta[i, 2]) < tolerance) || i > k) {
+    check_converge <- TRUE
+  }
+  
+}
+
+# view results
+b
+
+# poisson regression
+mod_pois <- glm(cases ~ log(i), family = poisson(link = "log"), data = data_cases)
+broom::tidy(mod_pois)
+
+# plot glm on loglink-scale
+data_cases %$% plot(x = log(i), y = log(cases))
+abline(a = coef(mod_pois[1]), b = coef(mod_pois[2]), col = "red") # identity log-link function, so plot straight line against transformed y
+
+# plot glm on regular count scale
+data_cases %$% plot(x = log(i), y = cases)
+x <- seq(from = min(log(data_cases$i)), to = max(log(data_cases$i)), by = 0.01)
+lines(x = x,
+      y = exp(coef(mod_pois)[1] + coef(mod_pois)[2] * x),# back transform predictions 
+      col = "red")
+
+```
+
+
+```{r}
+
+# 4.2)
+
+# load data
+data_time <- data.frame(x = c(3.36,2.88,3.63,3.41,3.78,4.02,4.00,4.23,3.73,3.85,3.97,4.51,4.54,5.00,5.00,4.72,5.00),
+                      y = c(65,156,100,134,16,108,121,4,39,143,56,26,22,1,1,5,65))
+
+# plot data
+data_time %$% plot(x = x, y = y)
+
+# d)
+
+# fit model
+# -> Y_i ~ Exp(theta)
+# -> log-link
+mod_exp <- glm(y ~ x, family = Gamma(link = log), data = data_time)
+summary(mod_exp)
+
+# view diagnostics
+# -> model consistently overestimates survival time
+# -> NOTE: I THINK QQ plot is still assessing normality......
+plot(mod_exp)
+
+# calculate standardized residuals
+# -> r_i = (y_i - hat(y_i)) / hat(y_i)
+# --> SD(Y) = sqrt(V(Exp)) = sqrt(1 / theta^2) = 1 / theta = E(Y_i) ~ hat(y_i)
+compare(residuals(mod_exp, type = "working"), residuals(mod_exp, type = "response") / fitted(mod_exp))
+
+# default is deviance residuals, response is the usual residual, working is standardized using the distribution (I think)
+
+# plot glm on regular raw scale
+data_time %$% plot(x, y)
+x <- seq(from = min(data_time$x), to = max(data_time$x), by = 0.01)
+lines(x = x,
+      y = exp(coef(mod_exp)[1] + coef(mod_exp)[2] * x),# back transform predictions 
+      col = "red")
+
+```
+
+```{r}
+
+# 4.3)
+
+# load data
+beta <- 5
+sigma2 <- 2
+y <- rnorm(20, mean = log(beta), sd = sqrt(sigma2))
+
+# manual MLE of betas
+
+# initialize values
+b <- matrix(data = c(1, rep(NA, 19)), ncol = 1, dimnames = list(c(), c("b")), byrow = TRUE)
+X <- matrix(data = rep(1, length(y)), nrow = length(y), dimnames = list(c(),c("x")))
+
+# iterative weighted least squares algorithm
+k <- 100
+i <- 1
+b_delta <- matrix(data = rep(NA, 2*k), nrow = k)
+tolerance <- 0.0001
+check_converge <- FALSE
+while(!check_converge){
+  
+  # perform calculations
+  # -> NOTE: because of data structure (row of X is already t(xi))
+  W <- rep(1 / (b[1,]^2 * sigma2), length(y)) %>% diag
+  z <- b[i,] * (X + y - log(b[i,]))
+  J <- t(X) %*% W %*% X
+  
+  # save results
+  i = i + 1
+  b[i, ] = solve(J) %*% t(X) %*% W %*% z
+  
+  # check if converged
+  b_delta[i, ] = b[i - 1, ] - b[i,]
+  if((abs(b_delta[i, 1]) < tolerance && abs(b_delta[i, 2]) < tolerance) || i > k) {
+    check_converge <- TRUE
+  }
+  
+}
+
+# view results
+# -> bar(y) is the MLE for log(beta)
+compare(log(b[6,]), mean(y))
+
+
+```

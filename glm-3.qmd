@@ -1,0 +1,103 @@
+# GLM -- Exponential family and generalized linear models
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+<embed src="files/glm-3-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+## Problems
+
+<embed src="files/glm-3-problems.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+# 3.6)
+
+# load data
+data_heart <- tribble(
+  ~age_group, ~n_deaths, ~pop_size, ~rate_per_year,
+  "30-34",1,17742,5.6,
+  "35-39",5,16554,30.2,
+  "40-44",5,16059,31.1,
+  "45-49",12,13083,91.7,
+  "50-54",25,10784,231.8,
+  "55-59",38,9645,394,
+  "60-64",54,10706,504.4,
+  "65-69",65,9933,654.4,
+) %>% 
+  mutate(age_group = ordered(age_group),
+         age_group_coded = case_when(
+           age_group == "30-34" ~ 1,
+           age_group == "35-39" ~ 2,
+           age_group == "40-44" ~ 3,
+           age_group == "45-49" ~ 4,
+           age_group == "50-54" ~ 5,
+           age_group == "55-59" ~ 6,
+           age_group == "60-64" ~ 7,
+           age_group == "65-69" ~ 8
+         )
+  )
+
+# fit model from book
+# -> poisson with log link
+data_heart %>% 
+  ggplot() + 
+  geom_point(aes(x = age_group,
+                 y = log(n_deaths / pop_size)))
+mod_pois <- glm(n_deaths ~ age_group_coded, family = "poisson", data = data_heart)
+
+# verify fitted values
+ggplot() + 
+  geom_point(aes(x = age_group,
+                 y = log(n_deaths / pop_size)),
+             data = data_heart) + 
+    geom_line(aes(x = age_group,
+                  y = log(y_hat / pop_size)),
+             data = fitted(mod_pois) %>% data.frame(y_hat = ., age_group = 1:8) %>% bind_cols(pop_size = data_heart$pop_size),
+             color = "red")
+  
+# calculate glm sse
+sum((fitted(mod_pois) - mod_pois$model$n_deaths)^2)
+
+# fit slr model with transformation
+mod_slr <- glm(log(n_deaths) ~ age_group_coded, family = "gaussian", data = data_heart)
+
+# check fit
+ggplot() + 
+  geom_point(aes(x = age_group,
+                 y = log(n_deaths / pop_size)),
+             data = data_heart) + 
+    geom_line(aes(x = age_group,
+                  y = log(y_hat / pop_size)),
+             data = fitted(mod_slr) %>% data.frame(y_hat = ., age_group = 1:8) %>% bind_cols(pop_size = data_heart$pop_size),
+             color = "red")
+sum((fitted(mod_slr) - mod_pois$model$n_deaths)^2)
+
+```
+
+```{r}
+
+# 3.7
+
+# generate data
+betas <- c(1, 2)
+x <- seq(-5, 15, 0.01)
+pi <- exp(betas[1] + betas[2]*x) / (1 + exp(betas[1] + betas[2]*x))
+
+# plot results
+# -> this is the logistic function
+plot(x = x, y = pi, type = "l")
+
+# -> plot glm
+plot(x = x, y = log(pi / (1 - pi)), type = "l")
+
+```

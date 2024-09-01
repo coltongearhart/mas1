@@ -269,5 +269,27 @@
       "Extended Linear Models",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>GLM -- Model fitting</span>"
     ]
+  },
+  {
+    "objectID": "glm-3.html",
+    "href": "glm-3.html",
+    "title": "\n9  GLM – Exponential family and generalized linear models\n",
+    "section": "",
+    "text": "9.1 Notes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>GLM -- Exponential family and generalized linear models</span>"
+    ]
+  },
+  {
+    "objectID": "glm-3.html#problems",
+    "href": "glm-3.html#problems",
+    "title": "\n9  GLM – Exponential family and generalized linear models\n",
+    "section": "\n9.2 Problems",
+    "text": "9.2 Problems\n\n# 3.6)\n\n# load data\ndata_heart &lt;- tribble(\n  ~age_group, ~n_deaths, ~pop_size, ~rate_per_year,\n  \"30-34\",1,17742,5.6,\n  \"35-39\",5,16554,30.2,\n  \"40-44\",5,16059,31.1,\n  \"45-49\",12,13083,91.7,\n  \"50-54\",25,10784,231.8,\n  \"55-59\",38,9645,394,\n  \"60-64\",54,10706,504.4,\n  \"65-69\",65,9933,654.4,\n) %&gt;% \n  mutate(age_group = ordered(age_group),\n         age_group_coded = case_when(\n           age_group == \"30-34\" ~ 1,\n           age_group == \"35-39\" ~ 2,\n           age_group == \"40-44\" ~ 3,\n           age_group == \"45-49\" ~ 4,\n           age_group == \"50-54\" ~ 5,\n           age_group == \"55-59\" ~ 6,\n           age_group == \"60-64\" ~ 7,\n           age_group == \"65-69\" ~ 8\n         )\n  )\n\n# fit model from book\n# -&gt; poisson with log link\ndata_heart %&gt;% \n  ggplot() + \n  geom_point(aes(x = age_group,\n                 y = log(n_deaths / pop_size)))\n\n\n\n\n\n\nmod_pois &lt;- glm(n_deaths ~ age_group_coded, family = \"poisson\", data = data_heart)\n\n# verify fitted values\nggplot() + \n  geom_point(aes(x = age_group,\n                 y = log(n_deaths / pop_size)),\n             data = data_heart) + \n    geom_line(aes(x = age_group,\n                  y = log(y_hat / pop_size)),\n             data = fitted(mod_pois) %&gt;% data.frame(y_hat = ., age_group = 1:8) %&gt;% bind_cols(pop_size = data_heart$pop_size),\n             color = \"red\")\n\n\n\n\n\n\n# calculate glm sse\nsum((fitted(mod_pois) - mod_pois$model$n_deaths)^2)\n\n[1] 246.1974\n\n# fit slr model with transformation\nmod_slr &lt;- glm(log(n_deaths) ~ age_group_coded, family = \"gaussian\", data = data_heart)\n\n# check fit\nggplot() + \n  geom_point(aes(x = age_group,\n                 y = log(n_deaths / pop_size)),\n             data = data_heart) + \n    geom_line(aes(x = age_group,\n                  y = log(y_hat / pop_size)),\n             data = fitted(mod_slr) %&gt;% data.frame(y_hat = ., age_group = 1:8) %&gt;% bind_cols(pop_size = data_heart$pop_size),\n             color = \"red\")\n\n\n\n\n\n\nsum((fitted(mod_slr) - mod_pois$model$n_deaths)^2)\n\n[1] 7950.882\n\n\n\n# 3.7\n\n# generate data\nbetas &lt;- c(1, 2)\nx &lt;- seq(-5, 15, 0.01)\npi &lt;- exp(betas[1] + betas[2]*x) / (1 + exp(betas[1] + betas[2]*x))\n\n# plot results\n# -&gt; this is the logistic function\nplot(x = x, y = pi, type = \"l\")\n\n\n\n\n\n\n# -&gt; plot glm\nplot(x = x, y = log(pi / (1 - pi)), type = \"l\")",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>GLM -- Exponential family and generalized linear models</span>"
+    ]
   }
 ]

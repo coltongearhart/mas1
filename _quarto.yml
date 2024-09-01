@@ -26,7 +26,7 @@ book:
         - islr-5.qmd
         - glm-1.qmd
         - glm-2.qmd
-
+        - glm-3.qmd
 
 format:
   html:

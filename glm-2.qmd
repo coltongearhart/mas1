@@ -20,11 +20,7 @@ source("_common.R")
 
 ```{r}
 
-# load packages
-library(tidyverse)
-library(magrittr)
-
-# Q1) setup
+# 2.1) setup
 
 # load data
 data_seeds <- data.frame(treatment = c(4.81,5.36 ,4.17,3.48,4.41,4.69,3.59,4.44,5.87,4.89,3.83,4.71,6.03,5.48,4.98,4.32,4.90,5.15,5.75,6.34),
@@ -73,7 +69,7 @@ mod_reduced %>% residuals %>% hist(main = "hist of residuals")
 
 ```{r}
 
-# Q2 setup
+# 2.2 setup
 
 # load data
 data_weights <- data.frame(id = 1:20,
