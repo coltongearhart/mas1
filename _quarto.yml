@@ -27,6 +27,7 @@ book:
         - glm-1.qmd
         - glm-2.qmd
         - glm-3.qmd
+        - glm-4.qmd
 
 format:
   html:

@@ -247,6 +247,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GLM – Model fitting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GLM – Exponential family and generalized linear models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GLM – Estimation</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -414,16 +432,16 @@ window.Quarto = {
 <span>  <span class="fu">map</span><span class="op">(</span>\<span class="op">(</span><span class="va">preds</span><span class="op">)</span> <span class="fu">yardstick</span><span class="fu">::</span><span class="fu"><a href="https://yardstick.tidymodels.org/reference/rmse.html">rmse_vec</a></span><span class="op">(</span>truth <span class="op">=</span> <span class="va">data_test</span><span class="op">$</span><span class="va">mpg</span>, estimate <span class="op">=</span> <span class="va">preds</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">raise_to_power</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 21.56111
+[1] 25.37796
 
 [[2]]
-[1] 18.38995
+[1] 21.63779
 
 [[3]]
-[1] 18.56034
+[1] 21.60728
 
 [[4]]
-[1] 18.4975</code></pre>
+[1] 21.5031</code></pre>
 </div>
 </div>
 </section><section id="leave-one-out-cross-validation-1" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="leave-one-out-cross-validation-1">
@@ -483,16 +501,16 @@ window.Quarto = {
 <span>  <span class="op">}</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 24.16933
+[1] 24.16561
 
 [[2]]
-[1] 19.21619
+[1] 19.24729
 
 [[3]]
-[1] 19.27685
+[1] 19.38661
 
 [[4]]
-[1] 19.44821</code></pre>
+[1] 19.38343</code></pre>
 </div>
 </div>
 </section><section id="the-bootstrap-1" class="level3" data-number="6.2.4"><h3 data-number="6.2.4" class="anchored" data-anchor-id="the-bootstrap-1">
@@ -590,7 +608,7 @@ window.Quarto = {
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">store</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.631</code></pre>
+<pre><code>[1] 0.6326</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
