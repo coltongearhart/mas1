@@ -16,7 +16,7 @@ book:
 
     - part: partB-stats.qmd
       chapters:
-        - placeholder.qmd
+        - ca-stats.qmd
 
     - part: partC-glm.qmd
       chapters:
@@ -28,6 +28,7 @@ book:
         - glm-2.qmd
         - glm-3.qmd
         - glm-4.qmd
+        - glm-5.qmd
 
 format:
   html:

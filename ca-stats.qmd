@@ -1,0 +1,46 @@
+# Stats
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes 
+
+### Parameter density estimation
+
+<embed src="files/ca-2-1-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Most powerful tests
+
+<embed src="files/ca-2-4-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Goodness of fit tests
+
+<embed src="files/ca-2-5-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+
+## Quizzes
+
+### Questions 1
+
+<embed src="files/ca-quiz1-stats-qs.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Solutions 1
+
+<embed src="files/ca-quiz1-stats.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Questions 2
+
+<embed src="files/ca-quiz2-stats-qs.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Solutions 2
+
+<embed src="files/ca-quiz2-stats.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+

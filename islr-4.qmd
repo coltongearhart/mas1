@@ -83,7 +83,7 @@ If we use this approach to predict default=Yes using balance, then we obtain the
 To avoid this problem, we must model $p(X)$ using a function that gives outputs between 0 and 1 for all values of X. Many functions meet this description. In logistic regression, we use the *logistic function*,
 
 $$
-p(X) = \frac{\e^{\beta_0 + \beta_1 X}}{1 + \e^{\beta_0 + \beta_1 X}}  = \frac{1}{1 + \e^{-\beta_0 + \beta_1 X}}
+p(X) = \frac{\e^{\beta_0 + \beta_1 X}}{1 + \e^{\beta_0 + \beta_1 X}}  = \frac{1}{1 + \e^{-(\beta_0 + \beta_1 X)}}
 $${#eq-logistic-function}
 
 To fit this model, we use *maximum likelihood*. The right-hand panel of Figure 4.2 illustrates the fit of the logistic regression model to the Default data. Notice that for low balances we now predict the probability of default as close to, but never below, zero. Likewise, for high balances we predict a default probability close to, but never above, one. The logistic function will always produce an S-shaped curve of this form, and so regardless of the value of $X$, we will obtain a sensible prediction. We also see that the logistic model is better able to capture the range of probabilities than is the linear regression. The average fitted probability in both cases is 0.0333 (averaged over the training data), which is the same as the overall proportion of defaulters in the data set. We can show:

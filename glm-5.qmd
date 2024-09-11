@@ -1,0 +1,101 @@
+# GLM -- Inference
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes
+
+<embed src="files/glm-5-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+## Problems
+
+<embed src="files/glm-5-problems.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+```{r}
+
+# 5.1
+
+# define wald/score and deviance functions
+calc_wald <- function(y, n, pi)  {
+  (y - n * pi)^2 / (n * pi * (1 - pi))
+}
+calc_dev <- function(y, n, pi)  {
+  pi_hat = y / n
+  2 * (y * log(pi_hat / pi) - (y - n) * log((1 - pi_hat) / (1 - pi)))
+}
+
+# initialize values
+y <- 3
+n <- 10
+pi <- c(0.1, 0.3, 0.5)
+
+# calculate
+pi %>% set_names(pi) %>% map_dbl(\(pi) calc_wald(y, n, pi))
+pi %>% set_names(pi) %>% map_dbl(\(pi) calc_dev(y, n, pi))
+
+# calculate critical value
+qchisq(p = 0.95, df = 1)
+
+```
+
+```{r}
+
+# 5.3
+
+# intialize values in simulation
+k <- 1000
+n <- 100
+theta <- 2
+
+# generate random variates from the poisson distribution using a transformation of the uniform
+# -> Y = (1 / U)^(1 / theta)
+y <- matrix(data = (1 / runif(n*k))^(1 / theta), nrow = n, ncol = k) %>% data.frame
+
+# run confidence interval simulation
+results <- y %>% map(function(y_k, alpha = 0.05) {
+  
+  # make calculations
+  N = length(y_k)
+  theta_hat = N / sum(log(y_k))
+  
+  # FIX CALCULATION!!!
+  ci = theta_hat + c(-1, 1) * qnorm((1 - alpha) / 2, lower.tail = FALSE) * theta_hat / sqrt(N)
+  
+  # save results
+  data.frame(theta_hat = theta_hat, ci_lower = ci[1], ci_upper = ci[2]) %>% return
+  
+}) %>% 
+  reduce(bind_rows)
+
+# calculate accuracy
+results %<>% 
+  rowwise %>% 
+  mutate(capture = if_else(between(theta, ci_lower, ci_upper), 1, 0)) %>% 
+  ungroup
+
+```
+
+```{r}
+
+# 5.4)
+
+# load data
+data_time <- data.frame(x = c(3.36,2.88,3.63,3.41,3.78,4.02,4.00,4.23,3.73,3.85,3.97,4.51,4.54,5.00,5.00,4.72,5.00),
+                        y = c(65,156,100,134,16,108,121,4,39,143,56,26,22,1,1,5,65))
+
+x <- data_time$x %>% as.matrix
+
+t(x) %*% x
+
+
+
+```
+
+
