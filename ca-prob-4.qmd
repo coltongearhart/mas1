@@ -1,0 +1,17 @@
+# CA -- Poisson processes
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes 
+
+<embed src="files/ca-1-4a-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/ca-1-4b-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>

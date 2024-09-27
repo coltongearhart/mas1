@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>6&nbsp; ISLR – Resampling methods – MAS I</title>
+<title>15&nbsp; ISLR – Resampling methods – MAS I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,9 +138,9 @@ window.Quarto = {
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./partC-glm.html">Extended Linear Models</a></li><li class="breadcrumb-item"><a href="./islr-5.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></a></li></ol></nav>
       <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span>
+<span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
@@ -185,8 +185,62 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./placeholder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Placeholder</span></span></a>
+  <a href="./ca-prob-0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">CA – Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CA – Claim severity distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CA – Claim severity distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CA – Insurance applications</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CA – Tail properties of distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CA – Poisson processes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CA – Reliability theory</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">CA – Discrete Markov Chains</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CA – Life contingencies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ca-prob-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CA – Simulation</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,8 +256,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./placeholder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Placeholder</span></span></a>
+  <a href="./ca-stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CA – All stats</span></span></a>
   </div>
 </li>
       </ul>
@@ -220,49 +274,55 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ISLR – Statistical learning</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ISLR – Linear regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./islr-5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ISLR – Resampling methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glm-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glm-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GLM – Model fitting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">GLM – Model fitting</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glm-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">GLM – Exponential family and generalized linear models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">GLM – Exponential family and generalized linear models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./glm-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GLM – Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">GLM – Estimation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glm-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">GLM – Inference</span></span></a>
   </div>
 </li>
       </ul>
@@ -276,10 +336,10 @@ window.Quarto = {
    
   <ul>
 <li>
-<a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes"><span class="header-section-number">6.1</span> Notes</a>
+<a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes"><span class="header-section-number">15.1</span> Notes</a>
   <ul>
 <li>
-<a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">6.1.1</span> Cross-validation</a>
+<a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">15.1.1</span> Cross-validation</a>
   <ul class="collapse">
 <li><a href="#the-validation-set-approach" id="toc-the-validation-set-approach" class="nav-link" data-scroll-target="#the-validation-set-approach">The validation set approach</a></li>
   <li><a href="#leave-one-out-cross-validation" id="toc-leave-one-out-cross-validation" class="nav-link" data-scroll-target="#leave-one-out-cross-validation">Leave-one-out-cross-validation</a></li>
@@ -288,23 +348,23 @@ window.Quarto = {
   <li><a href="#cross-validation-on-classification-problems" id="toc-cross-validation-on-classification-problems" class="nav-link" data-scroll-target="#cross-validation-on-classification-problems">Cross-validation on classification problems</a></li>
   </ul>
 </li>
-  <li><a href="#the-bootstrap" id="toc-the-bootstrap" class="nav-link" data-scroll-target="#the-bootstrap"><span class="header-section-number">6.1.2</span> The bootstrap</a></li>
+  <li><a href="#the-bootstrap" id="toc-the-bootstrap" class="nav-link" data-scroll-target="#the-bootstrap"><span class="header-section-number">15.1.2</span> The bootstrap</a></li>
   </ul>
 </li>
   <li>
-<a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">6.2</span> Lab</a>
+<a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab"><span class="header-section-number">15.2</span> Lab</a>
   <ul>
-<li><a href="#the-validation-set-approach-1" id="toc-the-validation-set-approach-1" class="nav-link" data-scroll-target="#the-validation-set-approach-1"><span class="header-section-number">6.2.1</span> The validation set approach</a></li>
-  <li><a href="#leave-one-out-cross-validation-1" id="toc-leave-one-out-cross-validation-1" class="nav-link" data-scroll-target="#leave-one-out-cross-validation-1"><span class="header-section-number">6.2.2</span> Leave-one-out cross-validation</a></li>
-  <li><a href="#k-fold-cross-validation-1" id="toc-k-fold-cross-validation-1" class="nav-link" data-scroll-target="#k-fold-cross-validation-1"><span class="header-section-number">6.2.3</span> <span class="math inline">\(k\)</span>-fold cross-validation</a></li>
-  <li><a href="#the-bootstrap-1" id="toc-the-bootstrap-1" class="nav-link" data-scroll-target="#the-bootstrap-1"><span class="header-section-number">6.2.4</span> The bootstrap</a></li>
+<li><a href="#the-validation-set-approach-1" id="toc-the-validation-set-approach-1" class="nav-link" data-scroll-target="#the-validation-set-approach-1"><span class="header-section-number">15.2.1</span> The validation set approach</a></li>
+  <li><a href="#leave-one-out-cross-validation-1" id="toc-leave-one-out-cross-validation-1" class="nav-link" data-scroll-target="#leave-one-out-cross-validation-1"><span class="header-section-number">15.2.2</span> Leave-one-out cross-validation</a></li>
+  <li><a href="#k-fold-cross-validation-1" id="toc-k-fold-cross-validation-1" class="nav-link" data-scroll-target="#k-fold-cross-validation-1"><span class="header-section-number">15.2.3</span> <span class="math inline">\(k\)</span>-fold cross-validation</a></li>
+  <li><a href="#the-bootstrap-1" id="toc-the-bootstrap-1" class="nav-link" data-scroll-target="#the-bootstrap-1"><span class="header-section-number">15.2.4</span> The bootstrap</a></li>
   </ul>
 </li>
   <li>
-<a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.3</span> Exercises</a>
+<a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15.3</span> Exercises</a>
   <ul>
 <li>
-<a href="#conceptual" id="toc-conceptual" class="nav-link" data-scroll-target="#conceptual"><span class="header-section-number">6.3.1</span> Conceptual</a>
+<a href="#conceptual" id="toc-conceptual" class="nav-link" data-scroll-target="#conceptual"><span class="header-section-number">15.3.1</span> Conceptual</a>
   <ul class="collapse">
 <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
@@ -313,7 +373,7 @@ window.Quarto = {
   </ul>
 </li>
   <li>
-<a href="#applied" id="toc-applied" class="nav-link" data-scroll-target="#applied"><span class="header-section-number">6.3.2</span> Applied</a>
+<a href="#applied" id="toc-applied" class="nav-link" data-scroll-target="#applied"><span class="header-section-number">15.3.2</span> Applied</a>
   <ul class="collapse">
 <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
   <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
@@ -327,12 +387,12 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="notes" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="notes">
-<span class="header-section-number">6.1</span> Notes</h2>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="notes" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="notes">
+<span class="header-section-number">15.1</span> Notes</h2>
 <p><em>Resampling methods</em> are an indispensable tool in modern statistics. They involve repeatedly drawing samples from a training set and refitting a model of interest on each sample in order to obtain additional information about the fitted model. For example, in order to estimate the variability of a linear regression fit, we can repeatedly draw different samples from the training data, fit a linear regression to each new sample, and then examine the extent to which the resulting fits differ. Such an approach may allow us to obtain information that would not be available from fitting the model only once using the original training sample.</p>
 <p>In this chapter, we discuss two of the most commonly used resampling methods, <em>cross-validation</em> and the <em>bootstrap.</em> Both methods are important tools in the practical application of many statistical learning procedures. For example, <strong>cross-validation can be used to estimate the test error associated with a given statistical learning method in order to evaluate its performance, or to select the appropriate level of flexibility</strong>. The process of evaluating a model’s performance is known as <em>model assessment</em>, whereas the process of selecting the proper level of flexibility for a model is known as <em>model selection</em>. <strong>The bootstrap is used in several contexts, most commonly to provide a measure of accuracy of a parameter estimate or of a given statistical learning method.</strong></p>
-<section id="cross-validation" class="level3" data-number="6.1.1"><h3 data-number="6.1.1" class="anchored" data-anchor-id="cross-validation">
-<span class="header-section-number">6.1.1</span> Cross-validation</h3>
+<section id="cross-validation" class="level3" data-number="15.1.1"><h3 data-number="15.1.1" class="anchored" data-anchor-id="cross-validation">
+<span class="header-section-number">15.1.1</span> Cross-validation</h3>
 <p>Given a data set, the use of a particular statistical learning method is warranted if it results in a low test error. The test error can be easily calculated if a designated test set is available. Unfortunately, this is usually not the case. The training error rate can easily be found, but it dramatically underestimates the test error rate.</p>
 <p>In the absence of a very large designated test set that can be used to directly estimate the test error rate, a number of techniques can be used to estimate this quantity using the available training data. Some methods make a mathematical adjustment to the training error rate in order to estimate the test error rate. These are discussed in later chapters. In this section, we instead consider a class of methods that estimate the test error rate by <em>holding out</em> a subset of the training observations from the fitting process, and then applying the statistical learning method to those held out observations.</p>
 <section id="the-validation-set-approach" class="level4"><h4 class="anchored" data-anchor-id="the-validation-set-approach">The validation set approach</h4>
@@ -360,7 +420,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \text{CV}_{(n)} = \frac{1}{n} \sum_{i = 1}^n \big(\frac{y_i - \hat{y}_i}{1 - h_i}\big)^2
 \]</span></p>
-<p>where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined <a href="islr-3.html#eq-leverage" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>. This is like the ordinary MSE, except the <span class="math inline">\(i\)</span>th residual is divided by <span class="math inline">\(1 − h_i\)</span>. The leverage lies between <span class="math inline">\(1/n\)</span> and 1, and reflects the amount that an observation influences its own fit. Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.</p>
+<p>where <span class="math inline">\(\hat{y}_i\)</span> is the <span class="math inline">\(i\)</span>th fitted value from the original least squares fit, and <span class="math inline">\(h_i\)</span> is the leverage defined <a href="islr-3.html#eq-leverage" class="quarto-xref">Equation&nbsp;<span>13.1</span></a>. This is like the ordinary MSE, except the <span class="math inline">\(i\)</span>th residual is divided by <span class="math inline">\(1 − h_i\)</span>. The leverage lies between <span class="math inline">\(1/n\)</span> and 1, and reflects the amount that an observation influences its own fit. Hence the residuals for high-leverage points are inflated in this formula by exactly the right amount for this equality to hold.</p>
 <p>LOOCV is a very general method, and can be used with any kind of predictive modeling.</p>
 </section><section id="k-fold-cross-validation" class="level4"><h4 class="anchored" data-anchor-id="k-fold-cross-validation">
 <span class="math inline">\(k\)</span>-fold cross-validation</h4>
@@ -392,8 +452,8 @@ window.Quarto = {
 <p>In practice, for real data, the Bayes decision boundary and the test er- ror rates are unknown. So how might we decide between the four logistic regression models displayed in Figure 5.7? <strong>We can use cross-validation in order to make this decision</strong>.</p>
 <p>As we have seen previously, the training error tends to decrease as the flexibility of the fit increases. (The figure indicates that though the training error rate doesn’t quite decrease monotonically, it tends to decrease on the whole as the model complexity increases.) In contrast, the test error displays a characteristic U-shape. The 10-fold CV error rate provides a pretty good approximation to the test error rate. While it somewhat underestimates the error rate, it reaches a minimum when fourth-order polynomials are used, which is very close to the minimum of the test curve, which occurs when third-order polynomials are used. On the right, Again the training error rate declines as the method becomes more flexible, and so we see that the training error rate cannot be used to select the optimal value for <span class="math inline">\(K\)</span>. Though the cross-validation error curve slightly underestimates the test error rate, it takes on a minimum very close to the best value for <span class="math inline">\(K\)</span>.</p>
 <p><img src="files/images/5-cv-classification-results.png" class="img-fluid" style="width:50.0%"></p>
-</section></section><section id="the-bootstrap" class="level3" data-number="6.1.2"><h3 data-number="6.1.2" class="anchored" data-anchor-id="the-bootstrap">
-<span class="header-section-number">6.1.2</span> The bootstrap</h3>
+</section></section><section id="the-bootstrap" class="level3" data-number="15.1.2"><h3 data-number="15.1.2" class="anchored" data-anchor-id="the-bootstrap">
+<span class="header-section-number">15.1.2</span> The bootstrap</h3>
 <p><strong>The <em>bootstrap</em> is a widely applicable and extremely powerful statistical tool that can be used to quantify the uncertainty associated with a given estimator or statistical learning method</strong>. As a simple example, the bootstrap can be used to estimate the standard errors of the coefficients from a linear regression fit. In the specific case of linear regression, this is not particularly useful, since we saw know that standard statistical software such as R outputs such standard errors automatically. However, the power of the bootstrap lies in the fact that it can be easily applied to a wide range of statistical learning methods, including some for which a measure of variability is otherwise difficult to obtain and is not automatically output by statistical software.</p>
 <p>With simulated data, can generate new samples and estimate the sampling distribution of the statistic of interest very easily and get the standard error. In practice, however, the procedure for estimating <span class="math inline">\(SE( &lt; \text{statistic} &gt;)\)</span> cannot be applied, because for real data we cannot generate new samples. However, the bootstrap approach allows us to use a computer to emulate the process of obtaining new sample sets, so that we can estimate the variability of our statistic without generating additional samples. Rather than repeatedly obtaining independent data sets from the population, we instead obtain distinct data sets by repeatedly sampling observations from the <em>original data set</em>.</p>
 <p><img src="files/images/5-bootstrap.png" class="img-fluid" style="width:50.0%"></p>
@@ -405,11 +465,11 @@ window.Quarto = {
 <li><p>Of spread are fairly accurate</p></li>
 <li><p><a href="https://coltongearhart.github.io/computational-methods/bootstrap.html">Better description</a></p></li>
 <li><p>One of the great advantages of the bootstrap approach is that it can be applied in almost all situations. No complicated mathematical calculations are required.</p></li>
-</ul></section></section><section id="lab" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="lab">
-<span class="header-section-number">6.2</span> Lab</h2>
+</ul></section></section><section id="lab" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="lab">
+<span class="header-section-number">15.2</span> Lab</h2>
 <p>NOTE: Will learn <code>tidymodels</code> after taking MAS I exam</p>
-<section id="the-validation-set-approach-1" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="the-validation-set-approach-1">
-<span class="header-section-number">6.2.1</span> The validation set approach</h3>
+<section id="the-validation-set-approach-1" class="level3" data-number="15.2.1"><h3 data-number="15.2.1" class="anchored" data-anchor-id="the-validation-set-approach-1">
+<span class="header-section-number">15.2.1</span> The validation set approach</h3>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load data</span></span>
 <span><span class="va">data_auto</span> <span class="op">&lt;-</span> <span class="fu">ISLR2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/ISLR2/man/Auto.html">Auto</a></span></span>
@@ -432,20 +492,20 @@ window.Quarto = {
 <span>  <span class="fu">map</span><span class="op">(</span>\<span class="op">(</span><span class="va">preds</span><span class="op">)</span> <span class="fu">yardstick</span><span class="fu">::</span><span class="fu"><a href="https://yardstick.tidymodels.org/reference/rmse.html">rmse_vec</a></span><span class="op">(</span>truth <span class="op">=</span> <span class="va">data_test</span><span class="op">$</span><span class="va">mpg</span>, estimate <span class="op">=</span> <span class="va">preds</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">raise_to_power</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 25.37796
+[1] 25.09384
 
 [[2]]
-[1] 21.63779
+[1] 19.11536
 
 [[3]]
-[1] 21.60728
+[1] 19.04942
 
 [[4]]
-[1] 21.5031</code></pre>
+[1] 18.9407</code></pre>
 </div>
 </div>
-</section><section id="leave-one-out-cross-validation-1" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="leave-one-out-cross-validation-1">
-<span class="header-section-number">6.2.2</span> Leave-one-out cross-validation</h3>
+</section><section id="leave-one-out-cross-validation-1" class="level3" data-number="15.2.2"><h3 data-number="15.2.2" class="anchored" data-anchor-id="leave-one-out-cross-validation-1">
+<span class="header-section-number">15.2.2</span> Leave-one-out cross-validation</h3>
 <p>The LOOCV estimate can be automatically computed for any generalized linear model using the <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> and <code><a href="https://rdrr.io/pkg/boot/man/cv.glm.html">boot::cv.glm()</a></code> functions; and by default <code>family = "gaussian"</code>, which means it does linear regression.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># fit model</span></span>
@@ -486,8 +546,8 @@ window.Quarto = {
 [1] 19.42443</code></pre>
 </div>
 </div>
-</section><section id="k-fold-cross-validation-1" class="level3" data-number="6.2.3"><h3 data-number="6.2.3" class="anchored" data-anchor-id="k-fold-cross-validation-1">
-<span class="header-section-number">6.2.3</span> <span class="math inline">\(k\)</span>-fold cross-validation</h3>
+</section><section id="k-fold-cross-validation-1" class="level3" data-number="15.2.3"><h3 data-number="15.2.3" class="anchored" data-anchor-id="k-fold-cross-validation-1">
+<span class="header-section-number">15.2.3</span> <span class="math inline">\(k\)</span>-fold cross-validation</h3>
 <p>The <code>cv.glm()</code> function can also be used to implement <span class="math inline">\(k\)</span>-fold CV.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># perform k-fold CV for different polynomial models and obtain the CV error estimates</span></span>
@@ -501,27 +561,27 @@ window.Quarto = {
 <span>  <span class="op">}</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 24.16561
+[1] 24.19177
 
 [[2]]
-[1] 19.24729
+[1] 19.12284
 
 [[3]]
-[1] 19.38661
+[1] 19.45497
 
 [[4]]
-[1] 19.38343</code></pre>
+[1] 19.3645</code></pre>
 </div>
 </div>
-</section><section id="the-bootstrap-1" class="level3" data-number="6.2.4"><h3 data-number="6.2.4" class="anchored" data-anchor-id="the-bootstrap-1">
-<span class="header-section-number">6.2.4</span> The bootstrap</h3>
+</section><section id="the-bootstrap-1" class="level3" data-number="15.2.4"><h3 data-number="15.2.4" class="anchored" data-anchor-id="the-bootstrap-1">
+<span class="header-section-number">15.2.4</span> The bootstrap</h3>
 <ul>
 <li>Already created some examples <a href="https://coltongearhart.github.io/computational-methods/bootstrap.html">here</a>
 </li>
-</ul></section></section><section id="exercises" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">6.3</span> Exercises</h2>
-<section id="conceptual" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="conceptual">
-<span class="header-section-number">6.3.1</span> Conceptual</h3>
+</ul></section></section><section id="exercises" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">15.3</span> Exercises</h2>
+<section id="conceptual" class="level3" data-number="15.3.1"><h3 data-number="15.3.1" class="anchored" data-anchor-id="conceptual">
+<span class="header-section-number">15.3.1</span> Conceptual</h3>
 <section id="question-1" class="level4"><h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
 <blockquote class="blockquote">
 <p>Using basic statistical properties of the variance, as well as single-variable calculus, derive (5.6). In other words, prove that <span class="math inline">\(\alpha\)</span> given by (5.6) does indeed minimize <span class="math inline">\(Var(\alpha X + (1 - \alpha)Y)\)</span>.</p>
@@ -608,7 +668,7 @@ window.Quarto = {
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">store</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6326</code></pre>
+<pre><code>[1] 0.636</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -653,8 +713,8 @@ window.Quarto = {
 <li><p>Fit the same model on each bootstrap sample</p></li>
 <li><p>Predict the new observation using each model.</p></li>
 <li><p>Calculate standard deviation of predictions</p></li>
-</ol></section></section><section id="applied" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="applied">
-<span class="header-section-number">6.3.2</span> Applied</h3>
+</ol></section></section><section id="applied" class="level3" data-number="15.3.2"><h3 data-number="15.3.2" class="anchored" data-anchor-id="applied">
+<span class="header-section-number">15.3.2</span> Applied</h3>
 <p>!!! TO BE DONE ONCE LEARN TIDYMODELS</p>
 <section id="question-5" class="level4"><h4 class="anchored" data-anchor-id="question-5">Question 5</h4>
 </section><section id="question-6" class="level4"><h4 class="anchored" data-anchor-id="question-6">Question 6</h4>
@@ -1137,12 +1197,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./islr-4.html" class="pagination-link" aria-label="ISLR -- Classification">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ISLR – Classification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./glm-1.html" class="pagination-link" aria-label="GLM -- Introduction">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">GLM – Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

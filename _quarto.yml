@@ -12,7 +12,15 @@ book:
 
     - part: partA-prob.qmd
       chapters:
-        - placeholder.qmd
+        - ca-prob-0.qmd
+        - ca-prob-1.qmd
+        - ca-prob-2.qmd
+        - ca-prob-3.qmd
+        - ca-prob-4.qmd
+        - ca-prob-5.qmd
+        - ca-prob-6.qmd
+        - ca-prob-7.qmd
+        - ca-prob-8.qmd
 
     - part: partB-stats.qmd
       chapters:

@@ -1,0 +1,15 @@
+# CA -- Discrete Markov Chains
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes 
+
+<embed src="files/ca-1-6-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>

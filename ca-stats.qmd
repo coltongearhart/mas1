@@ -1,4 +1,4 @@
-# Stats
+# CA -- All stats
 
 ```{r}
 #| label: load-prereqs
