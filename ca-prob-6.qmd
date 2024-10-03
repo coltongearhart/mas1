@@ -12,4 +12,8 @@ source("_common.R")
 
 ## Notes 
 
-<embed src="files/ca-1-6-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+<embed src="files/ca-1-6a-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/ca-1-6b-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/ca-1-6c-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
