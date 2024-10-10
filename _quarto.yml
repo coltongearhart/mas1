@@ -21,6 +21,7 @@ book:
         - ca-prob-6.qmd
         - ca-prob-7.qmd
         - ca-prob-8.qmd
+        - ca-prob-quizzes.qmd
 
     - part: partB-stats.qmd
       chapters:

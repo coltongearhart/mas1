@@ -1,4 +1,4 @@
-# CA -- Discrete Markov Chains
+# CA -- Discrete Markov chains
 
 ```{r}
 #| label: load-prereqs

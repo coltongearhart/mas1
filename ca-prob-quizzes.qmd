@@ -1,0 +1,31 @@
+# CA -- Probability quizzes
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Quizzes
+
+### Questions 1
+
+<embed src="files/ca-quiz1-prob-qs.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Solutions 1
+
+<embed src="files/ca-quiz1-prob.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Questions 2
+
+<embed src="files/ca-quiz2-prob-qs.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Solutions 2
+
+<embed src="files/ca-quiz2-prob.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+
