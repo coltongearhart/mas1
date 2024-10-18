@@ -489,5 +489,60 @@
       "Probability Models",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>CA -- Probability quizzes</span>"
     ]
+  },
+  {
+    "objectID": "ca-glm-quizzes.html",
+    "href": "ca-glm-quizzes.html",
+    "title": "\n22  CA – GLM quizzes\n",
+    "section": "",
+    "text": "22.1 Quizzes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-quizzes.html#quizzes",
+    "href": "ca-glm-quizzes.html#quizzes",
+    "title": "\n22  CA – GLM quizzes\n",
+    "section": "",
+    "text": "22.1.1 Questions - Target difficulty 1\n\n22.1.2 Solutions 1",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-4.html",
+    "href": "ca-glm-4.html",
+    "title": "\n21  CA – ANOVA\n",
+    "section": "",
+    "text": "21.1 Notes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>CA -- ANOVA</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-misc.html",
+    "href": "ca-glm-misc.html",
+    "title": "\n22  CA – Misc GLM\n",
+    "section": "",
+    "text": "22.1 Notes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-misc.html#notes",
+    "href": "ca-glm-misc.html#notes",
+    "title": "\n22  CA – Misc GLM\n",
+    "section": "",
+    "text": "22.1.1 Linear model assumptions\n\n22.1.2 Model selection",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
+    ]
   }
 ]

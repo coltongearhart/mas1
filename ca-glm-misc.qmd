@@ -1,0 +1,22 @@
+# CA -- Misc GLM
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Notes 
+
+### Linear model assumptions
+
+<embed src="files/ca-3-5-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Model selection
+
+<embed src="files/ca-3-6-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+

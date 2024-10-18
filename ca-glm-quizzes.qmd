@@ -1,0 +1,21 @@
+# CA -- GLM quizzes
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Quizzes
+
+### Questions - Target difficulty 1
+
+<embed src="files/ca-quiz1-glm-qs.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Solutions 1
+
+<embed src="files/ca-quiz1-glm.pdf"type="application/pdf" width="100%" height="1000px"></embed>
