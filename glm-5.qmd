@@ -94,8 +94,6 @@ x <- data_time$x %>% as.matrix
 
 t(x) %*% x
 
-
-
 ```
 
 

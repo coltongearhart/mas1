@@ -20,3 +20,14 @@ source("_common.R")
 
 <embed src="files/ca-3-6-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
 
+### GLMs
+
+<embed src="files/ca-3-8-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Binomial and categorical response regression
+
+<embed src="files/ca-3-9-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+### Poisson response regression
+
+<embed src="files/ca-3-10-notes.pdf"type="application/pdf" width="100%" height="1000px"></embed>

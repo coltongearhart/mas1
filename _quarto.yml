@@ -39,6 +39,8 @@ book:
         - glm-4.qmd
         - glm-5.qmd
         - ca-glm-4.qmd
+        - ca-glm-7.qmd
+        - ca-glm-11.qmd
         - ca-glm-misc.qmd
         - ca-glm-quizzes.qmd
 

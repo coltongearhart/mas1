@@ -493,23 +493,23 @@
   {
     "objectID": "ca-glm-quizzes.html",
     "href": "ca-glm-quizzes.html",
-    "title": "\n22  CA – GLM quizzes\n",
+    "title": "\n25  CA – GLM quizzes\n",
     "section": "",
-    "text": "22.1 Quizzes",
+    "text": "25.1 Quizzes",
     "crumbs": [
       "Extended Linear Models",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
     ]
   },
   {
     "objectID": "ca-glm-quizzes.html#quizzes",
     "href": "ca-glm-quizzes.html#quizzes",
-    "title": "\n22  CA – GLM quizzes\n",
+    "title": "\n25  CA – GLM quizzes\n",
     "section": "",
-    "text": "22.1.1 Questions - Target difficulty 1\n\n22.1.2 Solutions 1",
+    "text": "25.1.1 Questions\n\n25.1.2 Solutions",
     "crumbs": [
       "Extended Linear Models",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>CA -- GLM quizzes</span>"
     ]
   },
   {
@@ -526,23 +526,45 @@
   {
     "objectID": "ca-glm-misc.html",
     "href": "ca-glm-misc.html",
-    "title": "\n22  CA – Misc GLM\n",
+    "title": "\n24  CA – Misc GLM\n",
     "section": "",
-    "text": "22.1 Notes",
+    "text": "24.1 Notes",
     "crumbs": [
       "Extended Linear Models",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
     ]
   },
   {
     "objectID": "ca-glm-misc.html#notes",
     "href": "ca-glm-misc.html#notes",
-    "title": "\n22  CA – Misc GLM\n",
+    "title": "\n24  CA – Misc GLM\n",
     "section": "",
-    "text": "22.1.1 Linear model assumptions\n\n22.1.2 Model selection",
+    "text": "24.1.1 Linear model assumptions\n\n24.1.2 Model selection\n\n24.1.3 GLMs\n\n24.1.4 Binomial and categorical response regression\n\n24.1.5 Poisson response regression",
     "crumbs": [
       "Extended Linear Models",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>CA -- Misc GLM</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-7.html",
+    "href": "ca-glm-7.html",
+    "title": "\n22  CA – Other linear regression approaches\n",
+    "section": "",
+    "text": "22.1 Notes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>CA -- Other linear regression approaches</span>"
+    ]
+  },
+  {
+    "objectID": "ca-glm-11.html",
+    "href": "ca-glm-11.html",
+    "title": "\n23  CA – Generalized additive models\n",
+    "section": "",
+    "text": "23.1 Notes",
+    "crumbs": [
+      "Extended Linear Models",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>CA -- Generalized additive models</span>"
     ]
   }
 ]
