@@ -1,0 +1,19 @@
+# Review -- Study guides
+
+```{r}
+#| label: load-prereqs
+#| echo: false
+#| message: false
+
+# knitr options
+source("_common.R")
+
+```
+
+## Probability 
+
+<embed src="files/study-guide-prob-a.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/study-guide-prob-b.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/study-guide-prob-b.pdf"type="application/pdf" width="100%" height="1000px"></embed>

@@ -566,5 +566,26 @@
       "Extended Linear Models",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>CA -- Generalized additive models</span>"
     ]
+  },
+  {
+    "objectID": "review-study-guides.html",
+    "href": "review-study-guides.html",
+    "title": "\n26  Review – Study guides\n",
+    "section": "",
+    "text": "26.1 Probability",
+    "crumbs": [
+      "Review",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Review -- Study guides</span>"
+    ]
+  },
+  {
+    "objectID": "part-review.html",
+    "href": "part-review.html",
+    "title": "Review",
+    "section": "",
+    "text": "This section contains study guides and practice exams.",
+    "crumbs": [
+      "Review"
+    ]
   }
 ]

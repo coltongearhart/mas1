@@ -43,6 +43,10 @@ book:
         - ca-glm-11.qmd
         - ca-glm-misc.qmd
         - ca-glm-quizzes.qmd
+        
+    - part: part-review.qmd
+      chapters: 
+        - review-study-guides.qmd
 
 format:
   html:
