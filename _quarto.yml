@@ -47,6 +47,7 @@ book:
     - part: part-review.qmd
       chapters: 
         - review-study-guides.qmd
+        - review-practice-exams.qmd
 
 format:
   html:

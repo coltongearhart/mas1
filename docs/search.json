@@ -540,12 +540,12 @@
   {
     "objectID": "review-study-guides.html",
     "href": "review-study-guides.html",
-    "title": "\n26  Review – Study guides\n",
+    "title": "\n26  Study guides\n",
     "section": "",
     "text": "26.1 Probability",
     "crumbs": [
       "Review",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Review -- Study guides</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Study guides</span>"
     ]
   },
   {
@@ -586,6 +586,39 @@
     "text": "This section contains study guides and practice exams.",
     "crumbs": [
       "Review"
+    ]
+  },
+  {
+    "objectID": "review-practice-exams.html",
+    "href": "review-practice-exams.html",
+    "title": "\n27  Practice exams\n",
+    "section": "",
+    "text": "27.1 Exam 1",
+    "crumbs": [
+      "Review",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Practice exams</span>"
+    ]
+  },
+  {
+    "objectID": "review-practice-exams.html#exam-2",
+    "href": "review-practice-exams.html#exam-2",
+    "title": "\n27  Practice exams\n",
+    "section": "\n27.2 Exam 2",
+    "text": "27.2 Exam 2",
+    "crumbs": [
+      "Review",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Practice exams</span>"
+    ]
+  },
+  {
+    "objectID": "review-practice-exams.html#exam-3",
+    "href": "review-practice-exams.html#exam-3",
+    "title": "\n27  Practice exams\n",
+    "section": "\n27.3 Exam 3",
+    "text": "27.3 Exam 3",
+    "crumbs": [
+      "Review",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Practice exams</span>"
     ]
   }
 ]
