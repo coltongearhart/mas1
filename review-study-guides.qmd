@@ -17,3 +17,11 @@ source("_common.R")
 <embed src="files/study-guide-prob-b.pdf"type="application/pdf" width="100%" height="1000px"></embed>
 
 <embed src="files/study-guide-prob-c.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+## Final formula sheets
+
+<embed src="files/study-guide-formula-sheet.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+<embed src="files/mas-i-formula-sheet.pdf"type="application/pdf" width="100%" height="1000px"></embed>
+
+
